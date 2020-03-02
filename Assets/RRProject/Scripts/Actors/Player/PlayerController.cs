@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     
     private Vector3 movement;
     private CharacterController _characterController;
+    public GameObject projPrefab;
+    public GameObject playerModel;
 
 
     private void Awake()
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         locomotion();
         Rotation();
+        FireMainWeapon();
     }
 
     void locomotion()
@@ -32,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         int rot = 0;
         movement.Normalize();
-        Debug.Log(movement);
+        //Debug.Log(movement);
 
         if(movement.y >= 0.5)
         {
@@ -70,5 +73,14 @@ public class PlayerController : MonoBehaviour
         }
 
         _playerT.eulerAngles = new Vector3(0, 0, rot);
+    }
+
+    void FireMainWeapon()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject tmp = Instantiate(projPrefab, transform.position, Quaternion.Euler(0, 0, 0));
+            tmp.GetComponent<ReflectorProjectile>().refDir = playerModel.transform.up;
+        }
     }
 }

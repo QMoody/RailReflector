@@ -20,7 +20,7 @@ public class ReflectorProjectile : MonoBehaviour
 
     private void Start()
     {
-        reflectArray = new GameObject[reflectMax];
+        StartCoroutine(DestoryAfterTime());
     }
 
     void Update()
@@ -53,6 +53,9 @@ public class ReflectorProjectile : MonoBehaviour
 
             reflectNum += 1;
 
+            if (reflectNum >= reflectMax)
+                Destroy(this.gameObject);
+
             Debug.Log("Hitwall");
             Debug.DrawLine(hit.normal, hit.normal * 0.25f, Color.green);
         }
@@ -71,5 +74,12 @@ public class ReflectorProjectile : MonoBehaviour
         {
             Debug.DrawLine(transform.position, hit.point * 1, Color.red);
         }
+    }
+
+    IEnumerator DestoryAfterTime()
+    {
+        yield return new WaitForSeconds(5);
+
+        Destroy(this.gameObject);
     }
 }

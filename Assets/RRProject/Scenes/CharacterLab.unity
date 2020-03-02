@@ -1476,6 +1476,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _playerT: {fileID: 1980456552}
+  projPrefab: {fileID: 937931392594467682, guid: 4f863c7197fe6aa458b267eee36bde32,
+    type: 3}
+  playerModel: {fileID: 1980456551}
 --- !u!143 &1666719717
 CharacterController:
   m_ObjectHideFlags: 0
