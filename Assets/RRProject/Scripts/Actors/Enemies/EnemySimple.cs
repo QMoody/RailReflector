@@ -15,4 +15,12 @@ public class EnemySimple : MonoBehaviour
     {
         transform.Translate(new Vector3(0, -1 * _speed * Time.deltaTime, 0));
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
