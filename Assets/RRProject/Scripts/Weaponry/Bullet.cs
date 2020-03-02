@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
         delta = Vector2.ClampMagnitude(fPath, (maxSpeed * Time.deltaTime));
 
         // rotates the bullet to face its trajectory
-        transform.LookAt(fPath);
+        // transform.LookAt(transform.position, new Vector3(delta.x + transform.position.x, delta.y + transform.position.y));
 
         // translate the projectile accross the screen
         transform.Translate(delta);
