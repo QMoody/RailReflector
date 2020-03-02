@@ -47,6 +47,9 @@ public class Bullet : MonoBehaviour
         // calculated from its max speed per second multiplied by the time between frames
         delta = Vector2.ClampMagnitude(fPath, (maxSpeed * Time.deltaTime));
 
+        // rotates the bullet to face its trajectory
+        transform.LookAt(fPath);
+
         // translate the projectile accross the screen
         transform.Translate(delta);
     }
