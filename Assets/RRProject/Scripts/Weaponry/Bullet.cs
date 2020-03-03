@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     // tracks whether or not this is a lyuda bullet
     public bool lyuda = false;
     public float lyudaRange = 4.0f;
-    public float lyudaShot = 2.0f;
+    public int lyudaShot = 2;
 
     // tracks whether or not this bullet is explosive
     public bool explosive = false;
@@ -42,25 +42,29 @@ public class Bullet : MonoBehaviour
     public GameObject sBullet;
     public GameObject shrapnel;
 
+    // track the owner of the projectile
+    public string owner = "Player1";
+
     // Start is called before the first frame update
     void Start()
     {
     }
 
+    private void FixedUpdate()
+    {
+        // check if this object should be culled this frame before we run hit detection
+        cRange();
+    }
+
     // Update is called once per frame
     private void Update()
     {
-        // check if this object should be culled this frame
-        cRange();
-
-        // update and move the projectile for this frame
         translate();
 
         // activate lyuda if needed
         if (lyuda && dTraveled >= lyudaRange)
         {
-            //lyudaBullet();
-            explosiveShot();
+            splitBullet(lyudaShot);
         }
     }
 
@@ -70,11 +74,7 @@ public class Bullet : MonoBehaviour
         // scale this projectiles magnitude to be equal to its max speed this frame
         // calculated from its max speed per second multiplied by the time between frames
         delta = Vector2.ClampMagnitude(fPath, (maxSpeed * Time.deltaTime));
-
-        // store the distance this projectile has traveled
         dTraveled = dTraveled + delta.magnitude;
-
-        // translate the projectile accross the screen
         transform.Translate(delta);
     }
 
@@ -105,36 +105,17 @@ public class Bullet : MonoBehaviour
             Bullet cBullet = nb1.GetComponent<Bullet>();
 
             // set that bullets new properties
+            cBullet.owner = owner;
             cBullet.explosive = explosive;
             cBullet.pen = pen;
             cBullet.penStr = penStr;
-            cBullet.damage = damage;
-        }
 
-        // destroy the current bullet
-        Destroy(gameObject);
-    }
+            // if this bullet is a lyuda bullet, set all bullets it creates to be non lyuda bullets
+            if(lyuda)
+            {
+                cBullet.lyuda = false;
+            }
 
-    // split bullet, splits the bullet into multiple projectiles which carry the properties
-    // of the root bullet.
-    private void lyudaBullet()
-    {
-        // spawn two bullets, each with a different set rotation relative to the initial bullet
-        for (int i = 0; i < lyudaShot; i++)
-        {
-            // calculate the offset z rotation of the multishot projectiles
-            float tempZ = (transform.localEulerAngles.z) - (((15 * (lyudaShot - 1)) / 2) - (15 * i));
-
-            // create a new bullet that continues on with a 15 Degree positive offset
-            GameObject nb1 = Instantiate(sBullet, transform.position, Quaternion.Euler(0, 0, tempZ));
-            Bullet cBullet = nb1.GetComponent<Bullet>();
-
-            // set that bullets new properties
-            cBullet.explosive = explosive;
-            cBullet.pen = pen;
-            cBullet.penStr = penStr;
-            // set lyuda to false to prevent infinite spawn
-            cBullet.lyuda = false;
             cBullet.damage = damage;
         }
 
@@ -154,8 +135,9 @@ public class Bullet : MonoBehaviour
             // create a new bullet that continues on with a 15 Degree positive offset
             GameObject nb1 = Instantiate(shrapnel, transform.position, Quaternion.Euler(0, 0, tempZ));
             Shrapnel sShrap = nb1.GetComponent<Shrapnel>();
-            
+
             // set the shrapnels properties
+            sShrap.owner = owner;
             sShrap.mRange = Random.Range(0, shrapRange);
             sShrap.maxSpeed = Random.Range(0, maxSpeed * 2);
         }

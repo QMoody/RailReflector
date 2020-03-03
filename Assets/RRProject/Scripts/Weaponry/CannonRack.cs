@@ -18,7 +18,9 @@ public class CannonRack : MonoBehaviour
 
     // create an arraylist to store all the cannons in this cannon rack
     public List<GameObject> cannons = new List<GameObject>();
-    
+
+    // track the owner of the projectile
+    public string owner = "Player1";
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class CannonRack : MonoBehaviour
             cannons.Add(Instantiate(cannon, transform.position, transform.rotation));
             // parent the last added cannon to the cannon rack
             cannons[(cannons.Count - 1)].transform.parent = gameObject.transform;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().owner = owner;
         }
 
         // sets the cannons positions
@@ -60,6 +63,7 @@ public class CannonRack : MonoBehaviour
             cannons.Add(Instantiate(cannon, transform.position, transform.rotation));
             // parent the last added cannon to the cannon rack
             cannons[(cannons.Count - 1)].transform.parent = gameObject.transform;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().owner = owner;
         }
 
         // sets the cannons positions

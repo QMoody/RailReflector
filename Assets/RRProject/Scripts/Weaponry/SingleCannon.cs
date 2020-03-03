@@ -37,10 +37,12 @@ public class SingleCannon : MonoBehaviour
     // tracks pen value
     public int penStr = 0;
 
+    // track the owner of the projectile
+    public string owner = "Player1";
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -55,8 +57,6 @@ public class SingleCannon : MonoBehaviour
 
         // call fire every frame to update it
         fireInput();
-
-
     }
 
     // rotates the cannon to face the target vector
@@ -115,6 +115,7 @@ public class SingleCannon : MonoBehaviour
                 Bullet cBullet = nb1.GetComponent<Bullet>();
 
                 // set that bullets new properties
+                cBullet.owner = owner;
                 cBullet.explosive = explosive;
                 cBullet.pen = pen;
                 cBullet.penStr = penStr;
@@ -124,20 +125,6 @@ public class SingleCannon : MonoBehaviour
 
             // wait the cannons refire time before firing again
             yield return new WaitForSeconds(reFireTime);
-
-            /*
-        // create a new bullet at the cannons origin point and fire that shit
-        GameObject nb1 = Instantiate(bullet, origin.transform.position, origin.transform.rotation);
-        Bullet cBullet = nb1.GetComponent<Bullet>();
-
-        // set the bullets special properties
-        cBullet.explosive = explosive;
-        cBullet.pen = pen;
-        cBullet.penStr = penStr;
-        cBullet.lyuda = lyuda;
-        cBullet.damage = damage; 
-
-        */
         }
     }
 
