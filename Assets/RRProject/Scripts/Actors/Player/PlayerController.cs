@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _playerT;
     
     private Vector3 movement;
-    private CharacterController _characterController;
-
+    // private CharacterController _characterController;
+    private Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void locomotion()
     {
         movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        _characterController.Move(movement * _speed * Time.deltaTime);
+        _rigidbody2D.MovePosition(transform.position + (movement * _speed * Time.deltaTime));
     }
 
     void Rotation()
