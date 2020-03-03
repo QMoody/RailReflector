@@ -86,9 +86,9 @@ public class ReflectorProjectile : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Damageable damageable = collision.collider.GetComponent<Damageable>();
+        Damageable damageable = collision.GetComponent<Damageable>();
         if(damageable != null)
         {
             damageable.reciveDamage(transform.forward, damage);

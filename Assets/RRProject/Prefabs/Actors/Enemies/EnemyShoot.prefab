@@ -84,7 +84,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.36, y: 6.36}
+    oldSize: {x: 1.0083333, y: 1.0083333}
     newSize: {x: 6.36, y: 6.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -113,7 +113,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &1354074433401396865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f335f2b0d19454aa5fa61937f2ea47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  speed: 4
   _bullet: {fileID: 937931392594467682, guid: 4f863c7197fe6aa458b267eee36bde32, type: 3}
   _gunPivot: {fileID: 2596755894739638521}
   _shootRateMin: 1
