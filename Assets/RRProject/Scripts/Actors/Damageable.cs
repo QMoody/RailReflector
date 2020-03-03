@@ -66,9 +66,11 @@ public class Damageable : MonoBehaviour
             _health -= (int)((float)damage);
             if(_health <= 0)
             {
-                HitParticles.GetComponent<CommandParticle>().Burst(25, 50);
+                DeathParticles.GetComponent<CommandParticle>().Burst(25, 50);
+                DeathParticles.transform.GetChild(0).GetComponent<ParticleSystem>().Emit(50);
                 _onDead.Invoke();
                 gameObject.GetComponent<deathAnim>().enabled = true;
+                
             }
         }
     }
