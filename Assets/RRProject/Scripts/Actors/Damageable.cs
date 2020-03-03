@@ -8,6 +8,8 @@ using UnityEngine.Events;
 /// </summary>
 public class Damageable : MonoBehaviour
 {
+    [SerializeField] private GameObject HitParticles;
+    [SerializeField] private GameObject DeathParticles;
     [SerializeField] private int _health;
     [SerializeField] private bool _inmortal;
     [SerializeField] private UnityEvent _onDamaged;
@@ -46,6 +48,8 @@ public class Damageable : MonoBehaviour
     /// <param name="damage"></param>
     public void reciveDamage(Vector3 direcction, int damage)
     {
+        HitParticles.GetComponent<CommandParticle>().Burst(1,3);
+
         if(!_initialized)
         {
             return;
@@ -62,7 +66,9 @@ public class Damageable : MonoBehaviour
             _health -= (int)((float)damage);
             if(_health <= 0)
             {
+                HitParticles.GetComponent<CommandParticle>().Burst(25, 50);
                 _onDead.Invoke();
+                gameObject.GetComponent<deathAnim>().enabled = true;
             }
         }
     }
