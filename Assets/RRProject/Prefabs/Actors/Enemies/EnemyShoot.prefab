@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1354074433401396865}
   - component: {fileID: 8978163874185878087}
   - component: {fileID: -5252488579239580130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,6 +195,8 @@ MonoBehaviour:
   _onDamaged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -209,6 +211,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _reciveKnockback: 1
   _knockbackMultiplier: 0
 --- !u!114 &-5252488579239580130

@@ -8,6 +8,8 @@ public class WallCreator : MonoBehaviour
     public GameObject nodePrefab;
     private GameObject[] nodeArray;
     private GameObject[] wallArray;
+    public GameObject wallPremakePrefab;
+    public GameObject wallPredictObj;
     Coroutine lastCor;
 
     public float energyBar;
@@ -30,10 +32,14 @@ public class WallCreator : MonoBehaviour
     void Update()
     {
         WallActive();
+
         if (createWallActive == true && nodeTimerRunning == false && isFirstNode == true)
             CreateNodeWalls();
         else if (createWallActive == true && nodeTimerRunning == false)
             lastCor = StartCoroutine(NodeTimer(0.5f));
+
+        if (createWallActive == true)
+            PredictWall();
     }
 
     void WallActive()
@@ -48,6 +54,7 @@ public class WallCreator : MonoBehaviour
             createWallActive = false;
             StopCoroutine(lastCor);
             StartCoroutine(WallTimer(7.0f));
+            Destroy(wallPredictObj);
         }
 
         if (createWallActive == true)
@@ -59,6 +66,7 @@ public class WallCreator : MonoBehaviour
         {
             createWallActive = false;
             StartCoroutine(WallTimer(7.0f));
+            Destroy(wallPredictObj);
         }
     }
 
@@ -82,6 +90,7 @@ public class WallCreator : MonoBehaviour
         }
 
         nodeCount += 1;
+        PredictWall();
         isFirstNode = false;
     }
 
@@ -106,6 +115,24 @@ public class WallCreator : MonoBehaviour
             }
 
         startNewWall = true;
+    }
+
+    void PredictWall()
+    {
+        if (isFirstNode == true)
+        {
+            wallPredictObj = Instantiate(wallPremakePrefab);
+        }
+        float wallDis = Vector2.Distance(nodeArray[nodeCount - 1].transform.position, this.transform.position);
+        Vector3 wallPoint = (nodeArray[nodeCount - 1].transform.position - this.transform.position) / 2 + this.transform.position;
+        wallPredictObj.transform.position = wallPoint;
+
+        Vector3 rotDir = wallPoint - nodeArray[nodeCount-1].transform.position;
+        float wallAngle = Mathf.Atan2(rotDir.y, rotDir.x) * Mathf.Rad2Deg;
+        Quaternion wallRot = Quaternion.AngleAxis(wallAngle, Vector3.forward);
+        wallPredictObj.transform.rotation = wallRot;
+
+        wallPredictObj.transform.localScale = new Vector2(wallDis, wallPredictObj.transform.localScale.y);
     }
 
     IEnumerator NodeTimer(float waitTime)
