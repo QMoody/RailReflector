@@ -53,13 +53,11 @@ public class ReflectorProjectile : MonoBehaviour
         if (hit.collider != null)
         {
             refDir = Vector2.Reflect(refDir, hit.normal);
-
             reflectNum += 1;
 
             if (reflectNum >= reflectMax)
                 Destroy(this.gameObject);
 
-            Debug.Log("Hitwall");
             Debug.DrawLine(hit.normal, hit.normal * 0.25f, Color.green);
         }
     }
@@ -81,7 +79,7 @@ public class ReflectorProjectile : MonoBehaviour
 
     IEnumerator DestoryAfterTime()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(30);
 
         Destroy(this.gameObject);
     }
