@@ -1776,7 +1776,7 @@ MonoBehaviour:
   - {fileID: 1772508136}
   - {fileID: 33990030}
   - {fileID: 1738088621}
-  _enemy: {fileID: 4803652839756384864, guid: d815a953b137c9548bb91f773eaadcb9, type: 3}
+  _enemy: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427, type: 3}
   _spawnRateMin: 1
   _spawnRateMax: 2
 --- !u!1 &1666719715

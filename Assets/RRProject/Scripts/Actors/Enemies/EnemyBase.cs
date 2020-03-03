@@ -5,11 +5,16 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float dodgeSpeed = 2.0f;
 
     private float _originalSpeed;
 
     private float _rayCheckTimer;
     private float _rayCheckRate = 0.65f;
+
+    private bool _dodge = false;
+    private float _dodgingTime = 0;
+    private float _dodgeTime = 1;
 
     private void Awake()
     {
@@ -19,7 +24,16 @@ public class EnemyBase : MonoBehaviour
 
     public void locomotion()
     {
-        transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+        if(_dodge)
+        {
+            _dodgingTime += Time.deltaTime;
+            if(_dodgingTime >= _dodgeTime)
+            {
+                _dodge = false;
+            }
+        }
+
+        transform.Translate(new Vector3(_dodge ? dodgeSpeed * Time.deltaTime: 0, -speed * Time.deltaTime, 0));
     }
 
     private void LateUpdate()
@@ -62,5 +76,11 @@ public class EnemyBase : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void Dodge()
+    {
+        _dodge = true;
+        _dodgingTime = 0;
     }
 }
