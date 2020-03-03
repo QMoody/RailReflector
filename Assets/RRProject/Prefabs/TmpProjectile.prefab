@@ -49,7 +49,7 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   layMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   speed: 10
   refDir: {x: 1, y: 0.3}
   rayWallDis: 0.1
