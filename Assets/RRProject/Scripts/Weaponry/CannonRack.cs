@@ -137,17 +137,17 @@ public class CannonRack : MonoBehaviour
             addCannons();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Z))
         {
             lyuda = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.K)|| Input.GetKeyDown(KeyCode.LeftShift))
         {
             explosive = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J)|| Input.GetKeyDown(KeyCode.X))
         {
             multishot++;
         }
