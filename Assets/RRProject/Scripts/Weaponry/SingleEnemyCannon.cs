@@ -129,9 +129,6 @@ public class SingleEnemyCannon : MonoBehaviour
     }
 
 
-
-
-
     // sets the pen value for this bullet
     // tPenV is how many times this bullet will penetrate
     public void setPen(int tPenV)

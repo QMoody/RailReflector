@@ -96,10 +96,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mRange: 25
   dTraveled: 0
-  maxSpeed: 10
+  maxSpeed: 15.17
   damage: 1
   lyuda: 0
-  lyudaRange: 10
+  lyudaRange: 4
   lyudaShot: 2
   explosive: 0
   shrapcount: 20

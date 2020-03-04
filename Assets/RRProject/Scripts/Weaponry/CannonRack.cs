@@ -22,6 +22,11 @@ public class CannonRack : MonoBehaviour
     // track the owner of the projectile
     public string owner = "Player1";
 
+    bool lyuda = false;
+    bool explosive = false;
+    int multishot = 1;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +39,9 @@ public class CannonRack : MonoBehaviour
     {
         // runs the cannon cheat inputs
         UpdateCannonCheats();
+
+        // update the cannoncs
+        updateCannons();
     }
 
     // adds more cannons to the existing Cannnon rack
@@ -43,7 +51,7 @@ public class CannonRack : MonoBehaviour
         for (int i = 0; i < cNum; i++)
         {
             // add a new cannon to the mech
-            cannons.Add(Instantiate(cannon, transform.position, transform.rotation));
+            cannons.Add(Instantiate(cannon, transform.localPosition, transform.rotation));
             // parent the last added cannon to the cannon rack
             cannons[(cannons.Count - 1)].transform.parent = gameObject.transform;
             cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().owner = owner;
@@ -60,7 +68,7 @@ public class CannonRack : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             // add a new cannon to the mech
-            cannons.Add(Instantiate(cannon, transform.position, transform.rotation));
+            cannons.Add(Instantiate(cannon, transform.localPosition, transform.rotation));
             // parent the last added cannon to the cannon rack
             cannons[(cannons.Count - 1)].transform.parent = gameObject.transform;
             cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().owner = owner;
@@ -84,10 +92,14 @@ public class CannonRack : MonoBehaviour
                 if ((i % 2) > 0) {
                     // if this is an odd cannon place it on the left hand side
                     cannons[i].transform.localPosition = new Vector2((cannonSpacing * i), 0);
-                } else
+
+
+                }
+                else
                 {
                     // if this is an even cnnon place it on the right hand side
-                    cannons[i].transform.localPosition = new Vector2((- cannonSpacing * i), 0);
+                    cannons[i].transform.localPosition = new Vector2((- cannonSpacing * (i + 1)), 0);
+
                 }
             }
         }  else
@@ -95,6 +107,19 @@ public class CannonRack : MonoBehaviour
 
         }
     }
+
+    //update the cannons
+    void updateCannons()
+    {
+        for(int i = 0; i < cannons.Count; i++)
+        {
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().multishot = multishot;
+        }
+
+    }
+
 
     // reangles the cannons to either foward fire or shotgun
     void setCannnonAngle()
@@ -110,6 +135,21 @@ public class CannonRack : MonoBehaviour
         if(Input.GetButtonDown("AddCannon"))
         {
             addCannons();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            lyuda = true;
+        }
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            explosive = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            multishot++;
         }
     }
 

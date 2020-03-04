@@ -66,6 +66,12 @@ public class Bullet : MonoBehaviour
         {
             splitBullet(lyudaShot);
         }
+
+        // activate lyuda if needed
+        if (explosive && dTraveled >= lyudaRange * 3)
+        {
+            explosiveShot();
+        }
     }
 
     // moves the projectile for this frame 
