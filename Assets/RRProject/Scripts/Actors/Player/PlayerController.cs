@@ -78,8 +78,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject tmp = Instantiate(projPrefab, _gunCannon.position, Quaternion.Euler(0, 0, 0));
-            tmp.GetComponent<ReflectorProjectile>().refDir = _playerT.up;
+            GameObject bullet = Instantiate(projPrefab, _gunCannon.position, Quaternion.Euler(0, 0, 0));
+            bullet.GetComponent<ReflectorProjectile>().refDir = _playerT.up;
         }
     }
 }
