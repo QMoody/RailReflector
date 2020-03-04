@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _speed = 4.0f;
     [SerializeField] private Transform _playerT;
+    [SerializeField] private string HorizontalAxis;
+    [SerializeField] private string VerticalAxis;
     //[SerializeField] private Transform _gunCannon;
     //public GameObject projPrefab;
 
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void locomotion()
     {
-        movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+        movement = new Vector3(Input.GetAxis(HorizontalAxis), Input.GetAxis(VerticalAxis), 0);
         _rigidbody2D.MovePosition(transform.position + (movement * _speed * Time.deltaTime));
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -15, 13), 0);
     }

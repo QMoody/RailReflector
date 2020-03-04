@@ -86,6 +86,11 @@ public class EnemyBase : MonoBehaviour
 
     public void Dodge()
     {
+        if(_dodge)
+        {
+            return;
+        }
+
         int rand = Random.Range(1, 100);
 
         if (rand <= dodgingChance)
@@ -103,5 +108,10 @@ public class EnemyBase : MonoBehaviour
                 _dodgeDirection = false;
             }
         }
+    }
+
+    public void dead()
+    {
+        //code enmy dead here
     }
 }

@@ -54,7 +54,7 @@ public class SingleCannon : MonoBehaviour
         point();
 
         // call fire every frame to update it
-        fireInput();
+        //fireInput();
     }
 
     // rotates the cannon to face the target vector
@@ -72,11 +72,11 @@ public class SingleCannon : MonoBehaviour
     }
 
     // fires a bullet toward the target vector 
-    private void fireInput()
+    public void fireInput(KeyCode fireKey)
     {
         // if the player is inputing to fire1 set firing to true
         // and start the firing coroutine
-        if (Input.GetButton("Fire1"))
+        if (Input.GetKey(fireKey))
         {
             // set fire to true 
             fire = true;
