@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _speed = 4.0f;
     [SerializeField] private Transform _playerT;
     [SerializeField] private Transform _gunCannon;
@@ -11,16 +12,20 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 movement;
     private Rigidbody2D _rigidbody2D;
+    private Collider2D _collider2D;
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _collider2D = GetComponent<Collider2D>();
+        _spriteRenderer = _playerT.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         locomotion();
-        Rotation();
+        //Rotation();
         FireMainWeapon();
     }
 
@@ -29,6 +34,12 @@ public class PlayerController : MonoBehaviour
         movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         _rigidbody2D.MovePosition(transform.position + (movement * _speed * Time.deltaTime));
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -15, 13), 0);
+    }
+
+    public void Respawn()
+    {
+        transform.position = _spawnPoint.position;
+        StartCoroutine(SpawnBlink());
     }
 
     void Rotation()
@@ -81,5 +92,23 @@ public class PlayerController : MonoBehaviour
             GameObject tmp = Instantiate(projPrefab, _gunCannon.position, Quaternion.Euler(0, 0, 0));
             tmp.GetComponent<ReflectorProjectile>().refDir = _playerT.up;
         }
+    }
+
+    IEnumerator SpawnBlink()
+    {
+        int blinkCount = 0;
+        _collider2D.enabled = false;
+
+        while(blinkCount < 12)
+        {
+            blinkCount++;
+            _spriteRenderer.enabled = !_spriteRenderer.enabled;
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        _spriteRenderer.enabled = true;
+        _collider2D.enabled = true;
+
+        yield return null;
     }
 }

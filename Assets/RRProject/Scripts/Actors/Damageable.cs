@@ -67,6 +67,11 @@ public class Damageable : MonoBehaviour
         }
     }
 
+    public void setHealth(int value)
+    {
+        _health = value;
+    }
+
     /// <summary>
     /// Aply knockback based on the compomnent that the object poses
     /// </summary>
