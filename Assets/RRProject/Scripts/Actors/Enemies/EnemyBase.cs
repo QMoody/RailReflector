@@ -112,6 +112,6 @@ public class EnemyBase : MonoBehaviour
 
     public void dead()
     {
-        //code enmy dead here
+        ScoreTracker.instance.SpawnScore(transform.position);
     }
 }
