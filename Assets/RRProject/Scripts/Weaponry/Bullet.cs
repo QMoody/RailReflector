@@ -156,7 +156,8 @@ public class Bullet : MonoBehaviour
         Damageable damageable = collision.GetComponent<Damageable>();
         if (damageable != null)
         {
-            damageable.reciveDamage(transform.forward, (int)damage, collision.tag);
+            Debug.Log(collision.tag);
+            damageable.reciveDamage(transform.forward, (int)damage, GetComponent<Collider2D>().tag);
         }
     }
 }

@@ -89,7 +89,7 @@ public class ReflectorProjectile : MonoBehaviour
         Damageable damageable = collision.GetComponent<Damageable>();
         if(damageable != null)
         {
-            damageable.reciveDamage(transform.forward, damage, collision.tag);
+            damageable.reciveDamage(transform.forward, damage, GetComponent<Collider2D>().tag);
         }
     }
 }
