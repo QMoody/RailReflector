@@ -144,4 +144,13 @@ public class Bullet : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Damageable damageable = collision.GetComponent<Damageable>();
+        if (damageable != null)
+        {
+            damageable.reciveDamage(transform.forward, (int)damage, collision.tag);
+        }
+    }
 }

@@ -109,7 +109,7 @@ public class SingleCannon : MonoBehaviour
                 float tempZ = (transform.localEulerAngles.z) - (((15 * (multishot - 1)) / 2) - (15 * i));
 
                 // create a new bullet that continues on with a 15 Degree positive offset
-                GameObject nb1 = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, tempZ));
+                GameObject nb1 = Instantiate(bullet, transform.position + Vector3.up, Quaternion.Euler(0, 0, tempZ));
                 Bullet cBullet = nb1.GetComponent<Bullet>();
 
                 // set that bullets new properties

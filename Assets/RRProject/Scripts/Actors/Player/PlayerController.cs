@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _speed = 4.0f;
     [SerializeField] private Transform _playerT;
-    [SerializeField] private Transform _gunCannon;
-    public GameObject projPrefab;
+    //[SerializeField] private Transform _gunCannon;
+    //public GameObject projPrefab;
 
     private Vector3 movement;
     private Rigidbody2D _rigidbody2D;
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         locomotion();
         //Rotation();
-        FireMainWeapon();
+        //FireMainWeapon();
     }
 
     void locomotion()
@@ -85,14 +85,14 @@ public class PlayerController : MonoBehaviour
         _playerT.eulerAngles = new Vector3(0, 0, rot);
     }
 
-    void FireMainWeapon()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            GameObject tmp = Instantiate(projPrefab, _gunCannon.position, Quaternion.Euler(0, 0, 0));
-            tmp.GetComponent<ReflectorProjectile>().refDir = _playerT.up;
-        }
-    }
+    //void FireMainWeapon()
+    //{
+    //    if (Input.GetButtonDown("Fire1"))
+    //    {
+    //        GameObject tmp = Instantiate(projPrefab, _gunCannon.position, Quaternion.Euler(0, 0, 0));
+    //        tmp.GetComponent<ReflectorProjectile>().refDir = _playerT.up;
+    //    }
+    //}
 
     IEnumerator SpawnBlink()
     {

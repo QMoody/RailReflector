@@ -12,8 +12,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] private bool _inmortal;
     [SerializeField] private UnityEvent _onDamaged;
     [SerializeField] private UnityEvent _onDead;
-    [SerializeField] private bool _reciveKnockback = true;
-    [SerializeField] private float _knockbackMultiplier;
+    [SerializeField] private string tag;
 
     private Rigidbody2D _rigidbody;
     private PlayerController _playerController;
@@ -44,18 +43,16 @@ public class Damageable : MonoBehaviour
     /// <param name="direcction"></param>
     /// <param name="distance"></param>
     /// <param name="damage"></param>
-    public void reciveDamage(Vector3 direcction, int damage)
+    public void reciveDamage(Vector3 direcction, int damage, string dTag)
     {
+        if(this.tag == dTag)
+
         if(!_initialized)
         {
             return;
         }
 
         _onDamaged.Invoke();
-        if(_reciveKnockback)
-        {
-            applyKnockback(direcction);
-        }
 
         if(!_inmortal)
         {
@@ -70,21 +67,5 @@ public class Damageable : MonoBehaviour
     public void setHealth(int value)
     {
         _health = value;
-    }
-
-    /// <summary>
-    /// Aply knockback based on the compomnent that the object poses
-    /// </summary>
-    /// <param name="direcction"></param>
-    void applyKnockback(Vector3 direcction)
-    {
-        if(_rigidbody != null)
-        {
-            _rigidbody.velocity = direcction * _knockbackMultiplier;
-        }
-        //else if(_playerController != null)
-        //{
-        //    _playerController.impact = direcction * _knockbackMultiplier;
-        //}
     }
 }

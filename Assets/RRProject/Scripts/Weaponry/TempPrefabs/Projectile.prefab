@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2474801010237778601}
   - component: {fileID: 2474801010237778600}
   - component: {fileID: 2474801010237778603}
+  - component: {fileID: 8572587777288910681}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ce996d3735f4b4f4ba709435dd2db778, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d62f31ca4e70cfb4bad1f0e4fa28b28c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,3 +110,20 @@ MonoBehaviour:
   sBullet: {fileID: 2474801010237778602}
   shrapnel: {fileID: 5684167060532405566, guid: 3f296ffb4b593ff47ba6aa21e0d5712b,
     type: 3}
+  owner: Player1
+--- !u!58 &8572587777288910681
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474801010237778602}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
