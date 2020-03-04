@@ -12,7 +12,7 @@ public class CommandParticle : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Burst(20, 30 );
+            Burst(10,10);
         }
     }
 
