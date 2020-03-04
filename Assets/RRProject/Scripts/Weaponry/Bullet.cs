@@ -45,6 +45,13 @@ public class Bullet : MonoBehaviour
     // track the owner of the projectile
     public string owner = "Player1";
 
+    // Reflection Variables
+    [Header("Reflector Variables")]
+    public LayerMask layReflectMask;
+    public float rayWallDis; //0.01?
+    //public int reflectMax;
+    //public int reflectNum;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +79,8 @@ public class Bullet : MonoBehaviour
         {
             explosiveShot();
         }
+
+        Reflect();
     }
 
     // moves the projectile for this frame 
@@ -158,6 +167,24 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log(collision.tag);
             damageable.reciveDamage(transform.forward, (int)damage, GetComponent<Collider2D>().tag);
+        }
+    }
+
+    void Reflect()
+    {
+        //Chang this to a cricle collider raycast eventually
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, fPath, rayWallDis, layReflectMask);
+
+        if (hit.collider != null)
+        {
+            fPath = Vector2.Reflect(fPath, hit.normal);
+            /*
+            reflectNum += 1;
+            if (reflectNum >= reflectMax)
+                Destroy(this.gameObject);
+                
+            Debug.DrawLine(hit.normal, hit.normal * 0.25f, Color.green);
+            */
         }
     }
 }

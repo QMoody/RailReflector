@@ -111,6 +111,10 @@ MonoBehaviour:
   shrapnel: {fileID: 5684167060532405566, guid: 3f296ffb4b593ff47ba6aa21e0d5712b,
     type: 3}
   owner: Player1
+  layReflectMask:
+    serializedVersion: 2
+    m_Bits: 256
+  rayWallDis: 0.3
 --- !u!58 &8572587777288910681
 CircleCollider2D:
   m_ObjectHideFlags: 0

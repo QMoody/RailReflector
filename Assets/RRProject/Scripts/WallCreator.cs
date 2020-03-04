@@ -15,6 +15,7 @@ public class WallCreator : MonoBehaviour
     private GameObject placerNode;
 
     [Header("Wall Variables")]
+    public KeyCode createWall;
     public float energyBar;
     public float energyReRate;
     public float maxWallDis;
@@ -48,13 +49,13 @@ public class WallCreator : MonoBehaviour
 
     void WallActive()
     {
-        if (Input.GetKeyDown("e") && canCreateWall == true)
+        if (Input.GetKeyDown(createWall) && canCreateWall == true)
         {
             createWallActive = true;
             PlaceNode();
             PredictWall(true);
         }
-        else if(Input.GetKeyUp("e") && createWallActive == true)
+        else if(Input.GetKeyUp(createWall) && createWallActive == true)
         {
             createWallActive = false;
             CreateNodeWall();
