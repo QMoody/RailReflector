@@ -8,6 +8,7 @@ using UnityEngine;
 // a set distance every frame relative to the amount of time passed
 public class Bullet : MonoBehaviour
 {
+    #region Variables
     // stores the projectiles delta for this frame
     Vector2 delta;
 
@@ -48,9 +49,13 @@ public class Bullet : MonoBehaviour
     // Reflection Variables
     [Header("Reflector Variables")]
     public LayerMask layReflectMask;
-    public float rayWallDis; //0.01?
-    //public int reflectMax;
-    //public int reflectNum;
+    public float rayWallDis;
+
+    //[Header("Shield Variables")]
+    //public LayerMask layShieldMask;
+    #endregion
+
+    //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
 
     // Start is called before the first frame update
     void Start()
@@ -176,15 +181,6 @@ public class Bullet : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, fPath, rayWallDis, layReflectMask);
 
         if (hit.collider != null)
-        {
             fPath = Vector2.Reflect(fPath, hit.normal);
-            /*
-            reflectNum += 1;
-            if (reflectNum >= reflectMax)
-                Destroy(this.gameObject);
-                
-            Debug.DrawLine(hit.normal, hit.normal * 0.25f, Color.green);
-            */
-        }
     }
 }
