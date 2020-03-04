@@ -27,6 +27,8 @@ public class Bullet : MonoBehaviour
     public bool lyuda = false;
     public float lyudaRange = 4.0f;
     public int lyudaShot = 2;
+    public float mAngle = 10; 
+
 
     // tracks whether or not this bullet is explosive
     public bool explosive = false;
@@ -104,7 +106,7 @@ public class Bullet : MonoBehaviour
         for (int i = 0; i < multishot; i++)
         {
             // calculate the offset z rotation of the multishot projectiles
-            float tempZ = (transform.localEulerAngles.z) - (((15 * (multishot - 1)) / 2) - (15 * i));
+            float tempZ = (transform.localEulerAngles.z) - (((mAngle * (multishot - 1)) / 2) - (mAngle * i));
 
             // create a new bullet that continues on with a 15 Degree positive offset
             GameObject nb1 = Instantiate(sBullet, transform.position, Quaternion.Euler(0, 0, tempZ));

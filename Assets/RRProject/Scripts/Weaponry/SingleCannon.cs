@@ -13,6 +13,7 @@ public class SingleCannon : MonoBehaviour
     public float fireRate = 10;
     float reFireTime;
     public int multishot = 1;
+    float mAngle = 15;
 
     // tracks whether or not the player is trying to fire
     public bool fire = false;
@@ -106,7 +107,7 @@ public class SingleCannon : MonoBehaviour
             for (int i = 0; i < multishot; i++)
             {
                 // calculate the offset z rotation of the multishot projectiles
-                float tempZ = (transform.localEulerAngles.z) - (((15 * (multishot - 1)) / 2) - (15 * i));
+                float tempZ = (transform.localEulerAngles.z) - (((mAngle * (multishot - 1)) / 2) - (mAngle * i));
 
                 // create a new bullet that continues on with a 15 Degree positive offset
                 GameObject nb1 = Instantiate(bullet, transform.position + Vector3.up, Quaternion.Euler(0, 0, tempZ));
@@ -125,10 +126,6 @@ public class SingleCannon : MonoBehaviour
             yield return new WaitForSeconds(reFireTime);
         }
     }
-
-
-
-
 
     // sets the pen value for this bullet
     // tPenV is how many times this bullet will penetrate
