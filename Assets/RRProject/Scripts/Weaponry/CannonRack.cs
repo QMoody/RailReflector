@@ -22,6 +22,8 @@ public class CannonRack : MonoBehaviour
     // track the owner of the projectile
     public string owner = "Player1";
 
+    public KeyCode fireKey;
+
     bool lyuda = false;
     bool explosive = false;
     int multishot = 1;
@@ -116,6 +118,7 @@ public class CannonRack : MonoBehaviour
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().multishot = multishot;
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().fireInput(fireKey);
         }
 
     }
@@ -137,17 +140,17 @@ public class CannonRack : MonoBehaviour
             addCannons();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Z))
         {
             lyuda = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.K)|| Input.GetKeyDown(KeyCode.LeftShift))
         {
             explosive = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J)|| Input.GetKeyDown(KeyCode.X))
         {
             multishot++;
         }

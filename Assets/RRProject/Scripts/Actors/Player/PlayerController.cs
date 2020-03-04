@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _speed = 4.0f;
     [SerializeField] private Transform _playerT;
+    [SerializeField] private string HorizontalAxis;
+    [SerializeField] private string VerticalAxis;
     //[SerializeField] private Transform _gunCannon;
     //public GameObject projPrefab;
 
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void locomotion()
     {
-        movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        movement = new Vector3(Input.GetAxis(HorizontalAxis), Input.GetAxis(VerticalAxis), 0);
         _rigidbody2D.MovePosition(transform.position + (movement * _speed * Time.deltaTime));
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -15, 13), 0);
     }
@@ -85,14 +87,30 @@ public class PlayerController : MonoBehaviour
         _playerT.eulerAngles = new Vector3(0, 0, rot);
     }
 
-    //void FireMainWeapon()
-    //{
-    //    if (Input.GetButtonDown("Fire1"))
-    //    {
-    //        GameObject tmp = Instantiate(projPrefab, _gunCannon.position, Quaternion.Euler(0, 0, 0));
-    //        tmp.GetComponent<ReflectorProjectile>().refDir = _playerT.up;
-    //    }
-    //}
+    public void startInmortal()
+    {
+        _collider2D.enabled = false;
+        StartCoroutine(Blink());
+    }
+
+    public void stopInmortal()
+    {
+        _collider2D.enabled = true;
+        StopCoroutine(Blink());
+    }
+
+    IEnumerator Blink()
+    {
+        int blinkCount = 0;
+        _collider2D.enabled = false;
+
+        while (true)
+        {
+            blinkCount++;
+            _spriteRenderer.enabled = !_spriteRenderer.enabled;
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
 
     IEnumerator SpawnBlink()
     {

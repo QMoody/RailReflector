@@ -8,6 +8,7 @@ using UnityEngine;
 // a set distance every frame relative to the amount of time passed
 public class Bullet : MonoBehaviour
 {
+    #region Variables
     // stores the projectiles delta for this frame
     Vector2 delta;
 
@@ -47,6 +48,17 @@ public class Bullet : MonoBehaviour
     // track the owner of the projectile
     public string owner = "Player1";
 
+    // Reflection Variables
+    [Header("Reflector Variables")]
+    public LayerMask layReflectMask;
+    public float rayWallDis;
+
+    //[Header("Shield Variables")]
+    //public LayerMask layShieldMask;
+    #endregion
+
+    //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +86,8 @@ public class Bullet : MonoBehaviour
         {
             explosiveShot();
         }
+
+        Reflect();
     }
 
     // moves the projectile for this frame 
@@ -158,7 +172,17 @@ public class Bullet : MonoBehaviour
         Damageable damageable = collision.GetComponent<Damageable>();
         if (damageable != null)
         {
-            damageable.reciveDamage(transform.forward, (int)damage, collision.tag);
+            Debug.Log(collision.tag);
+            damageable.reciveDamage(transform.forward, (int)damage, GetComponent<Collider2D>().tag);
         }
+    }
+
+    void Reflect()
+    {
+        //Chang this to a cricle collider raycast eventually
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, fPath, rayWallDis, layReflectMask);
+
+        if (hit.collider != null)
+            fPath = Vector2.Reflect(fPath, hit.normal);
     }
 }

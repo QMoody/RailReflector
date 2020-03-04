@@ -45,7 +45,8 @@ public class Damageable : MonoBehaviour
     /// <param name="damage"></param>
     public void reciveDamage(Vector3 direcction, int damage, string dTag)
     {
-        if(this.tag == dTag)
+        if (this.tag != dTag)
+            return;
 
         if(!_initialized)
         {

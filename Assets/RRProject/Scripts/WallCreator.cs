@@ -4,130 +4,127 @@ using UnityEngine;
 
 public class WallCreator : MonoBehaviour
 {
+    [Header("Gameobjects & Components")]
     public GameObject wallPrefab;
     public GameObject nodePrefab;
-    private GameObject[] nodeArray;
-    private GameObject[] wallArray;
     public GameObject wallPremakePrefab;
-    public GameObject wallPredictObj;
-    Coroutine lastCor;
 
+    private GameObject[] wallArray;
+
+    private GameObject wallPredictObj;
+    private GameObject placerNode;
+
+    [Header("Wall Variables")]
+    public KeyCode createWall;
     public float energyBar;
-    public int nodeCount;
-    bool isFirstNode = true;
-    bool nodeTimerRunning;
-    bool wallTimerRunning;
+    public float energyReRate;
+    public float maxWallDis;
+
+    bool canCreateWall;
     bool createWallActive;
-    bool startNewWall = true;
+
+    [Header("Tmp UI")] //Tmp UI
+    public GameObject energyBarUI;
+    public GameObject rdy1;
+    public GameObject rdy2;
+    public GameObject rdy3;
 
     //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
 
     private void Start()
     {
         energyBar = 100;
-        nodeArray = new GameObject[30];
-        wallArray = new GameObject[30];
+        wallArray = new GameObject[3];
     }
 
     void Update()
     {
         WallActive();
 
-        if (createWallActive == true && nodeTimerRunning == false && isFirstNode == true)
-            CreateNodeWalls();
-        else if (createWallActive == true && nodeTimerRunning == false)
-            lastCor = StartCoroutine(NodeTimer(0.5f));
-
         if (createWallActive == true)
-            PredictWall();
+            PredictWall(false);
+
+        TmpUISend();
     }
 
     void WallActive()
     {
-        if (Input.GetKeyDown("e") && createWallActive == false && startNewWall == true) //Change this to a get button down later
+        if (Input.GetKeyDown(createWall) && canCreateWall == true)
         {
             createWallActive = true;
-            startNewWall = false;
+            PlaceNode();
+            PredictWall(true);
         }
-        else if(Input.GetKeyDown("e") && createWallActive == true)
+        else if(Input.GetKeyUp(createWall) && createWallActive == true)
         {
             createWallActive = false;
-            StopCoroutine(lastCor);
-            StartCoroutine(WallTimer(7.0f));
-            Destroy(wallPredictObj);
+            CreateNodeWall();
+            energyBar -= 33.33f;
         }
-
-        if (createWallActive == true)
-            energyBar += -0.25f;
-        else if (createWallActive == false && energyBar < 100)
-            energyBar += 0.125f;
-
-        if (energyBar <= 0)
+        else if (createWallActive == true && Vector2.Distance(placerNode.transform.position, this.transform.position) > maxWallDis) //wall gets too far away
         {
             createWallActive = false;
-            StartCoroutine(WallTimer(7.0f));
-            Destroy(wallPredictObj);
-        }
-    }
-
-    void CreateNodeWalls()
-    {
-        GameObject node = Instantiate(nodePrefab, transform.position, transform.rotation);
-        nodeArray[nodeCount] = node;
-
-        if (isFirstNode == false)
-        {
-            //Set pos a rot of the walls
-            float wallDis = Vector2.Distance(nodeArray[nodeCount].transform.position, nodeArray[nodeCount - 1].transform.position);
-            Vector3 wallPoint = (nodeArray[nodeCount].transform.position - nodeArray[nodeCount - 1].transform.position) / 2 + nodeArray[nodeCount - 1].transform.position;
-            Vector3 rotDir = wallPoint - nodeArray[nodeCount].transform.position;
-            float wallAngle = Mathf.Atan2(rotDir.y, rotDir.x) * Mathf.Rad2Deg;
-            Quaternion wallRot = Quaternion.AngleAxis(wallAngle, Vector3.forward);
-
-            GameObject wall = Instantiate(wallPrefab, wallPoint, wallRot);
-            wall.transform.localScale = new Vector2(wallDis, wall.transform.localScale.y);
-            wallArray[nodeCount - 1] = wall;
+            CreateNodeWall();
+            energyBar -= 33.33f;
         }
 
-        nodeCount += 1;
-        PredictWall();
-        isFirstNode = false;
+        if (createWallActive == false && energyBar < 100)
+            energyBar += energyReRate;
+
+        if (energyBar <= 33)
+            canCreateWall = false;
+        else
+            canCreateWall = true;
     }
 
-    void DestoryNodeWalls()
+    void PlaceNode()
     {
-        nodeCount = 0;
-        nodeTimerRunning = false;
-        isFirstNode = true;
+        placerNode = Instantiate(nodePrefab, transform.position, transform.rotation);
 
-        for (int i = 0; i < nodeArray.Length; i++)
-            if (nodeArray[i] != null)
-            {
-                Destroy(nodeArray[i]);
-                nodeArray[i] = null;
-            }
+    }
+
+    void CreateNodeWall()
+    {
+        //Set position and rotation before creating the wall
+        float wallDis = Vector2.Distance(placerNode.transform.position, this.transform.position);
+        Vector3 wallPoint = (placerNode.transform.position - this.transform.position) / 2 + this.transform.position;
+
+        Vector3 rotDir = wallPoint - placerNode.transform.position;
+        float wallAngle = Mathf.Atan2(rotDir.y, rotDir.x) * Mathf.Rad2Deg;
+        Quaternion wallRot = Quaternion.AngleAxis(wallAngle, Vector3.forward);
+
+        GameObject wall = Instantiate(wallPrefab, wallPoint, wallRot);
+        wall.transform.localScale = new Vector2(wallDis, wall.transform.localScale.y);
 
         for (int i = 0; i < wallArray.Length; i++)
-            if (wallArray[i] != null)
+            if (wallArray[i] == null)
             {
-                Destroy(wallArray[i]);
-                wallArray[i] = null;
+                wallArray[i] = wall;
+                break;
             }
 
-        startNewWall = true;
+        Destroy(placerNode);
+        Destroy(wallPredictObj);
+        StartCoroutine(WallTimer(5, wall));
     }
 
-    void PredictWall()
+    IEnumerator WallTimer(float waitTime, GameObject wall)
     {
-        if (isFirstNode == true)
+        yield return new WaitForSeconds(waitTime);
+        Destroy(wall);
+    }
+
+    void PredictWall(bool isFirst)
+    {
+        if (isFirst == true)
         {
             wallPredictObj = Instantiate(wallPremakePrefab);
         }
-        float wallDis = Vector2.Distance(nodeArray[nodeCount - 1].transform.position, this.transform.position);
-        Vector3 wallPoint = (nodeArray[nodeCount - 1].transform.position - this.transform.position) / 2 + this.transform.position;
+        float wallDis = Vector2.Distance(placerNode.transform.position, this.transform.position);
+        Vector3 wallPoint = (placerNode.transform.position - this.transform.position) / 2 + this.transform.position;
         wallPredictObj.transform.position = wallPoint;
 
-        Vector3 rotDir = wallPoint - nodeArray[nodeCount-1].transform.position;
+        Vector3 rotDir = wallPoint - placerNode.transform.position;
         float wallAngle = Mathf.Atan2(rotDir.y, rotDir.x) * Mathf.Rad2Deg;
         Quaternion wallRot = Quaternion.AngleAxis(wallAngle, Vector3.forward);
         wallPredictObj.transform.rotation = wallRot;
@@ -135,22 +132,24 @@ public class WallCreator : MonoBehaviour
         wallPredictObj.transform.localScale = new Vector2(wallDis, wallPredictObj.transform.localScale.y);
     }
 
-    IEnumerator NodeTimer(float waitTime)
+    //Move this to another script later
+    void TmpUISend()
     {
-        nodeTimerRunning = true;
-        yield return new WaitForSeconds(waitTime);
-        CreateNodeWalls();
-        nodeTimerRunning = false;
-    }
+        energyBarUI.GetComponent<RectTransform>().sizeDelta = new Vector2(270 * energyBar / 100, 40);
 
-    IEnumerator WallTimer(float waitTime)
-    {
-        if (wallTimerRunning == false)
-        {
-            wallTimerRunning = true;
-            yield return new WaitForSeconds(waitTime);
-            DestoryNodeWalls();
-            wallTimerRunning = false;
-        }
+        if (energyBar >= 100)
+            rdy3.SetActive(true);
+        else
+            rdy3.SetActive(false);
+
+        if (energyBar >= 66.66f)
+            rdy2.SetActive(true);
+        else
+            rdy2.SetActive(false);
+
+        if (energyBar >= 33.33f)
+            rdy1.SetActive(true);
+        else
+            rdy1.SetActive(false);
     }
 }
