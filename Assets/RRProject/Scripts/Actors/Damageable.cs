@@ -60,6 +60,7 @@ public class Damageable : MonoBehaviour
             _health -= (int)((float)damage);
             if(_health <= 0)
             {
+                //dead
                 _onDead.Invoke();
             }
         }
