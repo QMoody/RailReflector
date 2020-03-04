@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 400383786930990371}
   - component: {fileID: 4867853722537671021}
   - component: {fileID: 4867853722537670930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _reciveKnockback: 1
-  _knockbackMultiplier: 0
+  tag: PlayerBullet
 --- !u!114 &3908982170067311890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,5 +192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  layMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  dodgingChance: 25
   dodgeSpeed: 2
   _speeder: {fileID: 862434362255875378, guid: f7730df3f8a643543b0dfc0f6fc9f705, type: 3}

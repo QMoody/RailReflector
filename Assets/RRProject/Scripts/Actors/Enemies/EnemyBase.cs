@@ -5,21 +5,26 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float dodgeSpeed = 2.0f;
+    public LayerMask layMask;
 
     private float _originalSpeed;
 
     private float _rayCheckTimer;
-    private float _rayCheckRate = 0.65f;
+    private float _rayCheckRate = 0.05f;
+
+
+    [Range(0,100)] public int dodgingChance = 25;
+    public float dodgeSpeed = 2.0f;
 
     private bool _dodge = false;
+    private bool _dodgeDirection = false;
     private float _dodgingTime = 0;
     private float _dodgeTime = 1;
 
     private void Awake()
     {
         _originalSpeed = speed;
-        _rayCheckTimer = Random.Range(0.0f, 1.0f);
+        _rayCheckTimer = Random.Range(0.0f, _rayCheckRate);
     }
 
     public void locomotion()
@@ -33,7 +38,8 @@ public class EnemyBase : MonoBehaviour
             }
         }
 
-        transform.Translate(new Vector3(_dodge ? dodgeSpeed * Time.deltaTime: 0, -speed * Time.deltaTime, 0));
+        transform.Translate(new Vector3(_dodge ? (_dodgeDirection ? -1 : 1)  * dodgeSpeed * Time.deltaTime: 0, -speed * Time.deltaTime, 0));
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -19, 19), transform.position.y, transform.position.z);
     }
 
     private void LateUpdate()
@@ -48,11 +54,11 @@ public class EnemyBase : MonoBehaviour
     void checkforEnemiesInfront()
     {
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 2);
-
-        if (hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 2, layMask);
+        
+        if (hit)
         {
-            EnemyBase emy = hit.collider.GetComponent<EnemyThick>();
+            EnemyBase emy = hit.transform.GetComponent<EnemyBase>();
             if (emy != null)
             {
                 if (emy.speed < speed)
@@ -63,7 +69,7 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            if(speed < _originalSpeed)
+            if (speed < _originalSpeed)
             {
                 speed = _originalSpeed;
             }
@@ -80,7 +86,22 @@ public class EnemyBase : MonoBehaviour
 
     public void Dodge()
     {
-        _dodge = true;
-        _dodgingTime = 0;
+        int rand = Random.Range(1, 100);
+
+        if (rand <= dodgingChance)
+        {
+            _dodge = true;
+            _dodgingTime = 0;
+
+            rand = Random.Range(1, 100);
+            if(rand <= 50)
+            {
+                _dodgeDirection = true;
+            }
+            else
+            {
+                _dodgeDirection = false;
+            }
+        }
     }
 }

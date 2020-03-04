@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
-    [SerializeField] private GameObject _enemy;
+    [SerializeField] private List<GameObject> _enemys;
 
     [SerializeField] private float _spawnRateMin;
     [SerializeField] private float _spawnRateMax;
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         int spawnLocation = Random.Range(0, _spawnPoints.Count);
-        Instantiate(_enemy, _spawnPoints[spawnLocation].position, Quaternion.identity);
+        Instantiate(_enemys[Random.Range(0, _enemys.Count)], _spawnPoints[spawnLocation].position, Quaternion.identity);
         _timeSinceSpawn = 0;
         _spawnRate = Random.Range(_spawnRateMin, _spawnRateMax);
     }

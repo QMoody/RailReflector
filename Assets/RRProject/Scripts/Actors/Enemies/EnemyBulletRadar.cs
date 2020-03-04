@@ -8,7 +8,7 @@ public class EnemyBulletRadar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Bullet"))
+        if(collision.CompareTag("PlayerBullet"))
         {
             Debug.Log("Bullet incoming outo");
             _enemyBase.Dodge();

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5618133599383013757}
   - component: {fileID: 862434362255875381}
   - component: {fileID: 862434362255875380}
+  - component: {fileID: -198875698453725878}
   m_Layer: 0
   m_Name: Speeder
   m_TagString: Untagged
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
+--- !u!114 &-198875698453725878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862434362255875378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75354b30d21cd914384b969f150e2f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToDestroy: 5
+  _destroyOnStart: 1

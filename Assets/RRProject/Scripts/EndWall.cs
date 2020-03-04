@@ -5,6 +5,7 @@ using UnityEngine;
 public class EndWall : MonoBehaviour
 {
     public float wallHealth;
+    public LoadScene lScene;
 
 
     //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
@@ -28,6 +29,7 @@ public class EndWall : MonoBehaviour
         else if (wallHealth <= 0)
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
+            lScene.LoadNewScene("Score");
         }
     }
 

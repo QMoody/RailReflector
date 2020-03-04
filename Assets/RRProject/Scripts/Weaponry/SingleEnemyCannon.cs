@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleCannon : MonoBehaviour
+public class SingleEnemyCannon : MonoBehaviour
 {
     // stores the cannons target vector
     public GameObject target;
@@ -54,7 +54,7 @@ public class SingleCannon : MonoBehaviour
         point();
 
         // call fire every frame to update it
-        fireInput();
+        fireState();
     }
 
     // rotates the cannon to face the target vector
@@ -71,9 +71,10 @@ public class SingleCannon : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, relativeRotation);
     }
 
-    // fires a bullet toward the target vector 
-    private void fireInput()
+    // !! SET ENEMY FIRE CONDITIONS HERE !! 
+    private void fireState()
     {
+        /*
         // if the player is inputing to fire1 set firing to true
         // and start the firing coroutine
         if (Input.GetButton("Fire1"))
@@ -94,6 +95,7 @@ public class SingleCannon : MonoBehaviour
             // set whether or not we are firing to be false
             firing = false;
         }
+        */
     }
 
     // fires a bullet while the player is attempting to fire
@@ -109,7 +111,7 @@ public class SingleCannon : MonoBehaviour
                 float tempZ = (transform.localEulerAngles.z) - (((15 * (multishot - 1)) / 2) - (15 * i));
 
                 // create a new bullet that continues on with a 15 Degree positive offset
-                GameObject nb1 = Instantiate(bullet, transform.position + Vector3.up, Quaternion.Euler(0, 0, tempZ));
+                GameObject nb1 = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, tempZ));
                 Bullet cBullet = nb1.GetComponent<Bullet>();
 
                 // set that bullets new properties
@@ -125,9 +127,6 @@ public class SingleCannon : MonoBehaviour
             yield return new WaitForSeconds(reFireTime);
         }
     }
-
-
-
 
 
     // sets the pen value for this bullet
