@@ -8,16 +8,16 @@ using UnityEngine.Events;
 /// </summary>
 public class Damageable : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    [SerializeField] public int _health;
     [SerializeField] private bool _inmortal;
     [SerializeField] private UnityEvent _onDamaged;
     [SerializeField] private UnityEvent _onDead;
-    [SerializeField] private bool _reciveKnockback = true;
-    [SerializeField] private float _knockbackMultiplier;
+    [SerializeField] private string tag;
 
     private Rigidbody2D _rigidbody;
     private PlayerController _playerController;
     private bool _initialized = false;
+    private bool _dead = false;
 
     private void Awake()
     {
@@ -44,45 +44,33 @@ public class Damageable : MonoBehaviour
     /// <param name="direcction"></param>
     /// <param name="distance"></param>
     /// <param name="damage"></param>
-    public void reciveDamage(Vector3 direcction, int damage)
+    public void reciveDamage(int damage, string dTag)
     {
+        if (this.tag != dTag)
+            return;
 
-        if(!_initialized)
+        if(!_initialized || _dead)
         {
             return;
         }
 
         _onDamaged.Invoke();
-        if(_reciveKnockback)
-        {
-            applyKnockback(direcction);
-        }
 
         if(!_inmortal)
         {
             _health -= (int)((float)damage);
             if(_health <= 0)
             {
+                //dead
+                _dead = true;
                 _onDead.Invoke();
-                gameObject.GetComponent<deathAnim>().enabled = true;
-                
             }
         }
     }
 
-    /// <summary>
-    /// Aply knockback based on the compomnent that the object poses
-    /// </summary>
-    /// <param name="direcction"></param>
-    void applyKnockback(Vector3 direcction)
+    public void setHealth(int value)
     {
-        if(_rigidbody != null)
-        {
-            _rigidbody.velocity = direcction * _knockbackMultiplier;
-        }
-        //else if(_playerController != null)
-        //{
-        //    _playerController.impact = direcction * _knockbackMultiplier;
-        //}
+        _dead = false;
+        _health = value;
     }
 }

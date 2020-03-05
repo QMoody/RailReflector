@@ -24,6 +24,15 @@ public class ReflectorProjectile : MonoBehaviour
     private void Start()
     {
         StartCoroutine(DestoryAfterTime());
+        
+    }
+
+    private void OnDestroy()
+    {
+        if (EnemyBulletManager.Instance != null)
+        {
+            EnemyBulletManager.Instance.removeBullet(this.gameObject);
+        }
     }
 
     void Update()
@@ -53,13 +62,11 @@ public class ReflectorProjectile : MonoBehaviour
         if (hit.collider != null)
         {
             refDir = Vector2.Reflect(refDir, hit.normal);
-
             reflectNum += 1;
 
             if (reflectNum >= reflectMax)
                 Destroy(this.gameObject);
 
-            Debug.Log("Hitwall");
             Debug.DrawLine(hit.normal, hit.normal * 0.25f, Color.green);
         }
     }
@@ -86,12 +93,13 @@ public class ReflectorProjectile : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Damageable damageable = collision.collider.GetComponent<Damageable>();
+        Damageable damageable = collision.GetComponent<Damageable>();
         if(damageable != null)
         {
-            damageable.reciveDamage(transform.forward, damage);
+            damageable.reciveDamage(damage, GetComponent<Collider2D>().tag);
         }
+        Destroy(this.gameObject);
     }
 }
