@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreTracker : MonoBehaviour
+public class ScoreTracker : Singletone<ScoreTracker>
 {
-    public static ScoreTracker instance;
 
     public GameObject canvas;
     public GameObject scoreText;
@@ -13,11 +12,7 @@ public class ScoreTracker : MonoBehaviour
     public GameObject scoreGoal;
 
     public int scoreCount;
-
-    private void Awake()
-    {
-        instance = this;
-    }
+    
 
     public void SpawnScore(Vector3 scoreSpawnLoc)
     {
