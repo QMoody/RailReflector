@@ -17,6 +17,8 @@ public class Spawner : MonoBehaviour
     // tracks whether or not this spawn is occupied
     public bool open;
 
+    public float healthScalar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +37,23 @@ public class Spawner : MonoBehaviour
         {
             case "tank":
                 Instantiate(tank, transform.position, transform.rotation);
+
                 break;
             case "normal":
                 Instantiate(normal, transform.position, transform.rotation);
+
                 break;
             case "kamikaze":
                 Instantiate(kamikaze, transform.position, transform.rotation);
+
                 break;
             case "cerberus":
                 Instantiate(cerberus, transform.position, transform.rotation);
+
                 break;
             case "mirror":
                 Instantiate(cerberus, transform.position, transform.rotation);
+
                 break;
         }
         // set this spawn as occupied
