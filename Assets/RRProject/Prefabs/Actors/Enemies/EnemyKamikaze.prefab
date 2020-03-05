@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 8978163874185878087}
   - component: {fileID: -5252488579239580130}
   - component: {fileID: 336192220888210991}
+  - component: {fileID: 811195904131273055}
   m_Layer: 10
   m_Name: EnemyKamikaze
   m_TagString: Enemy
@@ -148,6 +149,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   dodgingChance: 20
+  _dodgeTime: 1
   dodgeSpeed: 7
   _sRenderer: {fileID: 336192220888210991}
   _walkSprites:
@@ -240,6 +242,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 811195904131273055}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Monster Hurt
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -263,6 +276,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 811195904131273055}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Monster Die
           m_BoolArgument: 0
         m_CallState: 2
   tag: PlayerBullet
@@ -330,3 +354,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &811195904131273055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803652839756384864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1c02d15f4be2a47b0ff51b4d8c356a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

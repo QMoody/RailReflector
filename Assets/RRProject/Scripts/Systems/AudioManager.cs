@@ -355,8 +355,9 @@ public class AudioManager : MonoBehaviour
     /// <returns></returns>
 	AudioSource PlayMusic(string pSoundID, bool pLoop, float pDelay = 0)
 	{
-		if(mAudioDataDic.ContainsKey(pSoundID))
+        if (mAudioDataDic.ContainsKey(pSoundID))
 		{
+           
 			var aAudioData = mAudioData[mAudioDataDic[pSoundID]];
 			var aAudioSrc = GetEmptySource(aAudioData.mAudioGroup);
 
@@ -511,7 +512,8 @@ public class AudioManager : MonoBehaviour
     /// <returns></returns>
 	static public AudioSource MusicPlay(string pSoundID, bool pLoop, float pDelay = 0)
 	{
-		return mInstance.PlayMusic(pSoundID, pLoop, pDelay);
+        Debug.Log("Play");
+        return mInstance.PlayMusic(pSoundID, pLoop, pDelay);
 	}
 
     /// <summary>
