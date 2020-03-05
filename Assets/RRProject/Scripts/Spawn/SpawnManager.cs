@@ -51,7 +51,7 @@ public class SpawnManager : MonoBehaviour
     {
 
         // set number of active players
-        activePlayers = 0.1f;
+        activePlayers = (LevelManager.Instance.player1Active ? 1 : 0) + (LevelManager.Instance.player2Active ? 1 : 0);
 
         wave = 0;
 
@@ -84,13 +84,15 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // if a wave is in progress scale the time between spawn timer 
         if (wInProgress)
         {
             // burst spawn delay timer
             sdTimer += Time.deltaTime;
         }
+
+        // check the current waves conditionals
+        waveConditionals();
 
         // begin current frame spawn logic
         calcWaveSpawn();
@@ -206,45 +208,49 @@ public class SpawnManager : MonoBehaviour
         mBurstSize = (int)(enemies.Count / 10);
 
         // for every enemy inside of the wave add them to the wave list
-        for (int i = 0; i < waves[wave].normal; i++)
-        {
-            enemies.Add("normal");
-        }
-        for (int i = 0; i < waves[wave].kamikaze; i++)
-        {
-            enemies.Add("kamikaze");
-        }
-        for (int i = 0; i < waves[wave].mirror; i++)
-        {
-            enemies.Add("mirror");
-        }
-        // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
-        if (waves[wave].cerberus == 1)
-        {
-            bSpawn = false;
-        }
-        else
-        {
-            for (int i = 0; i < waves[wave].cerberus; i++)
+        // do this once if there is one player, and do this twice if there are two players
+        for (int j = 0; j < activePlayers; j++) {
+            for (int i = 0; i < waves[wave].normal; i++)
             {
-                enemies.Add("cerberus");
+                enemies.Add("normal");
             }
-            bSpawn = true;
+            for (int i = 0; i < waves[wave].kamikaze; i++)
+            {
+                enemies.Add("kamikaze");
+            }
+            for (int i = 0; i < waves[wave].mirror; i++)
+            {
+                enemies.Add("mirror");
+            }
+            // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
+            if (waves[wave].cerberus == 1)
+            {
+                bSpawn = false;
+            }
+            else
+            {
+                for (int i = 0; i < waves[wave].cerberus; i++)
+                {
+                    enemies.Add("cerberus");
+                }
+                bSpawn = true;
+            }
+
+            // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
+            if (waves[wave].tank == 1)
+            {
+                bSpawn = false;
+            }
+            else
+            {
+                for (int i = 0; i < waves[wave].tank; i++)
+                {
+                    enemies.Add("tank");
+                }
+                bSpawn = true;
+            }
         }
 
-        // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
-        if (waves[wave].tank == 1)
-        {
-            bSpawn = false;
-        }
-        else
-        {
-            for (int i = 0; i < waves[wave].tank; i++)
-            {
-                enemies.Add("tank");
-            }
-            bSpawn = true;
-        }
         // randomize the list
         rollWave(enemies);
 
@@ -275,6 +281,12 @@ public class SpawnManager : MonoBehaviour
     // checks the current waves current state conditionals 
     void waveConditionals()
     {
+        // check if a new player has joined
+        if(activePlayers < 2)
+        {
+            activePlayers = (LevelManager.Instance.player1Active ? 1 : 0) + (LevelManager.Instance.player2Active ? 1 : 0);
+        }
+
         // check if the wave is still in progress
         if (wInProgress && enemies.Count <= 0)
         {
