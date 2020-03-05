@@ -21,9 +21,12 @@ public class WallCreator : MonoBehaviour
     public float energyBar;
     public float energyReRate;
     public float maxWallDis;
+    public float wallPlaceOffset;
+    public int wallNum;
+    public int maxWalls;
 
-    bool canCreateWall;
-    bool createWallActive;
+    public bool canCreateWall;
+    public bool createWallActive;
 
     [Header("Tmp UI")] //Tmp UI
     public GameObject energyBarUI;
@@ -36,7 +39,7 @@ public class WallCreator : MonoBehaviour
     private void Start()
     {
         energyBar = 100;
-        wallArray = new GameObject[3];
+        wallArray = new GameObject[20];
     }
 
     void Update()
@@ -51,27 +54,31 @@ public class WallCreator : MonoBehaviour
 
     void WallActive()
     {
-        if (Input.GetKeyDown(createWall) && canCreateWall == true)
+        if ((Input.GetKeyDown(createWall)) && canCreateWall == true)
         {
             pController.startInmortal();
             createWallActive = true;
             PlaceNode();
             PredictWall(true);
         }
-        else if(Input.GetKeyUp(createWall) && createWallActive == true)
+        else if((Input.GetKeyUp(createWall) || wallNum == maxWalls || (energyBar < 33.33f)) && createWallActive == true)
         {
             pController.stopInmortal();
             createWallActive = false;
-            CreateNodeWall();
-            energyBar -= 33.33f;
+            if (wallNum < maxWalls)
+                CreateNodeWall();
+
+            wallNum = 0;
+            Destroy(placerNode);
+            Destroy(wallPredictObj);
         }
-        else if (createWallActive == true && Vector2.Distance(placerNode.transform.position, this.transform.position) > maxWallDis) //wall gets too far away
+
+        if (createWallActive == true && canCreateWall == true && Vector2.Distance(placerNode.transform.position, this.transform.position + new Vector3(0, wallPlaceOffset, 0)) > maxWallDis)
         {
-            pController.stopInmortal();
-            createWallActive = false;
             CreateNodeWall();
-            energyBar -= 33.33f;
+            //energyBar -= 33.33f;
         }
+
 
         if (createWallActive == false && energyBar < 100)
             energyBar += energyReRate;
@@ -84,15 +91,17 @@ public class WallCreator : MonoBehaviour
 
     void PlaceNode()
     {
-        placerNode = Instantiate(nodePrefab, transform.position, transform.rotation);
+        placerNode = Instantiate(nodePrefab, transform.position + new Vector3(0, wallPlaceOffset, 0), transform.rotation);
 
     }
 
     void CreateNodeWall()
     {
+        Vector3 offset = new Vector3(0, wallPlaceOffset, 0);
+
         //Set position and rotation before creating the wall
-        float wallDis = Vector2.Distance(placerNode.transform.position, this.transform.position);
-        Vector3 wallPoint = (placerNode.transform.position - this.transform.position) / 2 + this.transform.position;
+        float wallDis = Vector2.Distance(placerNode.transform.position, this.transform.position + offset);
+        Vector3 wallPoint = (placerNode.transform.position - this.transform.position + offset) / 2 + this.transform.position;
 
         Vector3 rotDir = wallPoint - placerNode.transform.position;
         float wallAngle = Mathf.Atan2(rotDir.y, rotDir.x) * Mathf.Rad2Deg;
@@ -108,8 +117,11 @@ public class WallCreator : MonoBehaviour
                 break;
             }
 
-        Destroy(placerNode);
-        Destroy(wallPredictObj);
+        placerNode.transform.position = this.transform.position + offset;
+
+        energyBar -= 33.33f;
+        wallNum += 1;
+
         StartCoroutine(WallTimer(5, wall));
     }
 
@@ -121,12 +133,14 @@ public class WallCreator : MonoBehaviour
 
     void PredictWall(bool isFirst)
     {
+        Vector3 offset = new Vector3(0, wallPlaceOffset, 0);
+
         if (isFirst == true)
         {
             wallPredictObj = Instantiate(wallPremakePrefab);
         }
-        float wallDis = Vector2.Distance(placerNode.transform.position, this.transform.position);
-        Vector3 wallPoint = (placerNode.transform.position - this.transform.position) / 2 + this.transform.position;
+        float wallDis = Vector2.Distance(placerNode.transform.position, this.transform.position + offset);
+        Vector3 wallPoint = (placerNode.transform.position - this.transform.position + offset) / 2 + this.transform.position;
         wallPredictObj.transform.position = wallPoint;
 
         Vector3 rotDir = wallPoint - placerNode.transform.position;
