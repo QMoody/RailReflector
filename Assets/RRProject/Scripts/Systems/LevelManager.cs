@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelManager : Singletone<LevelManager>
 {
     // global player public variables
-    public bool player1Active = true;
-    public bool player2Active = true;
+    public bool player1Active = false;
+    public bool player2Active = false;
     public int player1Exp;
     public int player2Exp;
     public int player1Score;

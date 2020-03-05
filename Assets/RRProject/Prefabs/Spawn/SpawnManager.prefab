@@ -43,78 +43,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba73b0e887fbf7543986f3b20775cb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wave: 2
+  e2s: 
+  spawnBurstDelay: 0.2
+  bSpawnChance: 20
+  dTimer: 0
+  sDelay: 0
+  aSDelay: 0
+  waveLength: 17
+  sdTimer: 0
+  tSpawn: 0
+  wInProgress: 0
+  waiting: 1
+  timer: 0
+  timeBetweenWaves: 7
   spawnGroup: {fileID: 734402715904294542, guid: 0e0757d5c8f8a154e898e853c4c69a26,
     type: 3}
+  sGScripts: []
+  aSpawnScripts: []
   waves:
-  - normal: 8
+  - normal: 6
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    mBullets: 2
+    mBullets: 4
+    waveDuration: 15
     healthScalar: 0.5
-  - normal: 10
+  - normal: 6
     kamikaze: 2
     tank: 0
     cerberus: 0
     mirror: 0
-    mBullets: 2
+    mBullets: 4
+    waveDuration: 15
     healthScalar: 1
-  - normal: 8
+  - normal: 6
     kamikaze: 4
-    tank: 0
+    tank: 1
     cerberus: 0
     mirror: 0
-    mBullets: 4
+    mBullets: 6
+    waveDuration: 15
     healthScalar: 1
   - normal: 9
     kamikaze: 3
     tank: 1
     cerberus: 0
     mirror: 0
-    mBullets: 6
+    mBullets: 7
+    waveDuration: 17
     healthScalar: 1.2
-  - normal: 0
-    kamikaze: 0
-    tank: 0
+  - normal: 7
+    kamikaze: 5
+    tank: 2
     cerberus: 0
     mirror: 0
-    mBullets: 0
-    healthScalar: 0
-  - normal: 0
-    kamikaze: 0
-    tank: 0
+    mBullets: 7
+    waveDuration: 17
+    healthScalar: 1.1
+  - normal: 7
+    kamikaze: 5
+    tank: 3
     cerberus: 0
     mirror: 0
-    mBullets: 0
-    healthScalar: 0
-  - normal: 0
-    kamikaze: 0
-    tank: 0
+    mBullets: 7
+    waveDuration: 17
+    healthScalar: 1.15
+  - normal: 8
+    kamikaze: 6
+    tank: 3
     cerberus: 0
     mirror: 0
-    mBullets: 0
-    healthScalar: 0
-  - normal: 0
-    kamikaze: 0
-    tank: 0
+    mBullets: 7
+    waveDuration: 17
+    healthScalar: 1.3
+  - normal: 6
+    kamikaze: 2
+    tank: 1
     cerberus: 0
     mirror: 0
-    mBullets: 0
-    healthScalar: 0
-  - normal: 0
-    kamikaze: 0
-    tank: 0
+    mBullets: 7
+    waveDuration: 17
+    healthScalar: 1.5
+  - normal: 5
+    kamikaze: 2
+    tank: 3
     cerberus: 0
     mirror: 0
-    mBullets: 0
-    healthScalar: 0
-  - normal: 0
-    kamikaze: 0
-    tank: 0
+    mBullets: 7
+    waveDuration: 20
+    healthScalar: 1.7
+  - normal: 10
+    kamikaze: 5
+    tank: 4
     cerberus: 0
     mirror: 0
-    mBullets: 0
-    healthScalar: 0
+    mBullets: 7
+    waveDuration: 20
+    healthScalar: 2
   enemies: []
-  timeBetweenWaves: 5

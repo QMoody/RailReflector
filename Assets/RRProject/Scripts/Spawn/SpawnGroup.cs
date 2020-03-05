@@ -109,6 +109,7 @@ public class SpawnGroup : MonoBehaviour
                 if (sScripts[i].open)
                 {
                     sScripts[i].spawnEnemy(type);
+                    break;
                 }
             }
             return;

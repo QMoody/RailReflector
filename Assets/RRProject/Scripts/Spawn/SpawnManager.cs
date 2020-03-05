@@ -28,6 +28,7 @@ public class SpawnManager : MonoBehaviour
     // track whether or not we have spawned a tank 
     bool bSpawn = false;
 
+    bool previousSpawnTank = false;
 
     // track whether or not a wave has started whether or not we are imbetween waves currently
     public bool wInProgress = false;
@@ -57,7 +58,7 @@ public class SpawnManager : MonoBehaviour
         // set number of active players
         activePlayers = (LevelManager.Instance.player1Active ? 1 : 0) + (LevelManager.Instance.player2Active ? 1 : 0);
 
-        wave = 0;
+        wave = -1;
 
         // setup the spawners 
         for (int i = 0; i < 5; i++)
@@ -88,11 +89,14 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // check the current waves conditionals
-        waveConditionals();
+        if (LevelManager.Instance.player1Active || LevelManager.Instance.player2Active)
+        {
+            // check the current waves conditionals
+            waveConditionals();
 
-        // begin current frame spawn logic
-        calcWaveSpawn();
+            // begin current frame spawn logic
+            calcWaveSpawn();
+        }
     }
 
     // calculates wave spawns
@@ -156,22 +160,26 @@ public class SpawnManager : MonoBehaviour
         enemies.RemoveAt(0);
         int ranSpam = 0;
 
+        if (e2s == "tank")
+        {
+            tSpawn = true;
+        }
+
         // controls tank spam spawn
-        bool tank = false; 
+        bool tank = false;
 
         // calculate if we are going to start a burst spawn
         // do not start a burst spawn during one, or during a tankspawn recusive spawn phase
         if ((bSpawnChance >= (int)Random.Range(0, 100)) && !bSpawn && !tSpawn)
         {
             bSpawn = true;
-           sDelay = spawnBurstDelay;
+            sDelay = spawnBurstDelay;
         }
 
         // spawn an enemy
         // if tha enemy is a tank, do a tank spawn
         if (e2s == "tank")
         {
-            tSpawn = true;
 
             // check and set spawn availability variables for this frame
             checkGroupSpawns();
@@ -188,18 +196,15 @@ public class SpawnManager : MonoBehaviour
                 aSpawnScripts[ranSpam].spawnEnemy(e2s);
             }
 
-            // if we spawned a tank spawn support enemies behind it
-            while (aSpawnScripts[ranSpam].backSpawnOpen && enemies.Count > 0 && tank)
+            // spawn additional units to support the currrent tank if the next unit is not a tank
+            for(int i = 0; i < 3; i++)
             {
-                e2s = enemies[0];
-                
-                if (e2s != "tank")
+                if (enemies[0] != "tank")
                 {
-                    enemies.RemoveAt(0);
-                    aSpawnScripts[ranSpam].spawnEnemy(e2s);
+                    spawnBackUpUnits(ranSpam);
                 } else
                 {
-                    tank = true;
+                    break;
                 }
             }
         }
@@ -223,6 +228,19 @@ public class SpawnManager : MonoBehaviour
                 spawn(ranSpam, e2s);
             }
         }
+
+        // reset e2s
+        e2s = " ";
+    }
+
+    // back up units spawn behind the last tank to spawn
+    void spawnBackUpUnits(int ranSpam)
+    {
+        // stores the first enemy to spawn, then removes it from the list
+        e2s = enemies[0];
+        enemies.RemoveAt(0);
+        aSpawnScripts[ranSpam].spawnEnemy(e2s);
+        sDelay += sDelay - spawnBurstDelay;
     }
 
     // spawns the enemy
@@ -231,7 +249,7 @@ public class SpawnManager : MonoBehaviour
         // spawns a new enemy
         aSpawnScripts[spawn].spawnEnemy(type);
 
-        if (bSpawn && !tSpawn)
+        if (bSpawn & !tSpawn)
         {
             // ensure we scale up the next spawn delay by the difference between the standard
             // delay and the burst spawn delay
@@ -264,6 +282,11 @@ public class SpawnManager : MonoBehaviour
     {
         //EnemyBulletManager.Instance.maxBullets = waves[wave].mBullets;
 
+        // set the wave duration
+        waveLength = waves[wave].waveDuration;
+
+        bool singleTSpawn = false;
+
         // for every enemy inside of the wave add them to the wave list
         // do this once if there is one player, and do this twice if there are two players
         for (int j = 0; j < activePlayers; j++)
@@ -283,7 +306,7 @@ public class SpawnManager : MonoBehaviour
             // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
             if (waves[wave].cerberus == 1)
             {
-                tSpawn = false;
+                singleTSpawn = false;
             }
             else
             {
@@ -291,13 +314,13 @@ public class SpawnManager : MonoBehaviour
                 {
                     enemies.Add("cerberus");
                 }
-                tSpawn = true;
+                singleTSpawn = true;
             }
 
             // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
             if (waves[wave].tank == 1)
             {
-                tSpawn = false;
+                singleTSpawn = false;
             }
             else
             {
@@ -305,7 +328,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     enemies.Add("tank");
                 }
-                tSpawn = true;
+                singleTSpawn = true;
             }
 
             // controls the delay between individual enemy spawns
@@ -325,7 +348,7 @@ public class SpawnManager : MonoBehaviour
         rollWave(enemies);
 
         // if we have not spawned bosses as this their first appearance, spawn them now at the end of the wave
-        if (!tSpawn)
+        if (!singleTSpawn)
         {
             // check that the boss is supposed to spawn first then spawn the bosses
             if (waves[wave].cerberus == 1)
@@ -494,6 +517,7 @@ public class SpawnManager : MonoBehaviour
         public int cerberus = 0;
         public int mirror = 0;
         public int mBullets = 0;
+        public int waveDuration = 0;
         // scalar that multiplies the enemies health
         public float healthScalar = 1;
     }
