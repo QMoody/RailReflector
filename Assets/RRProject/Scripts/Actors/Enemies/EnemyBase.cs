@@ -33,12 +33,20 @@ public class EnemyBase : MonoBehaviour
     private float _dodgingTime = 0;
     private float _dodgeTime = 1;
 
+    private Damageable damageable;
+
     private void Awake()
     {
+        damageable = GetComponent<Damageable>();
         _originalSpeed = speed;
         _rayCheckTimer = Random.Range(0.0f, _rayCheckRate);
         _currentSprites = _walkSprites;
         _dead = false;
+    }
+
+    public void healthMultiplier(float multilier)
+    {
+        damageable.setHealth((int)((float)damageable._health * multilier));
     }
 
     void animate()

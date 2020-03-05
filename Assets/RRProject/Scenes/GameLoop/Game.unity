@@ -2423,6 +2423,7 @@ MonoBehaviour:
   _enemys:
   - {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427, type: 3}
   - {fileID: 4803652839756384864, guid: d815a953b137c9548bb91f773eaadcb9, type: 3}
+  - {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
   _spawnRateMin: 3
   _spawnRateMax: 4
 --- !u!1 &1722937531
