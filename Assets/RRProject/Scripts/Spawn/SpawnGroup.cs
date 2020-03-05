@@ -28,10 +28,20 @@ public class SpawnGroup : MonoBehaviour
 
     // store all spawners and spawns in lists
     List<Spawner> sScripts = new List<Spawner>();
+    List<Spawner> aSScripts = new List<Spawner>();
 
     // tracks whether or not there is an open spawn
     // spawns overall
-    bool sAvail;
+    public bool sAvail;
+
+    // checks if a tank was spawned this frame
+    bool tankSpawnedThisFrame = false;
+
+    // stores if we can spawn a tank on this spawner
+    public bool tankSpawnAvailable = true;
+
+    // sotres if the backspawn is open
+    public bool backSpawnOpen;
 
     // tracks the number of empty spawns
     int emptySpawns;
@@ -59,11 +69,22 @@ public class SpawnGroup : MonoBehaviour
         sScripts.Add(fSMScript);
         sScripts.Add(fSRScript);
 
+        // set the main spawner to the main spawner
+        sScripts[3].mSpawn = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        // clear the available spawns every frame
+        aSScripts.Clear(); 
+
+        // reset this value every frame
+        tankSpawnedThisFrame = false;
+        tankSpawnAvailable = false;
+
         // updates the spawn for this frame
         sAvail = checkSpawns();
     }
@@ -74,33 +95,66 @@ public class SpawnGroup : MonoBehaviour
         // if we are spawning a tank enemy spawn it on the main spawn instantly and return
         if(type == "tank")
         {
+            tankSpawnedThisFrame = true;
             sScripts[3].spawnEnemy(type);
             return;
         }
-        // if we are not spawning a tank spawn the enemy at 
-        // the first available spawn going from front to back to avoid blocking the tanks
-        for(int i = sScripts.Count; i >= 0; i--)
+
+        // spawn here 
+        if(tankSpawnedThisFrame)
         {
-            if (sScripts[i].open)
+            // spawn to the back spawner on this spawngroup
+            for (int i = 0; i < 3; i++)
             {
-                sScripts[i].spawnEnemy(type);
+                if (sScripts[i].open)
+                {
+                    sScripts[i].spawnEnemy(type);
+                    break;
+                }
             }
+            return;
         }
+
+        int ranSpan = (int)Random.Range(0, aSScripts.Count - 0.01f);
+        aSScripts[ranSpan].spawnEnemy(type);
+
+        checkSpawns();
     }
 
     // check if any of the spawns in this spawngroup are open
     public bool checkSpawns()
     {
-        int f = 0; 
+        int f = 0;
+        bool z = false;
 
-        // count the number of available spawners not including tanks spawners 
-        for (int i = 0; i < sScripts.Count; i++)
+        // checks if the tank spawn is open
+        if(sScripts[3].open)
+        {
+            tankSpawnAvailable = true;
+        }
+
+        // count the number of available spawners not including tank and back spawners 
+        for (int i = 3; i < sScripts.Count; i++)
         {
             if (sScripts[i].open && !sScripts[i].mSpawn)
             {
                 f++;
+                // add the available spawner script to the spawn scripts
+                aSScripts.Add(sScripts[i]);
             }
         }
+
+        // check if the backspawns are available and set the conditional
+        for (int i = 0; i < 3; i++)
+        {
+            if (sScripts[i].open)
+            {
+                z = true;
+            }
+        }
+
+        backSpawnOpen = z;
+
 
         // counts the number of empty spawns
         emptySpawns = f;
