@@ -168,6 +168,7 @@ public class EnemyBase : MonoBehaviour
         _sIndex = 0;
         _currentSprites = _deadSprites;
         _dead = true;
-        //code enmy dead here
+        if(ScoreTracker.instance != null)
+            ScoreTracker.instance.SpawnScore(transform.position);
     }
 }
