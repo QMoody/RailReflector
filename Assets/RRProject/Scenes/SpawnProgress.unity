@@ -344,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 5228271752948007537, guid: 16a410993ab2b584ba894b657e0294b2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5228271752948007537, guid: 16a410993ab2b584ba894b657e0294b2,
         type: 3}
@@ -359,6 +359,16 @@ PrefabInstance:
     - target: {fileID: 5228271752948007537, guid: 16a410993ab2b584ba894b657e0294b2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228271752948007536, guid: 16a410993ab2b584ba894b657e0294b2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994632467655328708, guid: 16a410993ab2b584ba894b657e0294b2,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -391,7 +401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1423978261
 GameObject:
@@ -421,7 +431,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1574868869
 GameObject:
@@ -501,55 +511,8 @@ Transform:
   m_LocalScale: {x: 5.3196874, y: 5.3196874, z: 5.3196874}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1645472342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1645472343}
-  - component: {fileID: 1645472345}
-  m_Layer: 0
-  m_Name: EnemySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1645472343
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645472342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1645472345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645472342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba73b0e887fbf7543986f3b20775cb35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnGroup: {fileID: 0}
-  waves: []
-  enemies: []
-  timeBetweenWaves: 5
 --- !u!1001 &2014239872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -600,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 2132105353085959408, guid: e7026e6b110e97f4a8922f86a31d7436,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2132105353085959408, guid: e7026e6b110e97f4a8922f86a31d7436,
         type: 3}
@@ -615,6 +578,26 @@ PrefabInstance:
     - target: {fileID: 2132105353085959408, guid: e7026e6b110e97f4a8922f86a31d7436,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158657782202775420, guid: e7026e6b110e97f4a8922f86a31d7436,
+        type: 3}
+      propertyPath: waveLength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158657782202775420, guid: e7026e6b110e97f4a8922f86a31d7436,
+        type: 3}
+      propertyPath: spawnBurstDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158657782202775420, guid: e7026e6b110e97f4a8922f86a31d7436,
+        type: 3}
+      propertyPath: bSpawnChance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158657782202775420, guid: e7026e6b110e97f4a8922f86a31d7436,
+        type: 3}
+      propertyPath: waves.Array.data[0].tank
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
