@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/RRProject/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/RRProject/Scenes/GameLoop/MainMenu.unity
+    guid: 7e4d132e22867774e98fcd4c6525bc13
+  - enabled: 1
+    path: Assets/RRProject/Scenes/GameLoop/Tutorial.unity
+    guid: 45738a03a81bb4b4781ed6ed2043bd4c
+  - enabled: 1
+    path: Assets/RRProject/Scenes/GameLoop/Game.unity
+    guid: 830a4da103ed0e04298a11e0988f7768
+  - enabled: 1
+    path: Assets/RRProject/Scenes/GameLoop/Score.unity
+    guid: b22c6ba9da79cec42a68e82f0cf47997
   m_configObjects: {}

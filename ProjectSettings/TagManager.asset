@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Bullet
+  - PlayerBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,10 +18,10 @@ TagManager:
   - 
   - 
   - Reflect
-  - 
-  - 
-  - 
-  - 
+  - Projectile
+  - Enemy
+  - Player
+  - Shield
   - 
   - 
   - 
