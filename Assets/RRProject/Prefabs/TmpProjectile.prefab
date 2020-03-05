@@ -56,6 +56,8 @@ MonoBehaviour:
   firstObjectHit: 0
   reflectMax: 6
   reflectNum: 0
+  hitParticles: {fileID: 1190307131812572051, guid: 0856e8de44739cc4dbb15fa7f397294a,
+    type: 3}
 --- !u!212 &937931392594467681
 SpriteRenderer:
   m_ObjectHideFlags: 0

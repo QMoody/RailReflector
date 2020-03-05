@@ -101,6 +101,7 @@ MonoBehaviour:
   lyuda: 0
   lyudaRange: 4
   lyudaShot: 2
+  mAngle: 10
   explosive: 0
   shrapcount: 20
   halfShrapCone: 35
@@ -115,6 +116,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rayWallDis: 0.3
+  impactParticles: {fileID: 1190307131812572051, guid: 0856e8de44739cc4dbb15fa7f397294a,
+    type: 3}
 --- !u!58 &8572587777288910681
 CircleCollider2D:
   m_ObjectHideFlags: 0

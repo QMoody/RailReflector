@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4867853722537671021}
   - component: {fileID: 4867853722537670930}
   - component: {fileID: 4722376781424560601}
+  - component: {fileID: -6132041443688366990}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Enemy
@@ -31,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867853722537671020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: 31.099998, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8133009485499781667}
@@ -98,6 +99,17 @@ MonoBehaviour:
           m_StringArgument: Monster Hurt
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4867853722537671020}
+        m_MethodName: 
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -132,6 +144,39 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Monster Die
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -6132041443688366990}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -6132041443688366990}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -6132041443688366990}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4867853722537670930}
@@ -198,7 +243,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6814800903608725336, guid: 80e4ab50c1acfb7489d7ecc721913469,
+  m_Sprite: {fileID: -4703140125097339209, guid: be2a5229e2e43cb478e188ed1a876447,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -248,20 +293,26 @@ MonoBehaviour:
   dodgeSpeed: 2
   _sRenderer: {fileID: 400383786930990371}
   _walkSprites:
-  - {fileID: 6814800903608725336, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: 1233760699398800703, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: 7270461840675687554, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: 4635570688367608578, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
+  - {fileID: -4703140125097339209, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -3019214724985958687, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -5622108936171661270, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: 4619049883833721902, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
   _damageSprites:
-  - {fileID: 6868618473688256262, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: -8765511347287424047, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: -297598846305442117, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: 2395259513963936626, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
+  - {fileID: -4703140125097339209, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: 7518204182432932083, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -3019214724985958687, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -521429134043930006, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -5622108936171661270, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: 1060508233910338385, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: 4619049883833721902, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: 7949780173619449305, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
   _deadSprites:
-  - {fileID: -607850031229844913, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: -8844169975157232153, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  - {fileID: 408036774857642220, guid: 80e4ab50c1acfb7489d7ecc721913469, type: 3}
-  _timePerFrame: 0.5
+  - {fileID: -7937694283094205892, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -7082335321448921093, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  - {fileID: -5271396122457309810, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
+  _timePerFrame: 0.25
+  wallParticles: {fileID: 1190307131812572051, guid: 0856e8de44739cc4dbb15fa7f397294a,
+    type: 3}
   _speeder: {fileID: 862434362255875378, guid: f7730df3f8a643543b0dfc0f6fc9f705, type: 3}
   _bullet: {fileID: 937931392594467682, guid: 4f863c7197fe6aa458b267eee36bde32, type: 3}
   _gunPivot: {fileID: 8133009485499781667}
@@ -279,6 +330,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1c02d15f4be2a47b0ff51b4d8c356a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6132041443688366990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867853722537671020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d34522027b424eaceae50bca9f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 6291263557091410831, guid: bfb5ee7b1800dcd45826087c1995ec18, type: 3}
+  - {fileID: 6584156372936187239, guid: 72ca8da74f06ab744aad3acca8443eb3, type: 3}
+  - {fileID: 1707715986231921111, guid: e9dc31b54f59e63408e8fd7cd61090db, type: 3}
+  - {fileID: 78307728128706030, guid: 3d9f78da5e92c3c49a2d1b37d44e0c49, type: 3}
 --- !u!1 &5843732260921168577
 GameObject:
   m_ObjectHideFlags: 0

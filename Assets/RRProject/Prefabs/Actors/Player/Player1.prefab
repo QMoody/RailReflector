@@ -127,7 +127,8 @@ GameObject:
   - component: {fileID: 5228271752948007550}
   - component: {fileID: 5228271752948007549}
   - component: {fileID: 5228271752948007551}
-  m_Layer: 0
+  - component: {fileID: 8924441405436177256}
+  m_Layer: 11
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec3513d357b60d48af72543f9e54bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pController: {fileID: 5228271752948007548}
   wallPrefab: {fileID: 5397638347478663492, guid: 621a2b778f0ed434e94caa81536ed7d1,
     type: 3}
   nodePrefab: {fileID: 1367163883103433708, guid: ae1965798d23b6041bfbcb639b20f66f,
@@ -190,6 +192,11 @@ MonoBehaviour:
   energyBar: 0
   energyReRate: 0.25
   maxWallDis: 5
+  wallPlaceOffset: 3
+  wallNum: 0
+  maxWalls: 3
+  canCreateWall: 0
+  createWallActive: 0
   energyBarUI: {fileID: 0}
   rdy1: {fileID: 0}
   rdy2: {fileID: 0}
@@ -259,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _inmortal: 0
+  _inmortal: 1
   _onDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -285,14 +292,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+      - m_Target: {fileID: 8924441405436177256}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Player Death
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   tag: Bullet
+--- !u!114 &8924441405436177256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228271752948007547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1c02d15f4be2a47b0ff51b4d8c356a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5228271753137980415
 GameObject:
   m_ObjectHideFlags: 0

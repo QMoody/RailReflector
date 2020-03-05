@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 6930967678451028860}
   - component: {fileID: 6930967678451028867}
   - component: {fileID: 6930967678451028866}
-  m_Layer: 0
+  - component: {fileID: 796434020924564480}
+  m_Layer: 11
   m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6930967678451028865}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec3513d357b60d48af72543f9e54bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pController: {fileID: 6930967678451028862}
   wallPrefab: {fileID: 5397638347478663492, guid: 621a2b778f0ed434e94caa81536ed7d1,
     type: 3}
   nodePrefab: {fileID: 1367163883103433708, guid: ae1965798d23b6041bfbcb639b20f66f,
@@ -156,6 +158,11 @@ MonoBehaviour:
   energyBar: 0
   energyReRate: 0.25
   maxWallDis: 5
+  wallPlaceOffset: 0
+  wallNum: 0
+  maxWalls: 0
+  canCreateWall: 0
+  createWallActive: 0
   energyBarUI: {fileID: 0}
   rdy1: {fileID: 0}
   rdy2: {fileID: 0}
@@ -210,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _inmortal: 0
+  _inmortal: 1
   _onDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -236,10 +243,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 796434020924564480}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Player Death
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls: []
   tag: Bullet
+--- !u!114 &796434020924564480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930967678451028865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1c02d15f4be2a47b0ff51b4d8c356a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6930967678113950229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,13 +344,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426087975316165707, guid: c5223f9d3d24b8149a1c74f127a4eb72,
         type: 3}
-      propertyPath: fireKey
-      value: 97
+      propertyPath: owner
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 4426087975316165707, guid: c5223f9d3d24b8149a1c74f127a4eb72,
         type: 3}
-      propertyPath: owner
-      value: Player2
+      propertyPath: fireKey
+      value: 97
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5223f9d3d24b8149a1c74f127a4eb72, type: 3}

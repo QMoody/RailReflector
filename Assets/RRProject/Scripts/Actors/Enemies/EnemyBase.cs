@@ -33,6 +33,8 @@ public class EnemyBase : MonoBehaviour
     private bool _dodge = false;
     private bool _dodgeDirection = false;
     private float _dodgingTime = 0;
+
+    public GameObject wallParticles;
     
 
     private Damageable damageable;
@@ -136,7 +138,8 @@ public class EnemyBase : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-            Destroy(this.gameObject);
+            damageable.kill();
+            Instantiate(wallParticles, transform.position, Quaternion.identity);
         }
     }
 
@@ -173,6 +176,12 @@ public class EnemyBase : MonoBehaviour
 
     public void dead()
     {
+        Collider2D coll = GetComponent<Collider2D>();
+        if(coll != null)
+        {
+            coll.enabled = false;
+        }
+
         _frameTime = 0;
         _timePerFrame = 0.25f;
         _sIndex = 0;

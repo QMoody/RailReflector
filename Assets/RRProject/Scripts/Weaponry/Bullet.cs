@@ -53,6 +53,8 @@ public class Bullet : MonoBehaviour
     public LayerMask layReflectMask;
     public float rayWallDis;
 
+    public GameObject impactParticles;
+
     //[Header("Shield Variables")]
     //public LayerMask layShieldMask;
     #endregion
@@ -73,6 +75,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if(transform.position.y > 17)
+        {
+            Destroy(this.gameObject);
+        }
+
         translate();
 
         // activate lyuda if needed
@@ -172,8 +179,9 @@ public class Bullet : MonoBehaviour
         Damageable damageable = collision.GetComponent<Damageable>();
         if (damageable != null)
         {
-            Debug.Log(collision.tag);
             damageable.reciveDamage( (int)damage, GetComponent<Collider2D>().tag);
+            Destroy(this.gameObject);
+            Instantiate(impactParticles, transform.position, Quaternion.identity);
         }
     }
 

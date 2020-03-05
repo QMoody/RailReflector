@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: 05eb8afcfa5e45f4ebba3731882345ed
+guid: ebb16f20a48c4f840a6c442eaef8a305
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6618281896672722994
-    second: KEAtlas_0
+      213: -4209525589760174980
+    second: Copy of Speed Boost Anim_0
   - first:
-      213: 2496114967117852696
-    second: KEAtlas_1
+      213: -6319512362081426745
+    second: Copy of Speed Boost Anim_1
   - first:
-      213: -8348095716397562832
-    second: KEAtlas_2
-  - first:
-      213: 327609427536272479
-    second: KEAtlas_3
-  - first:
-      213: -5115820715300307013
-    second: KEAtlas_4
-  - first:
-      213: -4148140682989066997
-    second: KEAtlas_5
-  - first:
-      213: 7663119845915607575
-    second: KEAtlas_6
+      213: 2169164961730449384
+    second: Copy of Speed Boost Anim_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -66,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 580
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KEAtlas_0
+      name: Copy of Speed Boost Anim_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1755
-        width: 830
-        height: 945
+        x: 138
+        y: 164
+        width: 623
+        height: 726
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fb36d02526e37f49a698f74dfe1d2f7
-      internalID: 6618281896672722994
+      spriteID: 5df96996c4d149d4292f078e6686412c
+      internalID: -4209525589760174980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KEAtlas_1
+      name: Copy of Speed Boost Anim_1
       rect:
         serializedVersion: 2
-        x: 830
-        y: 1755
-        width: 830
-        height: 945
+        x: 1038
+        y: 164
+        width: 624
+        height: 726
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c7ad92c6138c1740a82f47c231eb107
-      internalID: 2496114967117852696
+      spriteID: ec81d5d6064c3c94fad6fd73ca71b575
+      internalID: -6319512362081426745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KEAtlas_2
+      name: Copy of Speed Boost Anim_2
       rect:
         serializedVersion: 2
-        x: 1660
-        y: 1755
-        width: 830
-        height: 945
+        x: 1939
+        y: 164
+        width: 623
+        height: 726
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,92 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1760081f7732712489b326950a08453e
-      internalID: -8348095716397562832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KEAtlas_3
-      rect:
-        serializedVersion: 2
-        x: 2490
-        y: 1755
-        width: 830
-        height: 945
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bf90103449e8c849aefa71e3251caa3
-      internalID: 327609427536272479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KEAtlas_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 810
-        width: 830
-        height: 945
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07ed33c08a882b647bc7be86fc58b169
-      internalID: -5115820715300307013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KEAtlas_5
-      rect:
-        serializedVersion: 2
-        x: 830
-        y: 810
-        width: 830
-        height: 945
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8b6b96788f675b4da137903c09c113c
-      internalID: -4148140682989066997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KEAtlas_6
-      rect:
-        serializedVersion: 2
-        x: 1660
-        y: 810
-        width: 830
-        height: 945
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38b4767e6e8ce164a8adff95cbe5ab0e
-      internalID: 7663119845915607575
+      spriteID: aca72921c42cc034d9d51678c3617276
+      internalID: 2169164961730449384
       vertices: []
       indices: 
       edges: []

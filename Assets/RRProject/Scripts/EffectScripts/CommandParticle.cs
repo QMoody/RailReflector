@@ -9,11 +9,11 @@ public class CommandParticle : MonoBehaviour
     public float time;
     public bool loop;
 
-    private void awake ()
+    private void Awake ()
     {
         if (!loop)
         {
             Destroy(gameObject, time);
         }
-}   
+    }   
 }

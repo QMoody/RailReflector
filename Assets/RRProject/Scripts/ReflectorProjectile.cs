@@ -19,6 +19,8 @@ public class ReflectorProjectile : MonoBehaviour
     public int reflectMax;
     public int reflectNum;
 
+    public GameObject hitParticles;
+
     //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
 
     private void Start()
@@ -100,6 +102,7 @@ public class ReflectorProjectile : MonoBehaviour
         {
             damageable.reciveDamage(damage, GetComponent<Collider2D>().tag);
         }
+        Instantiate(hitParticles, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }

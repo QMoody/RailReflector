@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: 80e4ab50c1acfb7489d7ecc721913469
+guid: f626c1747778e3543a77e706c0c61836
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6868618473688256262
-    second: TBAtlas_0
+      213: 2957587886195951575
+    second: Copy of SplitterAnims_0
   - first:
-      213: -8765511347287424047
-    second: TBAtlas_1
+      213: -7347525271471549291
+    second: Copy of SplitterAnims_1
   - first:
-      213: -297598846305442117
-    second: TBAtlas_2
+      213: 7408171235191027296
+    second: Copy of SplitterAnims_2
   - first:
-      213: 2395259513963936626
-    second: TBAtlas_3
+      213: 2842514525304921101
+    second: Copy of SplitterAnims_3
   - first:
-      213: 6814800903608725336
-    second: TBAtlas_4
+      213: 6245502963259812346
+    second: Copy of SplitterAnims_4
   - first:
-      213: 1233760699398800703
-    second: TBAtlas_5
+      213: -4977325672053737147
+    second: Copy of SplitterAnims_5
   - first:
-      213: 7270461840675687554
-    second: TBAtlas_6
+      213: -6710582019653097556
+    second: Copy of SplitterAnims_6
   - first:
-      213: 4635570688367608578
-    second: TBAtlas_7
+      213: -7053657352856124652
+    second: Copy of SplitterAnims_7
   - first:
-      213: -607850031229844913
-    second: TBAtlas_8
-  - first:
-      213: -8844169975157232153
-    second: TBAtlas_9
-  - first:
-      213: 408036774857642220
-    second: TBAtlas_10
+      213: 3563848754201695559
+    second: Copy of SplitterAnims_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -78,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 450
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -155,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TBAtlas_0
+      name: Copy of SplitterAnims_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 1830
-        width: 670
-        height: 870
+        x: 50
+        y: 1950
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 563a00b47a62fd44fbff06032470a89f
-      internalID: 6868618473688256262
+      spriteID: 59efa03fc6bf7094fb280ff9eadd59bc
+      internalID: 2957587886195951575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_1
+      name: Copy of SplitterAnims_1
       rect:
         serializedVersion: 2
-        x: 770
-        y: 1830
-        width: 670
-        height: 870
+        x: 470
+        y: 1950
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb49f00a642978c4a9058557b5afdefc
-      internalID: -8765511347287424047
+      spriteID: f76024fe499daca4e9c8a37a62c7ddd9
+      internalID: -7347525271471549291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_2
+      name: Copy of SplitterAnims_2
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 1830
-        width: 670
-        height: 870
+        x: 3100
+        y: 1950
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3651f14da5a6304ab0076916d09b1a7
-      internalID: -297598846305442117
+      spriteID: 641d6d4240e2ba1448c6c3e617ca08e1
+      internalID: 7408171235191027296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_3
+      name: Copy of SplitterAnims_3
       rect:
         serializedVersion: 2
-        x: 2110
-        y: 1830
-        width: 670
-        height: 870
+        x: 50
+        y: 1200
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 657b9128e4707884fa44f751da0c2fd1
-      internalID: 2395259513963936626
+      spriteID: a1431153f3d4a074ea3ff1c7ee2a5a42
+      internalID: 2842514525304921101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_4
+      name: Copy of SplitterAnims_4
       rect:
         serializedVersion: 2
-        x: 100
-        y: 960
-        width: 670
-        height: 870
+        x: 470
+        y: 1200
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86d3ce2b85d6fcf419335201c0a75f17
-      internalID: 6814800903608725336
+      spriteID: 173b74805dcfedf41a9b8287b34405b9
+      internalID: 6245502963259812346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_5
+      name: Copy of SplitterAnims_5
       rect:
         serializedVersion: 2
-        x: 770
-        y: 960
-        width: 670
-        height: 870
+        x: 3100
+        y: 1200
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be92642e620d0764cbe46531d4da9921
-      internalID: 1233760699398800703
+      spriteID: 21c26cdcf31d8d145aa0c2fb596c042c
+      internalID: -4977325672053737147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_6
+      name: Copy of SplitterAnims_6
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 960
-        width: 670
-        height: 870
+        x: 50
+        y: 450
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14565aa56609c6d46bcd965a177bfa8c
-      internalID: 7270461840675687554
+      spriteID: 7c3f02305f37dc044b05eef4e65990ad
+      internalID: -6710582019653097556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_7
+      name: Copy of SplitterAnims_7
       rect:
         serializedVersion: 2
-        x: 2110
-        y: 960
-        width: 670
-        height: 870
+        x: 470
+        y: 450
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,20 +310,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c6253c5e2c25345a385da739cc49f1
-      internalID: 4635570688367608578
+      spriteID: 5b185153809503e4ca2cfefb99edbc35
+      internalID: -7053657352856124652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TBAtlas_8
+      name: Copy of SplitterAnims_8
       rect:
         serializedVersion: 2
-        x: 100
-        y: 90
-        width: 670
-        height: 870
+        x: 890
+        y: 450
+        width: 420
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,50 +331,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c59d04a9f27320e47bd8aaccd02af63f
-      internalID: -607850031229844913
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TBAtlas_9
-      rect:
-        serializedVersion: 2
-        x: 770
-        y: 90
-        width: 670
-        height: 870
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 003c948e4e764824e899edbef5ae6718
-      internalID: -8844169975157232153
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TBAtlas_10
-      rect:
-        serializedVersion: 2
-        x: 1440
-        y: 90
-        width: 670
-        height: 870
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1f2b7744d774654cb5fcd9f9e14a788
-      internalID: 408036774857642220
+      spriteID: ad5988ff634ba434a9a7d8f1a39a4adf
+      internalID: 3563848754201695559
       vertices: []
       indices: 
       edges: []

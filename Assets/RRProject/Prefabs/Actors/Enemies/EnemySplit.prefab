@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6065819782283649701}
   - component: {fileID: 1310119994364704491}
   - component: {fileID: 8659752770337997298}
+  - component: {fileID: -4659957715185764349}
   m_Layer: 10
   m_Name: EnemySplit
   m_TagString: Enemy
@@ -31,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310119994364704490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.5, y: 29.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3056145912368605440}
@@ -55,7 +56,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 2.5666666}
+    oldSize: {x: 0.93333334, y: 1.6666667}
     newSize: {x: 6.05, y: 6.05}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,6 +125,17 @@ MonoBehaviour:
           m_StringArgument: Monster Hurt
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -4659957715185764349}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -158,6 +170,39 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Monster Die
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -4659957715185764349}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -4659957715185764349}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -4659957715185764349}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1310119994364704491}
@@ -224,7 +269,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8724432478060275761, guid: 11dd046e1cbcebf4f9e178eab0c4e05e,
+  m_Sprite: {fileID: 7408171235191027296, guid: f626c1747778e3543a77e706c0c61836,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -258,16 +303,15 @@ MonoBehaviour:
   dodgeSpeed: 8
   _sRenderer: {fileID: 6065819782283649701}
   _walkSprites:
-  - {fileID: 8724432478060275761, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
-  - {fileID: -8505192521168026855, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
+  - {fileID: 7408171235191027296, guid: f626c1747778e3543a77e706c0c61836, type: 3}
   _damageSprites:
-  - {fileID: 8724432478060275761, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
-  - {fileID: -8505192521168026855, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
+  - {fileID: 7408171235191027296, guid: f626c1747778e3543a77e706c0c61836, type: 3}
+  - {fileID: -4977325672053737147, guid: f626c1747778e3543a77e706c0c61836, type: 3}
   _deadSprites:
-  - {fileID: -1148493513683245391, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
-  - {fileID: -2389091733407389097, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
-  - {fileID: 5783342731725869944, guid: 11dd046e1cbcebf4f9e178eab0c4e05e, type: 3}
-  _timePerFrame: 0.5
+  - {fileID: 3563848754201695559, guid: f626c1747778e3543a77e706c0c61836, type: 3}
+  _timePerFrame: 0.25
+  wallParticles: {fileID: 1190307131812572051, guid: 0856e8de44739cc4dbb15fa7f397294a,
+    type: 3}
   _enemySplitChild: {fileID: 6729475667741014538, guid: bdb2b6663ec66184cb9c0267e84ec16d,
     type: 3}
 --- !u!114 &8659752770337997298
@@ -282,6 +326,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1c02d15f4be2a47b0ff51b4d8c356a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4659957715185764349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310119994364704490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d34522027b424eaceae50bca9f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 6291263557091410831, guid: 33b8ad09d7c5ea340b3c098f35f1fb39, type: 3}
+  - {fileID: 6584156372936187239, guid: 672ec36346eaacb4683f0e5ad8a54996, type: 3}
+  - {fileID: 1707715986231921111, guid: 575a8ea28e47a72499c5075d3b9a95ae, type: 3}
+  - {fileID: 78307728128706030, guid: 5396c3e977f65da468fd0d7051196506, type: 3}
 --- !u!1 &6312379424141262734
 GameObject:
   m_ObjectHideFlags: 0
