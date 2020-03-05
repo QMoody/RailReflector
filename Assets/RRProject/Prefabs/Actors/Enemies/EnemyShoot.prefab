@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -5252488579239580130}
   - component: {fileID: 1046128794765456257}
   - component: {fileID: -5350715789998751802}
+  - component: {fileID: 5081607551787684974}
   m_Layer: 10
   m_Name: EnemyShoot
   m_TagString: Enemy
@@ -61,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4803652839756384864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5, y: 18.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2596755894739638521}
@@ -86,7 +87,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2321429, y: 1.4642856}
+    oldSize: {x: 1.25, y: 1.4285713}
     newSize: {x: 6.36, y: 6.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -138,16 +139,20 @@ MonoBehaviour:
   dodgeSpeed: 4
   _sRenderer: {fileID: 1046128794765456257}
   _walkSprites:
-  - {fileID: 8724432478060275761, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
-  - {fileID: -8505192521168026855, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
+  - {fileID: -1645799573965542079, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  - {fileID: 944211700320602097, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
   _damageSprites:
-  - {fileID: 8724432478060275761, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
-  - {fileID: -8505192521168026855, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
+  - {fileID: -1645799573965542079, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  - {fileID: 4176124331831470990, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  - {fileID: 944211700320602097, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  - {fileID: -2964501715295937212, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
   _deadSprites:
-  - {fileID: -1148493513683245391, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
-  - {fileID: -2389091733407389097, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
-  - {fileID: 5783342731725869944, guid: d97ee09a667ecc74db5fe60605610546, type: 3}
-  _timePerFrame: 0.5
+  - {fileID: -4692629732907905809, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  - {fileID: -3422488379766935297, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  - {fileID: -4096749407639622555, guid: 4dc58fd63cbb96e4686fa7df4210e467, type: 3}
+  _timePerFrame: 0.25
+  wallParticles: {fileID: 1190307131812572051, guid: 0856e8de44739cc4dbb15fa7f397294a,
+    type: 3}
   _bullet: {fileID: 937931392594467682, guid: 4f863c7197fe6aa458b267eee36bde32, type: 3}
   _gunPivot: {fileID: 2596755894739638521}
   _shootRateMin: 1
@@ -191,6 +196,17 @@ MonoBehaviour:
           m_StringArgument: Monster Hurt
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5081607551787684974}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -225,6 +241,39 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Monster Die
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5081607551787684974}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5081607551787684974}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5081607551787684974}
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   tag: PlayerBullet
@@ -280,7 +329,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8724432478060275761, guid: d97ee09a667ecc74db5fe60605610546,
+  m_Sprite: {fileID: -1645799573965542079, guid: 4dc58fd63cbb96e4686fa7df4210e467,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -304,6 +353,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1c02d15f4be2a47b0ff51b4d8c356a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5081607551787684974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803652839756384864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d34522027b424eaceae50bca9f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 6291263557091410831, guid: 150bfa05770063248a12d013c126c5b6, type: 3}
+  - {fileID: 6584156372936187239, guid: 72ca8da74f06ab744aad3acca8443eb3, type: 3}
+  - {fileID: 1707715986231921111, guid: e9dc31b54f59e63408e8fd7cd61090db, type: 3}
+  - {fileID: 78307728128706030, guid: 3d9f78da5e92c3c49a2d1b37d44e0c49, type: 3}
 --- !u!1 &5486740760851070796
 GameObject:
   m_ObjectHideFlags: 0

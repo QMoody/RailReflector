@@ -38,6 +38,7 @@ public class EnemyShoot : EnemyBase
             GameObject tmp = Instantiate(_bullet, _gunPivot.position, Quaternion.Euler(0, 0, 0));
             tmp.GetComponent<ReflectorProjectile>().refDir = -_gunPivot.up;
             EnemyBulletManager.Instance.addBullet(tmp);
+            AudioManager.PlaySFX("Spit");
         }
     }
 }

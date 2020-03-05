@@ -73,4 +73,11 @@ public class Damageable : MonoBehaviour
         _dead = false;
         _health = value;
     }
+
+    public void kill()
+    {
+        _health = 0;
+        _dead = true;
+        _onDead.Invoke();
+    }
 }
