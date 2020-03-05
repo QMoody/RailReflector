@@ -16,6 +16,7 @@ public class SpawnManager : MonoBehaviour
     public float sDelay;
     public float waveLength;
     public float sdTimer;
+    int activePlayers;
     int mBurstSize;
     int BurstSize;
     // minimum increment of the dTimer when spawning an enemy
@@ -48,18 +49,25 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // set number of active players
+        activePlayers = 0.1f;
+
         wave = 0;
 
         // setup the spawners 
         for (int i = 0; i < 5; i++)
         {
             // track whether or not this spawn is on the left or the right, and scale i accordingly
+            // because of spawn positioning inside of the away, spawns 0-2 are located in the center of the screen
             if (i % 2 > 0)
             {
                 // create and position the spawn, then store its script for accessing later
                 GameObject tSpawn = Instantiate(spawnGroup, transform.position, transform.rotation);
                 tSpawn.transform.parent = gameObject.transform;
                 tSpawn.transform.localPosition = new Vector2(((i + 1) * 3.75f), 0);
+                // store a ref to this spawns script
+                sGScripts.Add(tSpawn.GetComponent<SpawnGroup>());
             }
             else
             {
@@ -67,6 +75,8 @@ public class SpawnManager : MonoBehaviour
                 GameObject tSpawn = Instantiate(spawnGroup, transform.position, transform.rotation);
                 tSpawn.transform.parent = gameObject.transform;
                 tSpawn.transform.localPosition = new Vector2((-i * 3.75f), 0);
+                // store a ref to this spawns script 
+                sGScripts.Add(tSpawn.GetComponent<SpawnGroup>());
             }
         }
     }
@@ -74,9 +84,9 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         // if a wave is in progress scale the time between spawn timer 
-        if(wInProgress)
+        if (wInProgress)
         {
             // burst spawn delay timer
             sdTimer += Time.deltaTime;
@@ -98,20 +108,22 @@ public class SpawnManager : MonoBehaviour
             // if this is not a burst spawn check the spawn delay timer
             if (bSpawn)
             {
-                if (sdTimer >= spawnBurstDelay) {
+                if (sdTimer >= spawnBurstDelay)
+                {
                     spawnWave();
                     // reset spawn timer
                     sdTimer = 0;
                     // set waiting to false as the wave has started
                     waiting = false;
                 }
-            } else
+            }
+            else
             {
                 if (sdTimer >= sDelay)
                 {
                     spawnWave();
                     // reset spawn timer
-                    sdTimer = 0; 
+                    sdTimer = 0;
                     // set waiting to false as the wave has started
                     waiting = false;
                 }
@@ -147,26 +159,38 @@ public class SpawnManager : MonoBehaviour
         string e2p = enemies[0];
         enemies.RemoveAt(0);
 
-        // calculate if this is a burst spawn
-        if(bSpawnChance == (int)Random.Range(0, 100))
+        // calculate if we are going to start a burst spawn
+        if ((bSpawnChance == (int)Random.Range(0, 100)) && !bSpawn)
         {
             bSpawn = true;
         }
 
-        // spawn an enemy if the spawnDelay timer is 0 or lower
-        if(sdTimer <= 0)
+        // spawn an enemy
+        // if tha enemy is a tank, do a tank spawn
+        if (e2p == "tank")
         {
-            // spawn an enemy
-            // if tha enemy is a tank, do a tank spawn
-            if (e2p == "tank")
+            tSpawn = true;
+            // check which spawn groups are available 
+            // then randomly select a spawn
+            for(int i = 0; i < sGScripts.Count; i++)
             {
-                tSpawn = true;
-            } else
-            {
+                // if one player is active then spawn on only the middle three spawns
+                // otherwise spawn utilizing all spawns
+                if()
+                {
 
+                } else
+                {
+
+                }
             }
 
+        } else
+        {
+
         }
+
+
     }
 
     // structures the next wave
@@ -179,7 +203,7 @@ public class SpawnManager : MonoBehaviour
         // optimal time between non burst spawns
         sDelay = waveLength / enemies.Count;
         // max burst spawn unit density
-        mBurstSize = (int)(enemies.Count / 10); 
+        mBurstSize = (int)(enemies.Count / 10);
 
         // for every enemy inside of the wave add them to the wave list
         for (int i = 0; i < waves[wave].normal; i++)
@@ -195,7 +219,8 @@ public class SpawnManager : MonoBehaviour
             enemies.Add("mirror");
         }
         // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
-        if (waves[wave].cerberus == 1) {
+        if (waves[wave].cerberus == 1)
+        {
             bSpawn = false;
         }
         else
@@ -208,9 +233,11 @@ public class SpawnManager : MonoBehaviour
         }
 
         // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
-        if (waves[wave].tank == 1) {
+        if (waves[wave].tank == 1)
+        {
             bSpawn = false;
-        } else
+        }
+        else
         {
             for (int i = 0; i < waves[wave].tank; i++)
             {
@@ -222,15 +249,15 @@ public class SpawnManager : MonoBehaviour
         rollWave(enemies);
 
         // if we have not spawned bosses as this their first appearance, spawn them now at the end of the wave
-        if(!bSpawn)
+        if (!bSpawn)
         {
             // check that the boss is supposed to spawn first then spawn the bosses
-            if(waves[wave].cerberus == 1)
+            if (waves[wave].cerberus == 1)
             {
                 enemies.Add("cerberus");
             }
 
-            if(waves[wave].tank == 1)
+            if (waves[wave].tank == 1)
             {
                 enemies.Add("tank");
             }
