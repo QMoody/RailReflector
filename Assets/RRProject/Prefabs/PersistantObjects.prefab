@@ -65,3 +65,15 @@ MonoBehaviour:
   mAudioData:
   - mAudioClip: {fileID: 8300000, guid: b491b035cea841d4eaeb11ff0a8f9935, type: 3}
     mAudioGroup: Music
+  - mAudioClip: {fileID: 8300000, guid: e3aa65bb04e59c346b05fac3a68a74fc, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: d6205dac11a512946af8ce8c03f7c9cb, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: a0f75f93e459873499a881afad843e21, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 0a4159b758c58174ca69e0440295aadd, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 5eab81dba1fddfd4fbf4f4606d248966, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 963a2a91cbd11a04e933f28ed5570061, type: 3}
+    mAudioGroup: Music
