@@ -10,7 +10,6 @@ public class EnemyBulletRadar : MonoBehaviour
     {
         if(collision.CompareTag("PlayerBullet"))
         {
-            Debug.Log("Bullet incoming outo");
             _enemyBase.Dodge();
         }
     }

@@ -125,10 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3333325763430255753}
   bullet: {fileID: 2474801010237778602, guid: ab46a8829834f54438f560accda78e7e, type: 3}
-  fireRate: 10
+  fireRate: 2
   multishot: 1
   fire: 0
-  damage: 1
+  damage: 6
   relativePos: {x: 0, y: 0}
   lyuda: 0
   explosive: 0

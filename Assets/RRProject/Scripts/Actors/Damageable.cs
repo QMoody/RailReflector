@@ -8,7 +8,7 @@ using UnityEngine.Events;
 /// </summary>
 public class Damageable : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    [SerializeField] public int _health;
     [SerializeField] private bool _inmortal;
     [SerializeField] private UnityEvent _onDamaged;
     [SerializeField] private UnityEvent _onDead;

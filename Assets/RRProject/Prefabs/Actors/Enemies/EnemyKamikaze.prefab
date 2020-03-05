@@ -143,10 +143,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sideSpeed: 0
   layMask:
     serializedVersion: 2
     m_Bits: 1024
-  dodgingChance: 100
+  dodgingChance: 20
   dodgeSpeed: 7
   _sRenderer: {fileID: 336192220888210991}
   _walkSprites:
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2cb6143d7b8a64488d0af7a9a4181a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  _health: 24
   _inmortal: 0
   _onDamaged:
     m_PersistentCalls:
