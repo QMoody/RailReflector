@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         locomotion();
-        //Rotation();
-        //FireMainWeapon();
     }
 
     void locomotion()
@@ -95,8 +93,9 @@ public class PlayerController : MonoBehaviour
 
     public void stopInmortal()
     {
+        StopAllCoroutines();
         _collider2D.enabled = true;
-        StopCoroutine(Blink());
+        _spriteRenderer.enabled = true;
     }
 
     IEnumerator Blink()
@@ -132,5 +131,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision");
+        if(collision.collider.CompareTag("Enemy"))
+        {
+            Damageable dmg = GetComponent<Damageable>();
+            if(dmg != null)
+            {
+                dmg.reciveDamage(1, "Bullet");
+            }
+        }
     }
 }

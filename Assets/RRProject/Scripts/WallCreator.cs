@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WallCreator : MonoBehaviour
 {
+    public PlayerController pController;
+
     [Header("Gameobjects & Components")]
     public GameObject wallPrefab;
     public GameObject nodePrefab;
@@ -51,18 +53,21 @@ public class WallCreator : MonoBehaviour
     {
         if (Input.GetKeyDown(createWall) && canCreateWall == true)
         {
+            pController.startInmortal();
             createWallActive = true;
             PlaceNode();
             PredictWall(true);
         }
         else if(Input.GetKeyUp(createWall) && createWallActive == true)
         {
+            pController.stopInmortal();
             createWallActive = false;
             CreateNodeWall();
             energyBar -= 33.33f;
         }
         else if (createWallActive == true && Vector2.Distance(placerNode.transform.position, this.transform.position) > maxWallDis) //wall gets too far away
         {
+            pController.stopInmortal();
             createWallActive = false;
             CreateNodeWall();
             energyBar -= 33.33f;

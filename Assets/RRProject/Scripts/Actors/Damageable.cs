@@ -17,6 +17,7 @@ public class Damageable : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private PlayerController _playerController;
     private bool _initialized = false;
+    private bool _dead = false;
 
     private void Awake()
     {
@@ -43,12 +44,12 @@ public class Damageable : MonoBehaviour
     /// <param name="direcction"></param>
     /// <param name="distance"></param>
     /// <param name="damage"></param>
-    public void reciveDamage(Vector3 direcction, int damage, string dTag)
+    public void reciveDamage(int damage, string dTag)
     {
         if (this.tag != dTag)
             return;
 
-        if(!_initialized)
+        if(!_initialized || _dead)
         {
             return;
         }
@@ -61,6 +62,7 @@ public class Damageable : MonoBehaviour
             if(_health <= 0)
             {
                 //dead
+                _dead = true;
                 _onDead.Invoke();
             }
         }
@@ -68,6 +70,7 @@ public class Damageable : MonoBehaviour
 
     public void setHealth(int value)
     {
+        _dead = false;
         _health = value;
     }
 }

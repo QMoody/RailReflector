@@ -16,6 +16,18 @@ public class EnemyBase : MonoBehaviour
     [Range(0,100)] public int dodgingChance = 25;
     public float dodgeSpeed = 2.0f;
 
+    [Header("Animation")]
+    [SerializeField] private SpriteRenderer _sRenderer;
+    [SerializeField] private List<Sprite> _walkSprites;
+    [SerializeField] private List<Sprite> _damageSprites;
+    [SerializeField] private List<Sprite> _deadSprites;
+    [SerializeField] private float _timePerFrame;
+
+    private List<Sprite> _currentSprites;
+    private float _frameTime;
+    private int _sIndex;
+    private bool _dead = false;
+
     private bool _dodge = false;
     private bool _dodgeDirection = false;
     private float _dodgingTime = 0;
@@ -25,10 +37,43 @@ public class EnemyBase : MonoBehaviour
     {
         _originalSpeed = speed;
         _rayCheckTimer = Random.Range(0.0f, _rayCheckRate);
+        _currentSprites = _walkSprites;
+        _dead = false;
+    }
+
+    void animate()
+    {
+        _frameTime += Time.deltaTime;
+        
+        if(_frameTime > _timePerFrame)
+        {
+            _frameTime = 0;
+            _sIndex++;
+            if(_sIndex >= _currentSprites.Count)
+            {
+                _sIndex = 0;
+                if (_dead)
+                {
+                    _sIndex = _currentSprites.Count - 1;
+                }
+            }
+
+            _sRenderer.sprite = _currentSprites[_sIndex];
+
+            if(!_dead)
+            {
+                _currentSprites = _walkSprites;
+            }
+        }
     }
 
     public void locomotion()
     {
+        if(_dead)
+        {
+            return;
+        }
+
         if(_dodge)
         {
             _dodgingTime += Time.deltaTime;
@@ -44,6 +89,7 @@ public class EnemyBase : MonoBehaviour
 
     private void LateUpdate()
     {
+        animate();
         _rayCheckTimer += Time.deltaTime;
         if(_rayCheckTimer > _rayCheckRate)
         {
@@ -110,8 +156,18 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    public void damaged()
+    {
+        _currentSprites = _damageSprites;
+    }
+
     public void dead()
     {
+        _frameTime = 0;
+        _timePerFrame = 0.25f;
+        _sIndex = 0;
+        _currentSprites = _deadSprites;
+        _dead = true;
         //code enmy dead here
     }
 }

@@ -148,6 +148,22 @@ MonoBehaviour:
     m_Bits: 1024
   dodgingChance: 100
   dodgeSpeed: 7
+  _sRenderer: {fileID: 336192220888210991}
+  _walkSprites:
+  - {fileID: 6618281896672722994, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: 2496114967117852696, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: -8348095716397562832, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: 327609427536272479, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  _damageSprites:
+  - {fileID: 6618281896672722994, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: 2496114967117852696, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: -8348095716397562832, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: 327609427536272479, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  _deadSprites:
+  - {fileID: -5115820715300307013, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: -4148140682989066997, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  - {fileID: 7663119845915607575, guid: 05eb8afcfa5e45f4ebba3731882345ed, type: 3}
+  _timePerFrame: 0.5
 --- !u!61 &2016147368024657556
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -165,7 +181,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0083333, y: 1.0083333}
+    oldSize: {x: 1.4310344, y: 1.6293104}
     newSize: {x: 6.05, y: 6.05}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -211,7 +227,18 @@ MonoBehaviour:
   _inmortal: 0
   _onDamaged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4803652839756384877}
+        m_MethodName: damaged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -250,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75354b30d21cd914384b969f150e2f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToDestroy: 0
+  _timeToDestroy: 1.5
   _destroyOnStart: 0
 --- !u!212 &336192220888210991
 SpriteRenderer:
@@ -290,7 +317,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 95ec76939be488c449958034880b1483, type: 3}
+  m_Sprite: {fileID: 6618281896672722994, guid: 05eb8afcfa5e45f4ebba3731882345ed,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
