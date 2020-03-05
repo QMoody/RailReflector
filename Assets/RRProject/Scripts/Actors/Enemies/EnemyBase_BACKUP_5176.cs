@@ -163,11 +163,15 @@ public class EnemyBase : MonoBehaviour
 
     public void dead()
     {
+<<<<<<< HEAD
         _frameTime = 0;
         _timePerFrame = 0.25f;
         _sIndex = 0;
         _currentSprites = _deadSprites;
         _dead = true;
         //code enmy dead here
+=======
+        ScoreTracker.instance.SpawnScore(transform.position);
+>>>>>>> 1a3cb7f918c214d791748997f1c6fd9672ac41ea
     }
 }

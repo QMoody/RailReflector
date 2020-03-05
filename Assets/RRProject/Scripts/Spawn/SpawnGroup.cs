@@ -30,9 +30,6 @@ public class SpawnGroup : MonoBehaviour
     // spawns overall
     bool sAvail;
 
-    // number of spawns available
-    int sACount;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +48,15 @@ public class SpawnGroup : MonoBehaviour
         sScripts.Add(fSRScript);
 
         // add all spawns to the spawn array
-        // add the back spawns first so they are recieve spawn priority
         spawns.Add(bSpawnL);
         spawns.Add(bSpawnR);
         spawns.Add(mSpawn);
         spawns.Add(fSpawnL);
         spawns.Add(fSpawnR);
+
+
+
+
 
     }
 
@@ -64,71 +64,47 @@ public class SpawnGroup : MonoBehaviour
     void Update()
     {
         // reset spawn availability
-        sACount = 0; 
+
+
 
         // updates the spawn for this frame
         checkSpawns();
     }
 
+
+
+
+
+
+
+
     // selects a spawner and spawns an enemy 
     public void spawnEnemy(string type)
     {
-        // check the spawns and call the proper spawn
-        if(type == "tank")
-        {
-            // spawn a tank
-            spawnTank(type);
-        } else
-        {
-            for(int i = 0; i < sScripts.Count; i++)
-            {
-                // if this spawn is open and not a tank spawn, spawn here
-                if(sScripts[i].open && sScripts[i].mSpawn == false)
-                {
-                    sScripts[i].spawnEnemy(type);
-                }
-            }
-        }
+
     }
 
-    // spawns a tank enemy in the main mspawn
-    public void spawnTank(string type)
-    {
-        mSScript.spawnEnemy(type);
-    }
+
+
+
+
+
+
 
     // check if any of the spawns in this spawngroup are open
     public bool checkSpawns()
-    {    
+    {
         // check if there is an avaible spawner in this spawn group
         for (int i = 0; i < sScripts.Count; i++)
         {
             if (!sScripts[i].open)
             {
-                sACount++;
+                return true;
             }
         }
 
-        if (sACount > 0)
-        {
-            return true;
-        } else {
-            // if there is not return false
-            return false;
-        }
-    }
-
-    // reset spawns
-    private void resetSpawnState()
-    {
-        // resets all the spawn statuses
-        for (int i = 0; i < spawns.Count; i++)
-        {
-
-        }
-
-
-
+        // if there is not return false
+        return false;
     }
 
     // checks to see if this groups large spawn is available 
@@ -136,6 +112,5 @@ public class SpawnGroup : MonoBehaviour
     {
         return mSScript.open;
     }
-
 }
 
