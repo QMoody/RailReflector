@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         movement = new Vector3(Input.GetAxis(HorizontalAxis), Input.GetAxis(VerticalAxis), 0);
         _rigidbody2D.MovePosition(transform.position + (movement * _speed * Time.deltaTime));
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -15, 13), 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-19,19), Mathf.Clamp(transform.position.y, -13, 15), 0);
     }
 
     public void Respawn()
