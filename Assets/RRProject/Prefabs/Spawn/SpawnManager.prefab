@@ -51,70 +51,70 @@ MonoBehaviour:
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 8
+    mBullets: 2
     healthScalar: 0.5
   - normal: 10
     kamikaze: 2
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 12
+    mBullets: 2
     healthScalar: 1
   - normal: 8
     kamikaze: 4
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 12
+    mBullets: 4
     healthScalar: 1
   - normal: 9
     kamikaze: 3
     tank: 1
     cerberus: 0
     mirror: 0
-    totalEnemies: 13
+    mBullets: 6
     healthScalar: 1.2
   - normal: 0
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 0
+    mBullets: 0
     healthScalar: 0
   - normal: 0
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 0
+    mBullets: 0
     healthScalar: 0
   - normal: 0
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 0
+    mBullets: 0
     healthScalar: 0
   - normal: 0
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 0
+    mBullets: 0
     healthScalar: 0
   - normal: 0
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 0
+    mBullets: 0
     healthScalar: 0
   - normal: 0
     kamikaze: 0
     tank: 0
     cerberus: 0
     mirror: 0
-    totalEnemies: 0
+    mBullets: 0
     healthScalar: 0
   enemies: []
   timeBetweenWaves: 5

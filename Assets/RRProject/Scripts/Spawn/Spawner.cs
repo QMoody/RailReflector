@@ -32,28 +32,31 @@ public class Spawner : MonoBehaviour
     // spawns a single enemy of the passed type
     public void spawnEnemy(string type)
     {
+        // stores enemy script for health multipler
+        EnemyBase var; 
+
         // spawn the proper enemy depending on the passed enemy type
         switch (type)
         {
             case "tank":
-                Instantiate(tank, transform.position, transform.rotation);
-
+                var = Instantiate(tank, transform.position, transform.rotation).GetComponent<EnemyBase>();
+                var.healthMultiplier(healthScalar);
                 break;
             case "normal":
-                Instantiate(normal, transform.position, transform.rotation);
-
+                var = Instantiate(normal, transform.position, transform.rotation).GetComponent<EnemyBase>();
+                var.healthMultiplier(healthScalar);
                 break;
             case "kamikaze":
-                Instantiate(kamikaze, transform.position, transform.rotation);
-
+                var = Instantiate(kamikaze, transform.position, transform.rotation).GetComponent<EnemyBase>();
+                var.healthMultiplier(healthScalar);
                 break;
             case "cerberus":
-                Instantiate(cerberus, transform.position, transform.rotation);
-
+                var = Instantiate(cerberus, transform.position, transform.rotation).GetComponent<EnemyBase>();
+                var.healthMultiplier(healthScalar);
                 break;
             case "mirror":
-                Instantiate(cerberus, transform.position, transform.rotation);
-
+                var = Instantiate(cerberus, transform.position, transform.rotation).GetComponent<EnemyBase>();
+                var.healthMultiplier(healthScalar);
                 break;
         }
         // set this spawn as occupied

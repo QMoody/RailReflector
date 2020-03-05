@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 // spawn manager communicates and coordinates spawns accross the spawngroups
@@ -108,27 +109,32 @@ public class SpawnManager : MonoBehaviour
     // structures the next wave
     void structureWave()
     {
+        EnemyBulletManager.Instance.maxBullets = waves[wave].mBullets;
+
         // for every enemy inside of the wave add them to the wave list
-        for(int i = 0; i < waves[wave].normal; i++)
+        for (int i = 0; i < waves[wave].normal; i++)
         {
-            
+            enemies.Add("normal");
         }
         for (int i = 0; i < waves[wave].kamikaze; i++)
         {
-
-        }
-        for (int i = 0; i < waves[wave].tank; i++)
-        {
-
+            enemies.Add("kamikaze");
         }
         for (int i = 0; i < waves[wave].cerberus; i++)
         {
-
+            enemies.Add("cerberus");
         }
         for (int i = 0; i < waves[wave].mirror; i++)
         {
-
+            enemies.Add("mirror");
         }
+        for (int i = 0; i < waves[wave].tank; i++)
+        {
+            enemies.Add("tank");
+        }
+
+        // randomize the list
+        rollWave(enemies);
     }
 
     // structure a wave with infinite scaling systems
@@ -138,9 +144,26 @@ public class SpawnManager : MonoBehaviour
     }
 
     // rolls the unit type for the next wave
-    void rollWave()
+    // SHUFFLE CODE PROVIDED BY GRENADE ON STACKOVERFLOW
+    // https://stackoverflow.com/questions/273313/randomize-a-listt
+    public static List<string> rollWave(List<string> sList)
     {
+        RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+        int n = sList.Count;
+        while (n > 1)
+        {
+            byte[] box = new byte[1];
+            do provider.GetBytes(box);
+            while (!(box[0] < n * (byte.MaxValue / n)));
+            int k = (box[0] % n);
+            n--;
+            string value = sList[k];
+            sList[k] = sList[n];
+            sList[n] = value;
+        }
 
+        // return the shuffled list
+        return sList;
     }
 
     // !! WAVES !!
@@ -154,6 +177,7 @@ public class SpawnManager : MonoBehaviour
         public int tank;
         public int cerberus;
         public int mirror;
+        public int mBullets;
         // scalar that multiplies the enemies health
         public float healthScalar;
     }
