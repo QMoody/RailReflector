@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     int wave;
 
     // variables for controlling spawns over the course of a waves generation 
-    public float spawnBurstDelay;
+    public float spawnBurstDelay = 0.2f;
     public float bSpawnChance;
     public float dTimer;
     public float sDelay;
@@ -74,27 +74,48 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if we are imbetween waves increment the imbetween wave timer
-        if (wInProgress == false)
+       
+        // if a wave is in progress scale the time between spawn timer 
+        if(wInProgress)
         {
-            timer = Time.deltaTime;
+            // burst spawn delay timer
+            sdTimer += Time.deltaTime;
         }
 
-        // if time is up set the wave to start on the next frame
-        if (timer >= timeBetweenWaves)
-        {
-            wInProgress = true;
-            timer = 0;
-        }
+        // begin current frame spawn logic
+        calcWaveSpawn();
+    }
 
+    // calculates wave spawns
+    void calcWaveSpawn()
+    {
         // if there is no active wave begin spawning and continue
         // if the wave is no longer progressing and has been completed structure a new one
         // if a wave has no enemies set it to completed
         if (wInProgress)
         {
-            spawnWave();
-            // set waiting to false as the wave has started
-            waiting = false;
+            // if this is a burst spawn check the burst spawn delay 
+            // if this is not a burst spawn check the spawn delay timer
+            if (bSpawn)
+            {
+                if (sdTimer >= spawnBurstDelay) {
+                    spawnWave();
+                    // reset spawn timer
+                    sdTimer = 0;
+                    // set waiting to false as the wave has started
+                    waiting = false;
+                }
+            } else
+            {
+                if (sdTimer >= sDelay)
+                {
+                    spawnWave();
+                    // reset spawn timer
+                    sdTimer = 0; 
+                    // set waiting to false as the wave has started
+                    waiting = false;
+                }
+            }
         }
         else if (!wInProgress && !waiting)
         {
@@ -126,20 +147,25 @@ public class SpawnManager : MonoBehaviour
         string e2p = enemies[0];
         enemies.RemoveAt(0);
 
+        // calculate if this is a burst spawn
+        if(bSpawnChance == (int)Random.Range(0, 100))
+        {
+            bSpawn = true;
+        }
+
         // spawn an enemy if the spawnDelay timer is 0 or lower
         if(sdTimer <= 0)
         {
             // spawn an enemy
             // if tha enemy is a tank, do a tank spawn
-          /* if ()
+            if (e2p == "tank")
             {
-
+                tSpawn = true;
             } else
             {
 
             }
 
-            */
         }
     }
 
@@ -150,7 +176,9 @@ public class SpawnManager : MonoBehaviour
 
 
         // controls the delay between individual enemy spawns
+        // optimal time between non burst spawns
         sDelay = waveLength / enemies.Count;
+        // max burst spawn unit density
         mBurstSize = (int)(enemies.Count / 10); 
 
         // for every enemy inside of the wave add them to the wave list
@@ -213,6 +241,31 @@ public class SpawnManager : MonoBehaviour
     // structure a wave with infinite scaling systems
     void infiniteStructure()
     {
+
+    }
+
+
+    // checks the current waves current state conditionals 
+    void waveConditionals()
+    {
+        // check if the wave is still in progress
+        if (wInProgress && enemies.Count <= 0)
+        {
+            wInProgress = false;
+        }
+
+        // if we are imbetween waves increment the imbetween wave timer
+        if (wInProgress == false)
+        {
+            timer = Time.deltaTime;
+        }
+
+        // if time is up set the wave to start on the next frame
+        if (timer >= timeBetweenWaves)
+        {
+            wInProgress = true;
+            timer = 0;
+        }
 
     }
 
