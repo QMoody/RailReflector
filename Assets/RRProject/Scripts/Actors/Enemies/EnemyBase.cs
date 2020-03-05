@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float sideSpeed = 0.0f;
     public LayerMask layMask;
 
     private float _originalSpeed;
@@ -14,6 +15,7 @@ public class EnemyBase : MonoBehaviour
 
 
     [Range(0,100)] public int dodgingChance = 25;
+    public float _dodgeTime = 1;
     public float dodgeSpeed = 2.0f;
 
     [Header("Animation")]
@@ -31,7 +33,7 @@ public class EnemyBase : MonoBehaviour
     private bool _dodge = false;
     private bool _dodgeDirection = false;
     private float _dodgingTime = 0;
-    private float _dodgeTime = 1;
+    
 
     private Damageable damageable;
 
@@ -91,7 +93,7 @@ public class EnemyBase : MonoBehaviour
             }
         }
 
-        transform.Translate(new Vector3(_dodge ? (_dodgeDirection ? -1 : 1)  * dodgeSpeed * Time.deltaTime: 0, -speed * Time.deltaTime, 0));
+        transform.Translate(new Vector3((_dodge ? (_dodgeDirection ? -1 : 1)  * dodgeSpeed * Time.deltaTime : 0) + sideSpeed * Time.deltaTime, -speed * Time.deltaTime, 0));
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -19, 19), transform.position.y, transform.position.z);
     }
 

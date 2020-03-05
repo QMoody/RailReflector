@@ -35,8 +35,12 @@ public class EnemyThick : EnemyBase
 
     void Shoot()
     {
-        GameObject tmp = Instantiate(_bullet, _gunPivot.position, Quaternion.Euler(0, 0, 0));
-        tmp.GetComponent<ReflectorProjectile>().refDir = -_gunPivot.up;
+        if (EnemyBulletManager.Instance.bullets.Count < EnemyBulletManager.Instance.maxBullets)
+        {
+            GameObject tmp = Instantiate(_bullet, _gunPivot.position, Quaternion.Euler(0, 0, 0));
+            tmp.GetComponent<ReflectorProjectile>().refDir = -_gunPivot.up;
+            EnemyBulletManager.Instance.addBullet(tmp);
+        }
     }
 
     public void CreateSpeeder()

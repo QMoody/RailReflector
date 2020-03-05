@@ -143,10 +143,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sideSpeed: 0
   layMask:
     serializedVersion: 2
     m_Bits: 1024
-  dodgingChance: 100
+  dodgingChance: 20
   dodgeSpeed: 7
   _sRenderer: {fileID: 336192220888210991}
   _walkSprites:

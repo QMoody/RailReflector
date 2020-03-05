@@ -24,6 +24,15 @@ public class ReflectorProjectile : MonoBehaviour
     private void Start()
     {
         StartCoroutine(DestoryAfterTime());
+        
+    }
+
+    private void OnDestroy()
+    {
+        if (EnemyBulletManager.Instance != null)
+        {
+            EnemyBulletManager.Instance.removeBullet(this.gameObject);
+        }
     }
 
     void Update()
@@ -79,7 +88,7 @@ public class ReflectorProjectile : MonoBehaviour
 
     IEnumerator DestoryAfterTime()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(5);
 
         Destroy(this.gameObject);
     }
@@ -91,5 +100,6 @@ public class ReflectorProjectile : MonoBehaviour
         {
             damageable.reciveDamage(damage, GetComponent<Collider2D>().tag);
         }
+        Destroy(this.gameObject);
     }
 }
