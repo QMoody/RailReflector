@@ -6,6 +6,35 @@ using UnityEngine;
 // spawn manager communicates and coordinates spawns accross the spawngroups
 public class SpawnManager : MonoBehaviour
 {
+    // stores the number of the wave we are on
+    int wave;
+
+    // variables for controlling spawns over the course of a waves generation 
+    public float spawnBurstDelay;
+    public float bSpawnChance;
+    public float dTimer;
+    public float sDelay;
+    public float waveLength;
+    public float sdTimer;
+    int mBurstSize;
+    int BurstSize;
+    // minimum increment of the dTimer when spawning an enemy
+    public float dTMIncrement;
+    // tracks whether or not we are spawning a tank
+    public bool tSpawn = false;
+    // track whether or not we have spawned a tank 
+    bool bSpawn = false;
+
+
+    // track whether or not a wave has started whether or not we are imbetween waves currently
+    bool wInProgress = false;
+    bool waiting = true;
+    float timer = 0.0f;
+    public float timeBetweenWaves = 5.0f;
+
+    // variables for controlling infinite spawns
+
+
     // store the spawnGroupPrefab
     public GameObject spawnGroup;
     List<SpawnGroup> sGScripts;
@@ -15,16 +44,6 @@ public class SpawnManager : MonoBehaviour
 
     // stores all the enemies in a wave
     public List<string> enemies = new List<string>();
-
-
-    // stores the number of the wave we are on
-    int wave;
-
-    // track whether or not a wave has started whether or not we are imbetween waves currently
-    bool wInProgress = false;
-    bool waiting = true;
-    float timer = 0.0f;
-    public float timeBetweenWaves = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -103,13 +122,36 @@ public class SpawnManager : MonoBehaviour
     // spawns a new wave
     void spawnWave()
     {
+        // stores the first enemy to spawn, then removes it from the list
+        string e2p = enemies[0];
+        enemies.RemoveAt(0);
 
+        // spawn an enemy if the spawnDelay timer is 0 or lower
+        if(sdTimer <= 0)
+        {
+            // spawn an enemy
+            // if tha enemy is a tank, do a tank spawn
+          /* if ()
+            {
+
+            } else
+            {
+
+            }
+
+            */
+        }
     }
 
     // structures the next wave
     void structureWave()
     {
         EnemyBulletManager.Instance.maxBullets = waves[wave].mBullets;
+
+
+        // controls the delay between individual enemy spawns
+        sDelay = waveLength / enemies.Count;
+        mBurstSize = (int)(enemies.Count / 10); 
 
         // for every enemy inside of the wave add them to the wave list
         for (int i = 0; i < waves[wave].normal; i++)
@@ -120,21 +162,52 @@ public class SpawnManager : MonoBehaviour
         {
             enemies.Add("kamikaze");
         }
-        for (int i = 0; i < waves[wave].cerberus; i++)
-        {
-            enemies.Add("cerberus");
-        }
         for (int i = 0; i < waves[wave].mirror; i++)
         {
             enemies.Add("mirror");
         }
-        for (int i = 0; i < waves[wave].tank; i++)
+        // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
+        if (waves[wave].cerberus == 1) {
+            bSpawn = false;
+        }
+        else
         {
-            enemies.Add("tank");
+            for (int i = 0; i < waves[wave].cerberus; i++)
+            {
+                enemies.Add("cerberus");
+            }
+            bSpawn = true;
         }
 
+        // for boss style enemeies, when there is only one, ensure they are placed at the end of the wave
+        if (waves[wave].tank == 1) {
+            bSpawn = false;
+        } else
+        {
+            for (int i = 0; i < waves[wave].tank; i++)
+            {
+                enemies.Add("tank");
+            }
+            bSpawn = true;
+        }
         // randomize the list
         rollWave(enemies);
+
+        // if we have not spawned bosses as this their first appearance, spawn them now at the end of the wave
+        if(!bSpawn)
+        {
+            // check that the boss is supposed to spawn first then spawn the bosses
+            if(waves[wave].cerberus == 1)
+            {
+                enemies.Add("cerberus");
+            }
+
+            if(waves[wave].tank == 1)
+            {
+                enemies.Add("tank");
+            }
+        }
+
     }
 
     // structure a wave with infinite scaling systems
