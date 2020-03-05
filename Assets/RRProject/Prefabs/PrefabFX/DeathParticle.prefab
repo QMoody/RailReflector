@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6584156372936187239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.020757753, y: 0.0830448, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4095,8 +4095,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 55512
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -4104,7 +4104,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4718,8 +4718,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65eee3cb82baeb34780eb93a94bcb3fd, type: 2}
-  - {fileID: 2100000, guid: 76ba591b52b39a449aa7b95bd70b9d32, type: 2}
+  - {fileID: 2100000, guid: eff7217a7c5b5f442b3403827a3e0431, type: 2}
+  - {fileID: 2100000, guid: dce3ab755b8b8b94f9cff1b8df859ece, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4772,6 +4772,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6584156372936187239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba79d38a8e38a8448c5848a816719e2, type: 3}
+  m_Script: {fileID: 11500000, guid: c20526531d9843241a646e57b62bd2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
