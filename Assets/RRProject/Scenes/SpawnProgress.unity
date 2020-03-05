@@ -1862,6 +1862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645472343}
   - component: {fileID: 1645472344}
+  - component: {fileID: 1645472345}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1890,7 +1891,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645472342}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7eef11655018eed4f9d1719abb990462, type: 3}
   m_Name: 
@@ -1914,6 +1915,79 @@ MonoBehaviour:
   - {fileID: 4803652839756384864, guid: d815a953b137c9548bb91f773eaadcb9, type: 3}
   _spawnRateMin: 3
   _spawnRateMax: 4
+--- !u!114 &1645472345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645472342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba73b0e887fbf7543986f3b20775cb35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
+  - normal: 0
+    kamikaze: 0
+    tank: 0
+    cerberus: 0
+    mirror: 0
+    healthScalar: 0
 --- !u!1 &1666719715
 GameObject:
   m_ObjectHideFlags: 0
