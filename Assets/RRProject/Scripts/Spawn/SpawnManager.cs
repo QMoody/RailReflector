@@ -178,13 +178,13 @@ public class SpawnManager : MonoBehaviour
             {
                 // if one player is active then spawn on only the middle three spawns
                 // otherwise spawn utilizing all spawns
-                if()
+                /*if()
                 {
 
                 } else
                 {
 
-                }
+                }*/
             }
 
         } else

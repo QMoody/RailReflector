@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletManager : MonoBehaviour
+public class EnemyBulletManager : Singletone<EnemyBulletManager>
 {
-    public static EnemyBulletManager Instance;
 
     public int maxBullets;
 
@@ -12,7 +11,6 @@ public class EnemyBulletManager : MonoBehaviour
     
     void Awake()
     {
-        Instance = this;
         bullets = new List<GameObject>();
     }
 
