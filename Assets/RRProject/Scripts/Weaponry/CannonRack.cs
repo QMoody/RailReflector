@@ -71,7 +71,7 @@ public class CannonRack : MonoBehaviour
     }
 
     // adds 2 more cannons to the existing Cannnon rack
-    void addCannons()
+    public void addCannons()
     {
         // add the specified number of cannons to the cannon rack
         for (int i = 0; i < 2; i++)
@@ -96,16 +96,17 @@ public class CannonRack : MonoBehaviour
         if (cannons.Count > 1)
         {
             // arrange the cannons on either side of the mech
-            for(int i = 0; i < cannons.Count; i++)
+            for (int i = 0; i < cannons.Count; i++)
             {
-                if ((i % 2) > 0) {
+                if ((i % 2) > 0)
+                {
                     // if this is an odd cannon place it on the left hand side
                     cannons[i].transform.localPosition = new Vector2((cannonSpacing * i), 0);
                 }
                 else
                 {
                     // if this is an even cnnon place it on the right hand side
-                    cannons[i].transform.localPosition = new Vector2((- cannonSpacing * (i + 1)), 0);
+                    cannons[i].transform.localPosition = new Vector2((-cannonSpacing * (i + 1)), 0);
                 }
             }
         }
@@ -114,7 +115,7 @@ public class CannonRack : MonoBehaviour
     //update the cannons
     void updateCannons()
     {
-        for(int i = 0; i < cannons.Count; i++)
+        for (int i = 0; i < cannons.Count; i++)
         {
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
@@ -126,55 +127,61 @@ public class CannonRack : MonoBehaviour
 
     }
 
-    // upgrade the cannons 
-    public void upgrade(string upgrade1)
+    public void setLyuda()
     {
-        switch (upgrade1)
+        for (int i = 0; i < cannons.Count; i++)
         {
-            case "wiggle":
-                wiggleShot = true;
-                break;
-            case "lyuda":
-                lyuda = true;
-                break;
-            case "explosive":
-                explosive = true;
-                break;
-            case "rof":
-                for (int i = 0; i < cannons.Count; i++)
-                {
-                    cannons[i].GetComponent<SingleCannon>().boostRof();
-                }
-                break;
-            case "pen":
-                for (int i = 0; i < cannons.Count; i++)
-                {
-                    cannons[i].GetComponent<SingleCannon>().setPen();
-                }
-                break;
-            case "akimbo":
-                addCannons();
-                break;
-            case "damage":
-                for (int i = 0; i < cannons.Count; i++)
-                {
-                    cannons[i].GetComponent<SingleCannon>().boostDamage();
-                }
-                break;
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
         }
     }
-    // reangles the cannons to either foward fire or shotgun
-    void setCannnonAngle()
+
+    public void setExplosive()
     {
+        for (int i = 0; i < cannons.Count; i++)
+        {
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
+        }
+    }
 
 
+    public void setWS()
+    {
+        for (int i = 0; i < cannons.Count; i++)
+        {
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setWS(wiggleShot);
+        }
+    }
+
+    public void rof()
+    {
+        for (int i = 0; i < cannons.Count; i++)
+        {
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().boostRof();
+        }
+    }
+
+    public void dam()
+    {
+        for (int i = 0; i < cannons.Count; i++)
+        {
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().boostDamage();
+        }
+    }
+
+
+    public void setPen()
+    {
+        for (int i = 0; i < cannons.Count; i++)
+        {
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setPen();
+        }
     }
 
     // runs the cheats for cannons
     void UpdateCannonCheats()
     {
         // if they are adding cannons add cannons dawg shit
-        if(Input.GetButtonDown("AddCannon"))
+        if (Input.GetButtonDown("AddCannon"))
         {
             addCannons();
         }
@@ -184,12 +191,12 @@ public class CannonRack : MonoBehaviour
             lyuda = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.K)|| Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             explosive = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.J)|| Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.X))
         {
             multishot++;
         }

@@ -144,14 +144,6 @@ public class SingleCannon : MonoBehaviour
         }
     }
 
-
-    // sets the pen value for this bullet
-    // tPenV is how many times this bullet will penetrate
-    public void setPen(int tPenV)
-    {
-        pen = true;
-        penStr = tPenV;
-    }
     // runs without taking the penetration value and sets it to 1 by defualt
     public void setPen()
     {

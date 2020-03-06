@@ -324,9 +324,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _onDead:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   tag: Bullet
 --- !u!114 &2707578048439756945
 MonoBehaviour:
@@ -364,14 +368,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5228271752948007537}
-  - component: {fileID: 28716787}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5228271752948007537
 Transform:
   m_ObjectHideFlags: 0
@@ -387,30 +390,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &28716787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5228271752948007547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df0489e4dc6adc439d052b6161fd33a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  isRoundOver: 0
-  canLevelUp: 0
-  playerLevel: 0
-  currentXP: 0
-  xpToLevel: 100
-  levelBar: {fileID: 0}
-  levelText: {fileID: 0}
-  upgradeTell: {fileID: 0}
-  c1: {r: 1, g: 1, b: 1, a: 1}
-  c2: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &5228271753137980415
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +458,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 631fafb1b5c7b8a4286c04c3f24080af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -538,5 +517,9 @@ MonoBehaviour:
   startingCannonCount: 2
   cannonSpacing: 0.25
   cannons: []
-  owner: Player1
+  owner: player1
   fireKey: 306
+  lyuda: 0
+  explosive: 0
+  wiggleShot: 0
+  multishot: 1
