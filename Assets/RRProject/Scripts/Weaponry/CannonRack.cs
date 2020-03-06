@@ -24,9 +24,10 @@ public class CannonRack : MonoBehaviour
 
     public KeyCode fireKey;
 
-    bool lyuda = false;
-    bool explosive = false;
-    int multishot = 1;
+    public bool lyuda = false;
+    public bool explosive = false;
+    public bool wiggleShot = false;
+    public int multishot = 1;
 
 
     // Start is called before the first frame update
@@ -34,13 +35,17 @@ public class CannonRack : MonoBehaviour
     {
         // create the cannon rack with the starting number of cannons
         addCannons(startingCannonCount);
+        if (owner == "player1")
+        {
+            addCannons();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // runs the cannon cheat inputs
-        UpdateCannonCheats();
+       // UpdateCannonCheats();
 
         // update the cannoncs
         updateCannons();
@@ -94,14 +99,11 @@ public class CannonRack : MonoBehaviour
                 if ((i % 2) > 0) {
                     // if this is an odd cannon place it on the left hand side
                     cannons[i].transform.localPosition = new Vector2((cannonSpacing * i), 0);
-
-
                 }
                 else
                 {
                     // if this is an even cnnon place it on the right hand side
                     cannons[i].transform.localPosition = new Vector2((- cannonSpacing * (i + 1)), 0);
-
                 }
             }
         }  else
@@ -119,11 +121,49 @@ public class CannonRack : MonoBehaviour
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().multishot = multishot;
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().fireInput(fireKey);
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setWS(wiggleShot);
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().assignOwnership(owner);
         }
 
     }
 
-
+    // upgrade the cannons 
+    public void upgrade(string upgrade1)
+    {
+        switch (upgrade1)
+        {
+            case "wiggle":
+                wiggleShot = true;
+                break;
+            case "lyuda":
+                lyuda = true;
+                break;
+            case "explosive":
+                explosive = true;
+                break;
+            case "rof":
+                for (int i = 0; i < cannons.Count; i++)
+                {
+                    cannons[i].GetComponent<SingleCannon>().boostRof();
+                }
+                break;
+            case "pen":
+                for (int i = 0; i < cannons.Count; i++)
+                {
+                    cannons[i].GetComponent<SingleCannon>().setPen();
+                }
+                break;
+            case "akimbo":
+                addCannons();
+                break;
+            case "damage":
+                for (int i = 0; i < cannons.Count; i++)
+                {
+                    cannons[i].GetComponent<SingleCannon>().boostDamage();
+                }
+                break;
+        }
+    }
     // reangles the cannons to either foward fire or shotgun
     void setCannnonAngle()
     {
