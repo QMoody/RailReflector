@@ -20,6 +20,15 @@ public class LevelXPScript : MonoBehaviour
     public GameObject damage;
     public GameObject rof;
 
+    // store the possible upgrades
+    public GameObject lyuda2;
+    public GameObject explosive2;
+    public GameObject wiggle2;
+    public GameObject pen2;
+    public GameObject akimbo2;
+    public GameObject damage2;
+    public GameObject rof2;
+
     [Header("XP Level Variables")]
     public bool isRoundOver;
     public bool canLevelUp;
@@ -54,8 +63,7 @@ public class LevelXPScript : MonoBehaviour
     }
 
     void Update()
-    {
-        xpScalar = LevelManager.Instance.xpMultiplier;
+    { 
 
         if (owner == "player1")
         {
@@ -78,7 +86,7 @@ public class LevelXPScript : MonoBehaviour
     {
 
         float tmpExp;
-
+         
         if (owner == "player1")
         {
             tmpExp = Mathf.Clamp(LevelManager.Instance.player1Exp, 0, xpToLevel);
@@ -145,11 +153,14 @@ public class LevelXPScript : MonoBehaviour
     void CheckForUpgrade()
     {
 
-        if (canLevelUp == true)
+        if (canLevelUp == true && upgrade1 == "" && upgrade2 == "")
         {
             // set the upgrades
             upgrade1 = upgrades[1];
             upgrade2 = upgrades[2];
+
+            upgrades.RemoveAt(0);
+            upgrades.RemoveAt(0);
         }
     }
 
@@ -193,32 +204,32 @@ public class LevelXPScript : MonoBehaviour
             switch (upgrade2)
             {
                 case "wiggle":
-                    wiggle.transform.position = upgradeSlot2.transform.position;
-                    wiggle.SetActive(false);
+                    wiggle2.transform.position = upgradeSlot2.transform.position;
+                    wiggle2.SetActive(false);
                     break;
                 case "lyuda":
-                    lyuda.transform.position = upgradeSlot2.transform.position;
-                    lyuda.SetActive(false);
+                    lyuda2.transform.position = upgradeSlot2.transform.position;
+                    lyuda2.SetActive(false);
                     break;
                 case "explosive":
-                    explosive.transform.position = upgradeSlot2.transform.position;
-                    explosive.SetActive(false);
+                    explosive2.transform.position = upgradeSlot2.transform.position;
+                    explosive2.SetActive(false);
                     break;
                 case "rof":
-                    rof.transform.position = upgradeSlot2.transform.position;
-                    rof.SetActive(false);
+                    rof2.transform.position = upgradeSlot2.transform.position;
+                    rof2.SetActive(false);
                     break;
                 case "pen":
-                    pen.transform.position = upgradeSlot2.transform.position;
-                    pen.SetActive(false);
+                    pen2.transform.position = upgradeSlot2.transform.position;
+                    pen2.SetActive(false);
                     break;
                 case "akimbo":
-                    akimbo.transform.position = upgradeSlot2.transform.position;
-                    akimbo.SetActive(false);
+                    akimbo2.transform.position = upgradeSlot2.transform.position;
+                    akimbo2.SetActive(false);
                     break;
                 case "damage":
-                    damage.transform.position = upgradeSlot2.transform.position;
-                    damage.SetActive(false);
+                    damage2.transform.position = upgradeSlot2.transform.position;
+                    damage2.SetActive(false);
                     break;
             }
         } else {
@@ -354,6 +365,7 @@ public class LevelXPScript : MonoBehaviour
     {
         if(canLevelUp)
         {
+
             if (owner == "player1")
             {
                 Debug.Log("Can level up");

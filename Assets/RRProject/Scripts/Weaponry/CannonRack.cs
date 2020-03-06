@@ -106,9 +106,6 @@ public class CannonRack : MonoBehaviour
                     cannons[i].transform.localPosition = new Vector2((- cannonSpacing * (i + 1)), 0);
                 }
             }
-        }  else
-        {
-
         }
     }
 
