@@ -20,8 +20,10 @@ public class Upgrades : MonoBehaviour
     public int upgradeCount;
     public float upgradePow;
 
+    public float upgradeScalar = 2;
+
     // tracks how much the next upgrade costs in EXP
-    public int upgradeCost;
+    public float upgradeCost = 75;
 
     // tracks your experience and gives you upgrades incrementally
     void Start()
@@ -65,11 +67,15 @@ public class Upgrades : MonoBehaviour
             {
                 upgradeSlot1.GetComponent<UpgradeSelect>().selectUpgrade();
                 chargeUpgradeManager();
+                upgradeCount++;
+                upgradeCost = upgradeCost * upgradeScalar;
             }
             else if (Input.GetKeyDown(KeyCode.X))
             {
                 upgradeSlot2.GetComponent<UpgradeSelect>().selectUpgrade();
                 chargeUpgradeManager();
+                upgradeCount++;
+                upgradeCost = upgradeCost * upgradeScalar;
             }
         }
         else
@@ -79,11 +85,15 @@ public class Upgrades : MonoBehaviour
             {
                 upgradeSlot1.GetComponent<UpgradeSelect>().selectUpgrade();
                 chargeUpgradeManager();
+                upgradeCount++;
+                upgradeCost = upgradeCost * upgradeScalar;
             }
             else if (Input.GetKeyDown(KeyCode.LeftBracket))
             {
                 upgradeSlot2.GetComponent<UpgradeSelect>().selectUpgrade();
                 chargeUpgradeManager();
+                upgradeCount++;
+                upgradeCost = upgradeCost * upgradeScalar;
             }
         }
     }

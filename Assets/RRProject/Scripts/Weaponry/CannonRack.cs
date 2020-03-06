@@ -47,7 +47,7 @@ public class CannonRack : MonoBehaviour
     void Update()
     {
         // runs the cannon cheat inputs
-        UpdateCannonCheats();
+        //UpdateCannonCheats();
 
         // update the cannoncs
         updateCannons();
