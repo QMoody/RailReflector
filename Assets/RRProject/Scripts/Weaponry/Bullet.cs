@@ -44,6 +44,8 @@ public class Bullet : MonoBehaviour
     public bool pen = false;
     public int penStr = 0;
 
+    public float xpGain = 20;
+
     // stores a copy of the bullet prefab for creating additional projectiles
     public GameObject sBullet;
     public GameObject shrapnel;
@@ -80,6 +82,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        xpGain = xpGain * LevelManager.Instance.xpMultiplier;
+
         if(transform.position.y > 17)
         {
             Destroy(this.gameObject);
@@ -202,6 +206,17 @@ public class Bullet : MonoBehaviour
         if (damageable != null)
         {
             damageable.reciveDamage( (int)damage, GetComponent<Collider2D>().tag);
+            if(damageable._health <= 0)
+            {
+                if (owner == "player1")
+                {
+                    LevelManager.Instance.player1Exp += xpGain;
+                }
+                else
+                {
+                    LevelManager.Instance.player2Exp += xpGain;
+                }
+            }
             Destroy(this.gameObject);
             Instantiate(impactParticles, transform.position, Quaternion.identity);
         }

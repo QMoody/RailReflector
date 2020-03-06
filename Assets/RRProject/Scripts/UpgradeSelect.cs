@@ -5,6 +5,7 @@ using UnityEngine;
 public class UpgradeSelect : MonoBehaviour
 {
     public GameObject lvlManager;
+    public string owner;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

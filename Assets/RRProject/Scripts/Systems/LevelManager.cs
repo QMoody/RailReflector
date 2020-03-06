@@ -7,10 +7,11 @@ public class LevelManager : Singletone<LevelManager>
     // global player public variables
     public bool player1Active = false;
     public bool player2Active = false;
-    public int player1Exp;
-    public int player2Exp;
+    public float player1Exp;
+    public float player2Exp;
     public int player1Score;
     public int player2Score;
+    public float xpMultiplier = 1;
 
     public GameObject Player1;
     public GameObject Player1UI;

@@ -33,6 +33,9 @@ public class SingleCannon : MonoBehaviour
     public bool explosive = false;
     // tracks whether or not this bullet has pen
     public bool pen = false;
+    // wiggleshot
+    public bool wiggleShot = false;
+
     // tracks pen value
     public int penStr = 0;
 
@@ -47,7 +50,6 @@ public class SingleCannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // calculate the rate of fire for this weapon
         reFireTime = 1 / fireRate;
 
@@ -125,6 +127,23 @@ public class SingleCannon : MonoBehaviour
         }
     }
 
+    public void assignOwnership(string pOwn)
+    {
+        owner = pOwn;
+
+        if (owner == "player1")
+        {
+            fireRate = 4;
+            damage = 12;
+        } else
+        {
+            fireRate = 1;
+            damage = 12;
+            multishot = 2;
+        }
+    }
+
+
     // sets the pen value for this bullet
     // tPenV is how many times this bullet will penetrate
     public void setPen(int tPenV)
@@ -136,7 +155,7 @@ public class SingleCannon : MonoBehaviour
     public void setPen()
     {
         pen = true;
-        penStr = 1;
+        penStr += 1;
     }
 
     // sets the bullet to be explosive
@@ -149,6 +168,35 @@ public class SingleCannon : MonoBehaviour
     public void setLyuda()
     {
         lyuda = true;
+    }
+
+    public void boostRof()
+    {
+        fireRate += .5f;
+    }
+
+    public void boostDamage()
+    {
+        damage += .5f;
+    }
+
+    public void setWS(bool set)
+    {
+        // if wiggleshot is not true set it to true and double firerate 
+        if (set) { 
+            if (!wiggleShot)
+            {
+                wiggleShot = true;
+                if (owner == "player2")
+                {
+                    fireRate = fireRate * 4;
+                    //target.GetComponent<GunWiggle>();
+                }
+                else {
+                    fireRate = fireRate * 2;
+                }
+            }
+        }
     }
 
 }
