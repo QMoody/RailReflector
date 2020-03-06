@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShield : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerShield : MonoBehaviour
     Collider2D shieldCollider;
     public float curShieldCharge;
     public float shieldChargeRate;
+
+    public GameObject shieldUIObj;
 
     //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
 
@@ -30,11 +33,22 @@ public class PlayerShield : MonoBehaviour
         Color tmpClolour = shieldObject.GetComponent<SpriteRenderer>().color;
 
         if (curShieldCharge >= 255)
+        {
             tmpClolour.a = 1;
+            shieldUIObj.GetComponent<Image>().fillAmount = 1;
+        }
         else if (curShieldCharge >= 200)
+        {
             tmpClolour.a = 0.75f;
+            shieldUIObj.GetComponent<Image>().fillAmount = 0.8f;
+        }
         else if (curShieldCharge >= 135)
+        {
             tmpClolour.a = 0.5f;
+            shieldUIObj.GetComponent<Image>().fillAmount = 0.55f;
+        }
+        else
+            shieldUIObj.GetComponent<Image>().fillAmount = 0;
 
         shieldObject.GetComponent<SpriteRenderer>().color = tmpClolour;
 
