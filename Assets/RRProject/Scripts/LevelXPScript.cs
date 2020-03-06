@@ -37,7 +37,6 @@ public class LevelXPScript : MonoBehaviour
     private float colourValue;
 
     public GameObject cannonRack;
-    public bool pickedGun;
     public string owner;
 
     // tracks the last thing upgraded
@@ -56,6 +55,8 @@ public class LevelXPScript : MonoBehaviour
 
     void Update()
     {
+        xpScalar = LevelManager.Instance.xpMultiplier;
+
         if (owner == "player1")
         {
             currentXP = LevelManager.Instance.player1Exp;
@@ -316,6 +317,8 @@ public class LevelXPScript : MonoBehaviour
             upgrade1 = "";
             upgrade2 = "";
         }
+
+        UpdateXP();
     }
 
     // sests the tree for the weaponry
