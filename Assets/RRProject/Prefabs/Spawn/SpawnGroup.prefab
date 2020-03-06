@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734402715904294542}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 23.28, z: 18}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 734402716224044806}
@@ -57,6 +57,10 @@ MonoBehaviour:
   fSpawnL: {fileID: 734402717123806516}
   fSpawnM: {fileID: 734402716466250145}
   fSpawnR: {fileID: 734402716224044807}
+  sAvail: 1
+  tankSpawnAvailable: 1
+  backSpawnOpen: 1
+  healthScalar: 0
 --- !u!1 &734402716084124091
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +135,12 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
   mSpawn: 0
-  open: 0
+  open: 1
+  healthScalar: 1
 --- !u!1 &734402716162806043
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,10 +215,12 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
-  mSpawn: 0
-  open: 0
+  mSpawn: 1
+  open: 1
+  healthScalar: 1
 --- !u!1 &734402716221162517
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,10 +295,12 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
   mSpawn: 0
-  open: 0
+  open: 1
+  healthScalar: 1
 --- !u!1 &734402716224044807
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,10 +375,12 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
   mSpawn: 0
-  open: 0
+  open: 1
+  healthScalar: 1
 --- !u!1 &734402716466250145
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,10 +455,12 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
   mSpawn: 0
-  open: 0
+  open: 1
+  healthScalar: 1
 --- !u!1 &734402717049227130
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,10 +535,12 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
   mSpawn: 0
-  open: 0
+  open: 1
+  healthScalar: 1
 --- !u!1 &734402717123806516
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +615,9 @@ MonoBehaviour:
   kamikaze: {fileID: 4803652839756384864, guid: 652127025e9a49b418981d2c52c24427,
     type: 3}
   tank: {fileID: 4867853722537671020, guid: 121831fe2694cbb438a91d9cc5474d8a, type: 3}
-  cerberus: {fileID: 0}
+  cerberus: {fileID: 1310119994364704490, guid: 1f571548a47266f449f41d195a22d99d,
+    type: 3}
   mirror: {fileID: 0}
   mSpawn: 0
-  open: 0
+  open: 1
+  healthScalar: 1

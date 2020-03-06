@@ -109,13 +109,27 @@ public class CannonRack : MonoBehaviour
             {
                 if ((i % 2) > 0)
                 {
-                    // if this is an odd cannon place it on the left hand side
-                    cannons[i].transform.localPosition = new Vector2((cannonSpacing * i), 0);
+                    if(i < 4)
+                    {
+                        // if this is an odd cannon place it on the left hand side
+                        cannons[i].transform.localPosition = new Vector2((cannonSpacing * i), 0);
+                    } else
+                    {
+                        // if this is an odd cannon place it on the left hand side
+                        cannons[i].transform.localPosition = new Vector2((cannonSpacing * (i - 4)) - 0.05f, -.25f);
+                    }
                 }
                 else
                 {
-                    // if this is an even cnnon place it on the right hand side
-                    cannons[i].transform.localPosition = new Vector2((-cannonSpacing * (i + 1)), 0);
+                    if(i < 4)
+                    {
+                        // if this is an even cnnon place it on the right hand side
+                        cannons[i].transform.localPosition = new Vector2((-cannonSpacing * (i + 1)), 0);
+                    } else
+                    {
+                        // if this is an even cnnon place it on the right hand side
+                        cannons[i].transform.localPosition = new Vector2((-cannonSpacing * ((i - 4) + 1)) + 0.05f, -.25f);
+                    }
                 }
             }
         }

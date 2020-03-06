@@ -15,6 +15,7 @@ public class Upgrades : MonoBehaviour
     public string owner;
 
     public bool upgradeReady;
+    public bool notified;
 
     // counts the number of upgrades the player has
     public int upgradeCount;
@@ -52,6 +53,11 @@ public class Upgrades : MonoBehaviour
         {
             upgradeReady = true;
             detectUpgradeInput();
+            if(!notified)
+            {
+                Instantiate(notification, new Vector3(-16, -13, -1), transform.rotation);
+                notified = true;
+            }
         }
     }
 
@@ -69,6 +75,8 @@ public class Upgrades : MonoBehaviour
                 chargeUpgradeManager();
                 upgradeCount++;
                 upgradeCost = upgradeCost * upgradeScalar;
+                upgradeReady = false;
+                notified = false;
             }
             else if (Input.GetKeyDown(KeyCode.X))
             {
@@ -76,6 +84,8 @@ public class Upgrades : MonoBehaviour
                 chargeUpgradeManager();
                 upgradeCount++;
                 upgradeCost = upgradeCost * upgradeScalar;
+                upgradeReady = false;
+                notified = false;
             }
         }
         else

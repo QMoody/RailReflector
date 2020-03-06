@@ -423,6 +423,11 @@ public class SpawnManager : MonoBehaviour
             aSpawnScripts.Clear();
         }
 
+        if(wInProgress && enemies.Count == 0)
+        {
+            wInProgress = false;
+        }
+
     }
 
     // checks which group spawns are available for spawning enemies

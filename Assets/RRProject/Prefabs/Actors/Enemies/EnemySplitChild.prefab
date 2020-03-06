@@ -293,7 +293,7 @@ MonoBehaviour:
     m_Bits: 1024
   dodgingChance: 10
   _dodgeTime: 1
-  dodgeSpeed: 8
+  dodgeSpeed: 4
   _sRenderer: {fileID: 6729475667741014540}
   _walkSprites:
   - {fileID: 2957587886195951575, guid: f626c1747778e3543a77e706c0c61836, type: 3}

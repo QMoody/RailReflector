@@ -297,14 +297,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dfdafdf910b1d419db5796dd05ee51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   sideSpeed: 0
   layMask:
     serializedVersion: 2
     m_Bits: 1024
   dodgingChance: 10
   _dodgeTime: 1
-  dodgeSpeed: 8
+  dodgeSpeed: 3
   _sRenderer: {fileID: 6065819782283649701}
   _walkSprites:
   - {fileID: 7408171235191027296, guid: f626c1747778e3543a77e706c0c61836, type: 3}

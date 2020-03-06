@@ -167,7 +167,7 @@ public class SingleCannon : MonoBehaviour
     // sets the bullet to be explosive
     public void setExplosive()
     {
-        explosive = true;
+        fireRate +=2;
     }
 
     // sets whether or not this bullet is a lyuda round

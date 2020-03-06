@@ -273,7 +273,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.04}
-  m_Size: {x: 3.08, y: 4.49}
+  m_Size: {x: 1.64, y: 3.54}
   m_Direction: 0
 --- !u!114 &4867853722537670930
 MonoBehaviour:
@@ -292,9 +292,9 @@ MonoBehaviour:
   layMask:
     serializedVersion: 2
     m_Bits: 1024
-  dodgingChance: 40
+  dodgingChance: 23
   _dodgeTime: 1
-  dodgeSpeed: 2
+  dodgeSpeed: 3
   _sRenderer: {fileID: 400383786930990371}
   _walkSprites:
   - {fileID: -4703140125097339209, guid: be2a5229e2e43cb478e188ed1a876447, type: 3}
