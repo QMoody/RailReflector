@@ -189,5 +189,7 @@ public class EnemyBase : MonoBehaviour
         _dead = true;
         if(ScoreTracker.Instance != null)
             ScoreTracker.Instance.SpawnScore(transform.position);
+
+
     }
 }

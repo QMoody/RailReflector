@@ -65,6 +65,8 @@ public class LevelXPScript : MonoBehaviour
             currentXP = LevelManager.Instance.player2Exp;
         }
 
+        detectSelection();
+
         UpdateXP();
         CheckForUpgrade();
 
@@ -351,13 +353,14 @@ public class LevelXPScript : MonoBehaviour
         {
             if (owner == "player1")
             {
+                Debug.Log("Can level up");
                 // set the key down for player one 
-                if (Input.GetKeyDown("LeftShift"))
+                if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     cannonRack.GetComponent<CannonRack>().upgrade(upgrade1);
                     LevelUp();
                     lastupgraded = 1; 
-                } else if (Input.GetKeyDown("X"))
+                } else if (Input.GetKeyDown(KeyCode.X))
                 {
                     cannonRack.GetComponent<CannonRack>().upgrade(upgrade2);
                     LevelUp();
@@ -367,13 +370,13 @@ public class LevelXPScript : MonoBehaviour
             else
             {
                 // set the key down for player two
-                if (Input.GetKeyDown("W"))
+                if (Input.GetKeyDown(KeyCode.W))
                 {
                     cannonRack.GetComponent<CannonRack>().upgrade(upgrade1);
                     LevelUp();
                     lastupgraded = 1;
                 }
-                else if (Input.GetKeyDown("["))
+                else if (Input.GetKeyDown(KeyCode.LeftBracket))
                 {
                     cannonRack.GetComponent<CannonRack>().upgrade(upgrade2);
                     LevelUp();
