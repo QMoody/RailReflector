@@ -13,7 +13,9 @@ public class LevelManager : Singletone<LevelManager>
     public int player2Score;
 
     public GameObject Player1;
+    public GameObject Player1UI;
     public GameObject Player2;
+    public GameObject Player2UI;
 
     // Start is called before the first frame update
     void Awake()
@@ -32,12 +34,14 @@ public class LevelManager : Singletone<LevelManager>
     {
         if (player1Active)
         {
-            Instantiate(Player1, new Vector3(-10, -10, 0), Quaternion.identity);
+            Player1.SetActive(true);
+            Player1UI.SetActive(true);
         }
 
         if (player2Active)
         {
-            Instantiate(Player2, new Vector3(10, -10, 0), Quaternion.identity);
+            Player2.SetActive(true);
+            Player2UI.SetActive(true);
         }
     }
 
@@ -49,7 +53,8 @@ public class LevelManager : Singletone<LevelManager>
             {
                 return;
             }
-            Instantiate(Player1, new Vector3(-10, -10, 0), Quaternion.identity);
+            Player1.SetActive(true);
+            Player1UI.SetActive(true);
             player1Active = true;
         }
 
@@ -59,7 +64,9 @@ public class LevelManager : Singletone<LevelManager>
             {
                 return;
             }
-            Instantiate(Player2, new Vector3(10, -10, 0), Quaternion.identity);
+
+            Player2.SetActive(true);
+            Player2UI.SetActive(true);
             player2Active = true;
         }
     }

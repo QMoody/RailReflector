@@ -16,8 +16,9 @@ public class PlayerShield : MonoBehaviour
 
     private void Start()
     {
+
         shieldCollider = shieldObject.GetComponent<CircleCollider2D>();
-        curShieldCharge = 255;
+        curShieldCharge = 0;
     }
 
     void Update()
