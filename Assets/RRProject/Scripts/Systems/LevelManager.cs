@@ -12,6 +12,7 @@ public class LevelManager : Singletone<LevelManager>
     public int player1Score;
     public int player2Score;
     public float xpMultiplier = 1;
+    public float healthScalar = 1;
 
     public GameObject Player1;
     public GameObject Player1UI;

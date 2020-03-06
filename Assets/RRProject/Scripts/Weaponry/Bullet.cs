@@ -212,7 +212,7 @@ public class Bullet : MonoBehaviour
             damageable.reciveDamage( (int)damage, GetComponent<Collider2D>().tag);
             if(damageable._health <= 0)
             {
-                if (owner == "Player1")
+                if (owner == "Player1" || owner == "player1")
                 {
                     LevelManager.Instance.player1Exp += xpGain;
                 }

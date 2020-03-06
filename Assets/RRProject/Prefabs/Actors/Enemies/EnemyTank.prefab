@@ -110,6 +110,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -190,6 +192,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   tag: PlayerBullet
 --- !u!114 &3908982170067311890
 MonoBehaviour:
@@ -344,9 +348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles:
   - {fileID: 6291263557091410831, guid: bfb5ee7b1800dcd45826087c1995ec18, type: 3}
-  - {fileID: 6584156372936187239, guid: 72ca8da74f06ab744aad3acca8443eb3, type: 3}
-  - {fileID: 1707715986231921111, guid: e9dc31b54f59e63408e8fd7cd61090db, type: 3}
-  - {fileID: 78307728128706030, guid: 3d9f78da5e92c3c49a2d1b37d44e0c49, type: 3}
+  - {fileID: 6584156372936187239, guid: b4c576fb0698708419b2711349567e7a, type: 3}
+  - {fileID: 1707715986231921111, guid: 16404dca9e3c75e43aef4d3abe2f12e1, type: 3}
+  - {fileID: 78307728128706030, guid: 28111306a54df80409e3bf57b8b32202, type: 3}
 --- !u!1 &5843732260921168577
 GameObject:
   m_ObjectHideFlags: 0

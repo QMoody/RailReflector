@@ -93,7 +93,7 @@ public class SpawnManager : MonoBehaviour
         {
             // check the current waves conditionals
             waveConditionals();
-
+             
             // begin current frame spawn logic
             calcWaveSpawn();
         }
@@ -284,6 +284,9 @@ public class SpawnManager : MonoBehaviour
 
         // set the wave duration
         waveLength = waves[wave].waveDuration;
+
+        // update the health scalar
+        LevelManager.Instance.healthScalar = waves[wave].healthScalar;
 
         bool singleTSpawn = false;
 

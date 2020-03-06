@@ -30,7 +30,7 @@ public class LevelXPScript : MonoBehaviour
     public GameObject rof2;
 
     [Header("XP Level Variables")]
-    public bool isRoundOver;
+    public bool isRoundOver = true;
     public bool canLevelUp;
     public int playerLevel;
     public float currentXP;
@@ -77,6 +77,7 @@ public class LevelXPScript : MonoBehaviour
         detectSelection();
 
         UpdateXP();
+
         CheckForUpgrade();
 
         displayUpgrades();
@@ -107,15 +108,6 @@ public class LevelXPScript : MonoBehaviour
         {
             if (LevelManager.Instance.player1Exp >= xpToLevel)
             {
-                if (isRoundOver == true)
-                {
-                    colourValue = Mathf.PingPong(Time.time * 10, 1);
-                    if (colourValue <= 0.1f)
-                        upgradeTell.GetComponent<Text>().color = c1;
-                    else if (colourValue >= 0.9f)
-                        upgradeTell.GetComponent<Text>().color = c2;
-                }
-
                 canLevelUp = true;
             }
             else
@@ -128,15 +120,6 @@ public class LevelXPScript : MonoBehaviour
         {
             if (LevelManager.Instance.player2Exp >= xpToLevel)
             {
-                if (isRoundOver == true)
-                {
-                    colourValue = Mathf.PingPong(Time.time * 10, 1);
-                    if (colourValue <= 0.1f)
-                        upgradeTell.GetComponent<Text>().color = c1;
-                    else if (colourValue >= 0.9f)
-                        upgradeTell.GetComponent<Text>().color = c2;
-                }
-
                 canLevelUp = true;
             }
             else
@@ -146,8 +129,6 @@ public class LevelXPScript : MonoBehaviour
             }
         }
 
-
-        
     }
 
     void CheckForUpgrade()
@@ -205,31 +186,31 @@ public class LevelXPScript : MonoBehaviour
             {
                 case "wiggle":
                     wiggle2.transform.position = upgradeSlot2.transform.position;
-                    wiggle2.SetActive(false);
+                    wiggle2.SetActive(true);
                     break;
                 case "lyuda":
                     lyuda2.transform.position = upgradeSlot2.transform.position;
-                    lyuda2.SetActive(false);
+                    lyuda2.SetActive(true);
                     break;
                 case "explosive":
                     explosive2.transform.position = upgradeSlot2.transform.position;
-                    explosive2.SetActive(false);
+                    explosive2.SetActive(true);
                     break;
                 case "rof":
                     rof2.transform.position = upgradeSlot2.transform.position;
-                    rof2.SetActive(false);
+                    rof2.SetActive(true);
                     break;
                 case "pen":
                     pen2.transform.position = upgradeSlot2.transform.position;
-                    pen2.SetActive(false);
+                    pen2.SetActive(true);
                     break;
                 case "akimbo":
                     akimbo2.transform.position = upgradeSlot2.transform.position;
-                    akimbo2.SetActive(false);
+                    akimbo2.SetActive(true);
                     break;
                 case "damage":
                     damage2.transform.position = upgradeSlot2.transform.position;
-                    damage2.SetActive(false);
+                    damage2.SetActive(true);
                     break;
             }
         } else {
@@ -269,31 +250,31 @@ public class LevelXPScript : MonoBehaviour
             {
                 case "wiggle":
                     wiggle.transform.position = upgradeSlot2.transform.position;
-                    wiggle.SetActive(true);
+                    wiggle.SetActive(false);
                     break;
                 case "lyuda":
                     lyuda.transform.position = upgradeSlot2.transform.position;
-                    lyuda.SetActive(true);
+                    lyuda.SetActive(false);
                     break;
                 case "explosive":
                     explosive.transform.position = upgradeSlot2.transform.position;
-                    explosive.SetActive(true);
+                    explosive.SetActive(false);
                     break;
                 case "rof":
                     rof.transform.position = upgradeSlot2.transform.position;
-                    rof.SetActive(true);
+                    rof.SetActive(false);
                     break;
                 case "pen":
                     pen.transform.position = upgradeSlot2.transform.position;
-                    pen.SetActive(true);
+                    pen.SetActive(false);
                     break;
                 case "akimbo":
                     akimbo.transform.position = upgradeSlot2.transform.position;
-                    akimbo.SetActive(true);
+                    akimbo.SetActive(false);
                     break;
                 case "damage":
                     damage.transform.position = upgradeSlot2.transform.position;
-                    damage.SetActive(true);
+                    damage.SetActive(false);
                     break;
             }
         }
@@ -398,8 +379,6 @@ public class LevelXPScript : MonoBehaviour
                     lastupgraded = 2;
                 }
             }
-
-
         }
     }
 }

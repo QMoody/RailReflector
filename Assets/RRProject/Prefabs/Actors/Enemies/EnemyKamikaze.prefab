@@ -271,6 +271,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _onDead:
     m_PersistentCalls:
       m_Calls:
@@ -340,6 +342,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   tag: PlayerBullet
 --- !u!114 &-5252488579239580130
 MonoBehaviour:
@@ -353,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75354b30d21cd914384b969f150e2f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToDestroy: 1.5
+  _timeToDestroy: 0.5
   _destroyOnStart: 0
 --- !u!212 &336192220888210991
 SpriteRenderer:
@@ -430,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles:
-  - {fileID: 6291263557091410831, guid: 328a57b2625c46649ae9261f476e3640, type: 3}
-  - {fileID: 6584156372936187239, guid: d6dd1d61ced8b2f4ebb599964fbdbe44, type: 3}
   - {fileID: 1707715986231921111, guid: 8557689f26cd0b04ba4b6c670b8b42f9, type: 3}
+  - {fileID: 6584156372936187239, guid: d6dd1d61ced8b2f4ebb599964fbdbe44, type: 3}
+  - {fileID: 7540961327756644775, guid: 899585e453be78e42887348795f42a75, type: 3}
   - {fileID: 78307728128706030, guid: aa8d8aac09315084397f9249ddcdb89c, type: 3}

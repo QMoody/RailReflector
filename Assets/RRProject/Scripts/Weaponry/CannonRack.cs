@@ -11,7 +11,7 @@ public class CannonRack : MonoBehaviour
     public GameObject cannon;
 
     // Starting cannon count
-    public int startingCannonCount = 1;
+    public int startingCannonCount = 2;
 
     // spacing between the cannons
     public float cannonSpacing = 0.5f;
@@ -33,19 +33,21 @@ public class CannonRack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // create the cannon rack with the starting number of cannons
-        addCannons(startingCannonCount);
         if (owner == "player1")
         {
-            addCannons();
+            startingCannonCount += 2;
         }
+
+        // create the cannon rack with the starting number of cannons
+        addCannons(startingCannonCount);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // runs the cannon cheat inputs
-       // UpdateCannonCheats();
+        UpdateCannonCheats();
 
         // update the cannoncs
         updateCannons();

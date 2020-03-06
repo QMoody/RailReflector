@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mRange: 25
   dTraveled: 0
-  maxSpeed: 15.17
+  maxSpeed: 20
   damage: 1
   lyuda: 0
   lyudaRange: 4
@@ -108,6 +108,7 @@ MonoBehaviour:
   shrapRange: 7
   pen: 0
   penStr: 0
+  xpGain: 20
   sBullet: {fileID: 2474801010237778602}
   shrapnel: {fileID: 5684167060532405566, guid: 3f296ffb4b593ff47ba6aa21e0d5712b,
     type: 3}

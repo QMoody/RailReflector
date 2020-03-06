@@ -28,6 +28,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthScalar = LevelManager.Instance.healthScalar;
     }
 
     // spawns a single enemy of the passed type

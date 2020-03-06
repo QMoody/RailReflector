@@ -40,11 +40,12 @@ public class SingleCannon : MonoBehaviour
     public int penStr = 0;
 
     // track the owner of the projectile
-    public string owner = "Player1";
+    public string owner = "player1";
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
