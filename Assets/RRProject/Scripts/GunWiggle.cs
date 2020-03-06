@@ -5,10 +5,16 @@ using UnityEngine;
 public class GunWiggle : MonoBehaviour
 {
     public GameObject wiggleObject;
-    bool isWiggle;
+    public bool isWiggle;
     float wiggleValue;
     public float wiggleMax;
     public float wiggleSpeed;
+
+    private void Start()
+    {
+        wiggleMax = Random.Range(0, 3);
+        wiggleSpeed = Random.Range(0.2f, 1);
+    }
 
     void Update()
     {

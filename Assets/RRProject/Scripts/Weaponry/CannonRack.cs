@@ -20,7 +20,7 @@ public class CannonRack : MonoBehaviour
     public List<GameObject> cannons = new List<GameObject>();
 
     // track the owner of the projectile
-    public string owner = "Player1";
+    public string owner = "player1";
 
     public KeyCode fireKey;
 
@@ -63,7 +63,10 @@ public class CannonRack : MonoBehaviour
             cannons.Add(Instantiate(cannon, transform.localPosition, transform.rotation));
             // parent the last added cannon to the cannon rack
             cannons[(cannons.Count - 1)].transform.parent = gameObject.transform;
-            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().owner = owner;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().assignOwnership(owner);
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().multishot = multishot;
         }
 
         // sets the cannons positions
@@ -80,7 +83,10 @@ public class CannonRack : MonoBehaviour
             cannons.Add(Instantiate(cannon, transform.localPosition, transform.rotation));
             // parent the last added cannon to the cannon rack
             cannons[(cannons.Count - 1)].transform.parent = gameObject.transform;
-            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().owner = owner;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().assignOwnership(owner);
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
+            cannons[(cannons.Count - 1)].transform.GetChild(0).GetComponent<SingleCannon>().multishot = multishot;
         }
 
         // sets the cannons positions
@@ -117,12 +123,7 @@ public class CannonRack : MonoBehaviour
     {
         for (int i = 0; i < cannons.Count; i++)
         {
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().multishot = multishot;
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().fireInput(fireKey);
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setWS(wiggleShot);
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().assignOwnership(owner);
         }
 
     }
@@ -131,7 +132,8 @@ public class CannonRack : MonoBehaviour
     {
         for (int i = 0; i < cannons.Count; i++)
         {
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().lyuda = lyuda;
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setLyuda();
+            lyuda = true;
         }
     }
 
@@ -139,7 +141,8 @@ public class CannonRack : MonoBehaviour
     {
         for (int i = 0; i < cannons.Count; i++)
         {
-            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().explosive = explosive;
+            cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setExplosive();
+            explosive = true;
         }
     }
 
@@ -149,6 +152,7 @@ public class CannonRack : MonoBehaviour
         for (int i = 0; i < cannons.Count; i++)
         {
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setWS(wiggleShot);
+            wiggleShot = true;
         }
     }
 

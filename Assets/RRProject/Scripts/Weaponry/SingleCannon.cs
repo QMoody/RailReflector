@@ -130,6 +130,8 @@ public class SingleCannon : MonoBehaviour
 
     public void assignOwnership(string pOwn)
     {
+
+        
         owner = pOwn;
 
         if (owner == "player1")
@@ -183,10 +185,11 @@ public class SingleCannon : MonoBehaviour
                 if (owner == "player2")
                 {
                     fireRate = fireRate * 4;
-                    //target.GetComponent<GunWiggle>();
+                    gameObject.GetComponent<GunWiggle>().isWiggle = true;
                 }
                 else {
                     fireRate = fireRate * 2;
+                    gameObject.GetComponent<GunWiggle>().isWiggle = true;
                 }
             }
         }

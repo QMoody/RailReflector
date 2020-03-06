@@ -80,7 +80,6 @@ public class UpgradeSelect : MonoBehaviour
         {
             // select next upgrade
             nextup = upgrades[0].name;
-            upgrades.RemoveAt(0);
         }
         else
         {
