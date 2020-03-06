@@ -15,6 +15,9 @@ public class Bullet : MonoBehaviour
     // stores the projectiles target path
     Vector2 fPath = new Vector2(0, 2);
 
+    // calculated real world vector
+    Vector2 rVector = new Vector2(0, 0);
+
     // set the maximum range this projectile can travel
     public float mRange = 25.0f;
     public float dTraveled = 0.0f;
@@ -68,6 +71,8 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.DrawRay(transform.position, transform.up, Color.white);
+
         // check if this object should be culled this frame before we run hit detection
         cRange();
     }
@@ -80,7 +85,13 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        rVector = transform.position;
+
         translate();
+
+        rVector = new Vector2(transform.position.x, transform.position.y) - rVector;
+
+
 
         // activate lyuda if needed
         if (lyuda && dTraveled >= lyudaRange)
@@ -94,7 +105,10 @@ public class Bullet : MonoBehaviour
             explosiveShot();
         }
 
-        Reflect();
+        //calculate the actual vector of this bullet
+        calculateRVector(); 
+
+        //Reflect();
     }
 
     // moves the projectile for this frame 
@@ -174,6 +188,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // calculates the actual vector of this bullet
+    private void calculateRVector()
+    {
+
+
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Damageable damageable = collision.GetComponent<Damageable>();
@@ -184,13 +206,43 @@ public class Bullet : MonoBehaviour
             Instantiate(impactParticles, transform.position, Quaternion.identity);
         }
     }
-
+    
+    /*
     void Reflect()
     {
         //Chang this to a cricle collider raycast eventually
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, fPath, rayWallDis, layReflectMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, rayWallDis, layReflectMask);
+        //Debug.DrawRay(transform.position, Vector3.forward, Color.white, 20, false);
+        //Debug.DrawRay(transform.position, Vector3.forward * 10, Color.white);
+        if (hit.collider != null)
+            fPath = Vector2.Reflect(transform.up, hit.normal);
+    }
+    
+    // rotates the cannon to face the target vector
+    private void Reflect()
+    {
+        Vector2 relativePos = new Vector2();
+        Vector2 target = new Vector2();
+        float relativeRotation;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, rayWallDis, layReflectMask);
 
         if (hit.collider != null)
-            fPath = Vector2.Reflect(fPath, hit.normal);
+        {
+            target = Vector2.Reflect(transform.up, hit.normal);
+
+
+
+            // store the relative vector between the cannon and its target gameObject
+            relativePos = new Vector2(transform.position.x, transform.position.y) - target;
+
+            // calculate the rotation between the x axis and the relative position
+            relativeRotation = -(Mathf.Atan2(relativePos.x, relativePos.y) * Mathf.Rad2Deg);
+            //relativeRotation = (Vector2.Angle(transform.position, target.transform.position) * Mathf.Rad2Deg);
+
+            // rotates the cannon to face the target position
+            transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z - relativeRotation);
+        }
     }
+
+    */
 }
