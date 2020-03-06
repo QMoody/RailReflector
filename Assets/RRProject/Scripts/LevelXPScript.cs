@@ -19,6 +19,10 @@ public class LevelXPScript : MonoBehaviour
     [Header("Tmp UI")] //Tmp UI
     public GameObject levelBar;
     public GameObject levelText;
+    public GameObject upgradeTell;
+    public Color c1;
+    public Color c2;
+    private float colourValue;
 
     //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
 
@@ -38,14 +42,30 @@ public class LevelXPScript : MonoBehaviour
     {
         float tmpExp = Mathf.Clamp(currentXP, 0, xpToLevel);
 
-        levelBar.GetComponent<RectTransform>().sizeDelta = new Vector2(30, tmpExp * 2);
-        float xpColour = tmpExp / xpToLevel * 255;
-        levelBar.GetComponent<Image>().color = new Color(xpColour, xpColour, xpColour);
+        levelBar.GetComponent<Image>().fillAmount = tmpExp / 100;
+
+        //levelBar.GetComponent<RectTransform>().sizeDelta = new Vector2(30, tmpExp * 2);
+        //float xpColour = tmpExp / xpToLevel * 255;
+        //levelBar.GetComponent<Image>().color = new Color(xpColour, xpColour, xpColour);
 
         if (currentXP >= xpToLevel)
+        {
+            if (isRoundOver == true)
+            {
+                colourValue = Mathf.PingPong(Time.time * 10, 1);
+                if (colourValue <= 0.1f)
+                    upgradeTell.GetComponent<Text>().color = c1;
+                else if (colourValue >= 0.9f)
+                    upgradeTell.GetComponent<Text>().color = c2;
+            }
+
             canLevelUp = true;
+        }
         else
+        {
             canLevelUp = false;
+            upgradeTell.GetComponent<Text>().color = c2;
+        }
     }
 
     void CheckForUpgrade()

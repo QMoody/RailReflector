@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WallCreator : MonoBehaviour
 {
@@ -30,9 +31,6 @@ public class WallCreator : MonoBehaviour
 
     [Header("Tmp UI")] //Tmp UI
     public GameObject energyBarUI;
-    public GameObject rdy1;
-    public GameObject rdy2;
-    public GameObject rdy3;
 
     //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
 
@@ -154,8 +152,11 @@ public class WallCreator : MonoBehaviour
     //Move this to another script later
     void TmpUISend()
     {
-        energyBarUI.GetComponent<RectTransform>().sizeDelta = new Vector2(270 * energyBar / 100, 40);
+        //energyBarUI.GetComponent<RectTransform>().sizeDelta = new Vector2(270 * energyBar / 100, 40);
 
+        energyBarUI.GetComponent<Image>().fillAmount = energyBar / 100;
+
+        /*
         if (energyBar >= 100)
             rdy3.SetActive(true);
         else
@@ -170,5 +171,6 @@ public class WallCreator : MonoBehaviour
             rdy1.SetActive(true);
         else
             rdy1.SetActive(false);
+            */
     }
 }
