@@ -57,6 +57,14 @@ public class SingleCannon : MonoBehaviour
         // make sure the cannon is pointing toward its target empty gObject
         point();
 
+        // send the level manager the firerate of the guns
+        if(owner == "player2")
+        {
+            LevelManager.Instance.player2refiretime = reFireTime;
+        }else
+        {
+            LevelManager.Instance.player1refiretime = reFireTime;
+        }
     }
 
     // rotates the cannon to face the target vector
@@ -88,6 +96,8 @@ public class SingleCannon : MonoBehaviour
                 StartCoroutine(spawnBullet());
                 firing = true;
             }
+
+            LevelManager.Instance.updatePlayerFiring(owner, fire);
         }
         else
         {
@@ -95,6 +105,7 @@ public class SingleCannon : MonoBehaviour
             fire = false;
             // set whether or not we are firing to be false
             firing = false;
+            LevelManager.Instance.updatePlayerFiring(owner, fire);
         }
     }
 

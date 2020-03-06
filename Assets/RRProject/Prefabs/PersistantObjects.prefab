@@ -77,3 +77,21 @@ MonoBehaviour:
     mAudioGroup: Sfx
   - mAudioClip: {fileID: 8300000, guid: 963a2a91cbd11a04e933f28ed5570061, type: 3}
     mAudioGroup: Music
+  - mAudioClip: {fileID: 8300000, guid: bacde6aae6bc89744be10593848fb4db, type: 3}
+    mAudioGroup: Music
+  - mAudioClip: {fileID: 8300000, guid: 401a36afdb408ae47a58047285cd2c30, type: 3}
+    mAudioGroup: Music
+  - mAudioClip: {fileID: 8300000, guid: f6462801cc68425498dd0023877dcc51, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 9f8d2e94e68b5a742b4f1f0e315b1a1f, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: d5c61b8112ceb4d4eb5a4e7d51c1067c, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 50298003428e2ac4b9c8a166f5e59a0f, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 56d1ad80719fbff4c9c9247f12b57e91, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: e478d83cdbaf634458c6c1fb2d14babe, type: 3}
+    mAudioGroup: Sfx
+  - mAudioClip: {fileID: 8300000, guid: 7e001249d80dbbb4da415793ea9e3ac6, type: 3}
+    mAudioGroup: Sfx

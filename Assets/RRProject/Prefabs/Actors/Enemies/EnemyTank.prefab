@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2cb6143d7b8a64488d0af7a9a4181a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 180
+  _health: 300
   _inmortal: 0
   _onDamaged:
     m_PersistentCalls:
@@ -292,7 +292,7 @@ MonoBehaviour:
   layMask:
     serializedVersion: 2
     m_Bits: 1024
-  dodgingChance: 25
+  dodgingChance: 40
   _dodgeTime: 1
   dodgeSpeed: 2
   _sRenderer: {fileID: 400383786930990371}

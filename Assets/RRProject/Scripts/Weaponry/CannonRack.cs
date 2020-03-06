@@ -36,6 +36,9 @@ public class CannonRack : MonoBehaviour
         if (owner == "player1")
         {
             startingCannonCount += 2;
+        } else
+        {
+            multishot++;
         }
 
         // create the cannon rack with the starting number of cannons
@@ -180,6 +183,13 @@ public class CannonRack : MonoBehaviour
             cannons[i].transform.GetChild(0).GetComponent<SingleCannon>().setPen();
         }
     }
+
+    // makes a shootie shoot noise
+    void updateCannonSounds()
+    {
+
+    }
+
 
     // runs the cheats for cannons
     void UpdateCannonCheats()
