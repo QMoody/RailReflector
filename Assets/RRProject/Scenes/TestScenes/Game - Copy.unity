@@ -686,6 +686,8 @@ MonoBehaviour:
           m_StringArgument: Score
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &688099197
 Transform:
   m_ObjectHideFlags: 0
@@ -2804,12 +2806,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3305043023137444302, guid: 339481eecc7d6904aac6340526f88c31,
+    - target: {fileID: 3305043021612492233, guid: 339481eecc7d6904aac6340526f88c31,
         type: 3}
       propertyPath: lvlManager
       value: 
       objectReference: {fileID: 1452598716}
-    - target: {fileID: 3305043021612492233, guid: 339481eecc7d6904aac6340526f88c31,
+    - target: {fileID: 3305043023137444302, guid: 339481eecc7d6904aac6340526f88c31,
         type: 3}
       propertyPath: lvlManager
       value: 
@@ -2833,16 +2835,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 5228271752948007551, guid: 16a410993ab2b584ba894b657e0294b2,
-        type: 3}
-      propertyPath: _inmortal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5228271752948007548, guid: 16a410993ab2b584ba894b657e0294b2,
-        type: 3}
-      propertyPath: _spawnPoint
-      value: 
-      objectReference: {fileID: 1388322738}
     - target: {fileID: 5228271752948007537, guid: 16a410993ab2b584ba894b657e0294b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2898,6 +2890,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5228271752948007551, guid: 16a410993ab2b584ba894b657e0294b2,
+        type: 3}
+      propertyPath: _inmortal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228271752948007548, guid: 16a410993ab2b584ba894b657e0294b2,
+        type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 1388322738}
     - target: {fileID: 5228271752948007536, guid: 16a410993ab2b584ba894b657e0294b2,
         type: 3}
       propertyPath: energyBarUI
@@ -2957,11 +2959,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 6930967678451028862, guid: 289fd94c029c7e04d809a460e4f44caa,
-        type: 3}
-      propertyPath: _spawnPoint
-      value: 
-      objectReference: {fileID: 1423978262}
     - target: {fileID: 6930967678451028863, guid: 289fd94c029c7e04d809a460e4f44caa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3017,6 +3014,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6930967678451028862, guid: 289fd94c029c7e04d809a460e4f44caa,
+        type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 1423978262}
     - target: {fileID: 6930967678451028861, guid: 289fd94c029c7e04d809a460e4f44caa,
         type: 3}
       propertyPath: energyBarUI
