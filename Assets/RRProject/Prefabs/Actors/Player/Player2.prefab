@@ -193,9 +193,9 @@ MonoBehaviour:
   energyBar: 0
   energyReRate: 0.25
   maxWallDis: 5
-  wallPlaceOffset: 0
+  wallPlaceOffset: 3
   wallNum: 0
-  maxWalls: 0
+  maxWalls: 3
   canCreateWall: 0
   createWallActive: 0
   energyBarUI: {fileID: 0}
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707fe16da5066eb49848f6cecaf52b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannon: {fileID: 3333325764320935802, guid: ed77d025c4ad724499614a72ed6e328e, type: 3}
+  cannon: {fileID: 3333325764320935802, guid: f5554a75f1e9a5441a317812f81b67e8, type: 3}
   startingCannonCount: 2
   cannonSpacing: 0.25
   cannons: []
@@ -472,7 +472,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 8540824d99c13e64b802c54fb004cc98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
