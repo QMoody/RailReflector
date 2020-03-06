@@ -15,6 +15,9 @@ public class Bullet : MonoBehaviour
     // stores the projectiles target path
     Vector2 fPath = new Vector2(0, 2);
 
+    // calculated real world vector
+    Vector2 rVector = new Vector2(0, 0);
+
     // set the maximum range this projectile can travel
     public float mRange = 25.0f;
     public float dTraveled = 0.0f;
@@ -80,7 +83,15 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        rVector = transform.position;
+
         translate();
+
+        Debug.DrawRay(transform.position, transform.up, Color.white);
+
+        rVector = new Vector2(transform.position.x, transform.position.y) - rVector;
+
+
 
         // activate lyuda if needed
         if (lyuda && dTraveled >= lyudaRange)
@@ -94,6 +105,9 @@ public class Bullet : MonoBehaviour
             explosiveShot();
         }
 
+        //calculate the actual vector of this bullet
+        calculateRVector(); 
+
         Reflect();
     }
 
@@ -105,6 +119,10 @@ public class Bullet : MonoBehaviour
         delta = Vector2.ClampMagnitude(fPath, (maxSpeed * Time.deltaTime));
         dTraveled = dTraveled + delta.magnitude;
         transform.Translate(delta);
+
+        //Debug.Log(delta);
+
+        //transform.rotation = Quaternion.LookRotation(fPath.normalized);
     }
 
     // checks to see if this projectile has traveled out of its max range
@@ -174,6 +192,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // calculates the actual vector of this bullet
+    private void calculateRVector()
+    {
+
+
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Damageable damageable = collision.GetComponent<Damageable>();
@@ -184,13 +210,20 @@ public class Bullet : MonoBehaviour
             Instantiate(impactParticles, transform.position, Quaternion.identity);
         }
     }
-
+    
     void Reflect()
     {
-        //Chang this to a cricle collider raycast eventually
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, fPath, rayWallDis, layReflectMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, rayWallDis, layReflectMask);
 
         if (hit.collider != null)
-            fPath = Vector2.Reflect(fPath, hit.normal);
+        {
+            Vector2 dir = Vector2.Reflect(transform.up, hit.normal);
+            float angle = Vector2.Angle(dir, Vector2.up);
+
+            if (dir.x > 0)
+                angle = -angle;
+
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 }

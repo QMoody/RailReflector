@@ -54,8 +54,6 @@ public class SingleCannon : MonoBehaviour
         // make sure the cannon is pointing toward its target empty gObject
         point();
 
-        // call fire every frame to update it
-        //fireInput();
     }
 
     // rotates the cannon to face the target vector
